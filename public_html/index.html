@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <title>Fliptastic!</title>
+    <title>Coriander</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <link rel="stylesheet" href="css/themes/Coriander/Coriander.min.css">
     <link rel="stylesheet" href="css/themes/Coriander/jquery.mobile.icons.min.css">
@@ -14,10 +14,20 @@ and open the template in the editor.
     <script src="js/vendor/jquery-2.1.1.min.js"></script>
     <script src="js/vendor/jquery.mobile-1.4.2.min.js"></script>
     <script src="js/main.js"></script>
-    
-        <body>
+
+    <body>
         <!-- Start Page -->
         <div id='start' class='' data-role="page">
+            <div class='h-centered'>
+                <h2 class='ui-bar ui-bar-a'>Coriander</h2>
+            </div>
+
+            <div class='ui-content ui-body'>
+                <a href="#new-game" data-transition="fade" class='ui-btn ui-btn-c ui-icon-star ui-corner-all ui-btn-icon-left ui-shadow'>New Game</a>
+                <a href="#high-scores" data-transition="fade" class='ui-btn ui-icon-grid ui-corner-all ui-btn-icon-left ui-shadow'>High Scores</a>
+                <a href="#rate" data-transition="fade" class='ui-btn ui-icon-action ui-btn-icon-left ui-corner-all ui-shadow'>Leave a Review</a>
+                <a href="#ad-wall" data-transition="fade" class='ui-btn ui-btn-b ui-icon-plus ui-btn-icon-left ui-corner-all ui-shadow'>More Apps!</a>
+            </div>
         </div>
-        </body>
+    </body>
 </html>
