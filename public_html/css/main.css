@@ -11,3 +11,27 @@ and open the template in the editor.
 .h-centered {
     text-align: center;
 }
+
+.no-margin {
+    margin: none;
+}
+
+.tiled-background {
+    background-image: url(img/background.png);
+}
+
+.ui-btn, .h-centered .ui-btn {
+    width: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stretch-left {
+    left: 0;
+}
+
+.stretch-right {
+    right: 0;
+}
