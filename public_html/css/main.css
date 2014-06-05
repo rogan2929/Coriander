@@ -13,7 +13,7 @@ and open the template in the editor.
 }
 
 .no-margin {
-    margin: none;
+    margin: 0;
 }
 
 .tiled-background {
@@ -67,9 +67,7 @@ and open the template in the editor.
 }
 
 .tile {
-    
-}
-
-.tile:nth-child(2) {
-    
+    background-color: #cef797;
+    width: 30px;
+    height: 30px;
 }
