@@ -68,6 +68,33 @@ and open the template in the editor.
 
 .tile {
     background-color: #cef797;
-    width: 30px;
-    height: 30px;
+    display: inline-block;
+    margin: 4px;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.stretch-top {
+    top: 0;
+}
+
+.stretch-bottom {
+    bottom: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.game-content {
+    top: 50px;
 }
