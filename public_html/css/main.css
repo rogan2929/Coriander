@@ -98,3 +98,8 @@ and open the template in the editor.
 .game-content {
     top: 50px;
 }
+
+.score {
+    font-size: 1.3em;
+    padding: 2em;
+}

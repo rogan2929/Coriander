@@ -36,25 +36,22 @@ and open the template in the editor.
             </div>
 
             <div role='main' class='ui-content'>
-                <p class='h-centered no-margin ui-content ui-body ui-body-a ui-shadow ui-corner-all'>Playing this game is pretty simple. Just put all the tiles in the right order.</p>
+                <p class='h-centered no-margin ui-content ui-body ui-body-a ui-shadow ui-corner-all'>Playing this game is pretty simple. Just put all the tiles in the right order. The fewer the moves the better!</p>
             </div>
 
             <div class='ui-bar'></div>
-            
+
             <a href='#game' id='button-ready' data-transition="fade" class='ui-btn ui-btn-b ui-icon-star ui-corner-all ui-btn-icon-left ui-shadow'>I'm Ready!</a>
             <a href="#start" data-transition="fade" class='ui-btn ui-icon-back ui-btn-icon-left ui-shadow ui-corner-all'>Back</a>
         </div>
-        
+
         <div id='game' data-role='page'>
-            <div class='ui-header'>
-                <div id='timer' class='ui-bar ui-bar-a h-centered'>00:00:00</div>
-            </div>
-            
-            <div id='game-content' class='ui-content ui-body relative'>
+            <h2 id='score' class='ui-bar score h-centered no-margin'>0 Moves</h2>
+            <div id='game-content' class='relative'>
                 <div id='tile-container' class='ui-content'></div>
             </div>            
         </div>
-        
+
         <!-- Templates -->
         <div id='tile-template' class='hidden'>
             <div class='tile'></div>
