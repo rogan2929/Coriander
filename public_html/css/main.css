@@ -69,7 +69,7 @@ and open the template in the editor.
 .tile {
     background-color: #cef797;
     display: inline-block;
-    margin: 4px;
+    margin: 5px;
     text-align: center;
     font-weight: bold;
     vertical-align: middle;
@@ -96,10 +96,16 @@ and open the template in the editor.
 }
 
 .game-content {
-    top: 50px;
+    margin-bottom: 1em;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .score {
     font-size: 1.3em;
-    padding: 2em;
+    padding: 1em;
+}
+
+.overlay {
+    
 }
