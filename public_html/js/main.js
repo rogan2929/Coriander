@@ -119,10 +119,7 @@ var gamePresenter = {
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.values);
         }
 
-        eventBus.installHandler('gamePresenter.onSwipeDownTile', gamePresenter.onSwipeDownTile, '.tile', 'swipedown');
-        eventBus.installHandler('gamePresenter.onSwipeLeftTile', gamePresenter.onSwipeLeftTile, '.tile', 'swipeleft');
-        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
-        eventBus.installHandler('gamePresenter.onSwipeUpTile', gamePresenter.onSwipeUpTile, '.tile', 'swipeup');
+        eventBus.installHandler('gamePresenter.onTouchMoveTile', gamePresenter.onTouchMoveTile, '.tile', 'touchmove');
     },
     /**
      * Evaluate the order of the tiles.
@@ -131,26 +128,24 @@ var gamePresenter = {
 
     },
     generateValues: function() {
-        var value, i, j, gridSquare;
+        var value, i, gridSquare;
 
         gamePresenter.values = [];
 
         gridSquare = gamePresenter.gridSize * gamePresenter.gridSize;
 
-        for (i = 0; i < gamePresenter.gridSize; i++) {
-            gamePresenter.values[i] = [];
+        for (i = 0; i < gridSquare; i++) {
+            value = Math.ceil((Math.random() * gridSquare));
 
-            for (j = 0; j < gamePresenter.gridSize; j++) {
+            // Create a unique random value for the tile.
+            while (gamePresenter.values.lastIndexOf(value) !== -1) {
                 value = Math.ceil((Math.random() * gridSquare));
-
-                // Create a unique random value for the tile.
-                while (gamePresenter.values.lastIndexOf(value) !== -1) {
-                    value = Math.ceil((Math.random() * gridSquare));
-                }
-
-                gamePresenter.values[i].push(value);
             }
+
+            gamePresenter.values.push(value);
         }
+
+        console.log(gamePresenter.values);
     },
     /**
      * Increment the moveCount variable.
@@ -166,26 +161,18 @@ var gamePresenter = {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
     },
-    onSwipeLeftTile: function(e) {
+    onTouchMoveTile: function(e) {
+        // Here's how this will work.
+        // 1. During touchmove, row or column will move.
+        // 2. When touchstop fires, row or column will snap to place. Also increment moveCount.
+        // 3. When snap is complete, row & col classes are updated on the tiles.
+        // 4. Evaluate closeness to solution.
 
-    },
-    onSwipeRightTile: function(e) {
-        console.log('Start: ' + e.swipestart.coords.toString());
-        console.log('Stop: ' + e.swipestop.coords.toString());
-    },
-    onSwipeUpTile: function(e) {
+        console.log($(e.currentTarget).attr('class'));
 
-    },
-    onSwipeDownTile: function(e) {
-
+//        console.log('(' + e.originalEvent.changedTouches[0].clientX + ', ' + e.originalEvent.changedTouches[0].clientY + ')');
+//        $('.tile.row1').css('left', (e.originalEvent.changedTouches[0].clientX + 'px'));
     }
-//    onTapTile: function(e) {
-//        var value = $(e.currentTarget).text();
-//        
-//        gamePresenter.incrementMoveCount();
-//        gamePresenter.slideTiles(value);
-//        gamePresenter.evaluateState();
-//    }
 };
 
 /**
@@ -199,18 +186,40 @@ var gameView = {
      * @param {type} values
      */
     loadTiles: function(gridSize, values) {
-        var html, i, j, width, tile;
+        var html, i, j, width, tile, row, col, left, top, vertGuide, horGuide;
 
         $('#tile-container').empty();
 
-        width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
+        // - (gridSize * 5 * 2) - 10)
+        width = ($(window).width() - 20) / gridSize;
 
         html = $('#tile-template').html();
 
-        for (i = 0; i < gridSize; i++) {
+        row = 1;
+        col = 1;
+
+        for (i = 0; i < gridSize * gridSize; i += gridSize) {
+            col = 0;
+            
+            horGuide = $($('#guideline-template').html());
+            horGuide.addClass('horizontal').css('left', left).appendTo('#tile-container');
+
             for (j = 0; j < gridSize; j++) {
-                tile = $(html).width(width).height(width).css('line-height', width + 'px').text(values[i][j]).appendTo('#tile-container');
+
+                left = col * width + 10 + 'px';
+                top = row * width + 10 + 'px';
+
+                tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('row' + row).addClass('col' + col).css('left', left).css('top', top).text(values[i + j]);
+
+                $(tile).appendTo('#tile-container');
+                
+                vertGuide = $($('#guideline-template').html());
+                vertGuide.addClass('vertical').css('left', left).appendTo('#tile-container');
+
+                col++;
             }
+
+            row++;
         }
     },
     showMoveCount: function(count) {

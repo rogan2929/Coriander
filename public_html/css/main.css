@@ -68,11 +68,10 @@ and open the template in the editor.
 
 .tile {
     background-color: #cef797;
-    display: inline-block;
-    margin: 5px;
     text-align: center;
     font-weight: bold;
     vertical-align: middle;
+    border: 1px solid #ccc;
 }
 
 .absolute {
@@ -96,9 +95,6 @@ and open the template in the editor.
 }
 
 .game-content {
-    margin-bottom: 1em;
-    margin-left: 5px;
-    margin-right: 5px;
 }
 
 .score {
@@ -108,4 +104,16 @@ and open the template in the editor.
 
 .overlay {
     
+}
+
+.guideline.vertical {
+    width: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.guideline.horizontal {
+    height: 0;
+    left: 0;
+    right: 0;
 }
