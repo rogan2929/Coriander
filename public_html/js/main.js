@@ -113,10 +113,10 @@ var gamePresenter = {
      */
     init: function() {
         if (gamePresenter.newGame) {
-            gameView.loadTiles(gamePresenter.gridSize);
             gamePresenter.setMoveCount(0);
             gamePresenter.newGame = false;
             gamePresenter.generateValues();
+            gameView.loadTiles(gamePresenter.gridSize, gamePresenter.values);
         }
 
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
@@ -138,7 +138,7 @@ var gamePresenter = {
             value = Math.ceil((Math.random() * gridSquare));
 
             // Create a unique random value for the tile.
-            while (createdValues.lastIndexOf(value) !== -1) {
+            while (gamePresenter.values.lastIndexOf(value) !== -1) {
                 value = Math.ceil((Math.random() * gridSquare));
             }
 
@@ -151,8 +151,11 @@ var gamePresenter = {
     incrementMoveCount: function() {
         gamePresenter.setMoveCount(gamePresenter.moveCount + 1);
     },
-    rotateTiles: function() {
-
+    rotateTiles: function(value) {
+        
+        
+        
+        gameView.rotateTiles(value);
     },
     /**
      * Setter for moveCount
@@ -163,8 +166,10 @@ var gamePresenter = {
         gameView.showMoveCount(count);
     },
     onTapTile: function(e) {
+        var value = $(e.currentTarget).text();
+        
         gamePresenter.incrementMoveCount();
-        gamePresenter.rotateTiles();
+        gamePresenter.rotateTiles(value);
         gamePresenter.evaluateState();
     }
 };
@@ -180,7 +185,7 @@ var gameView = {
      * @param {type} values
      */
     loadTiles: function(gridSize, values) {
-        var html, i, j, width, tile, value, createdValues;
+        var html, i, width, tile;
 
         $('#tile-container').empty();
 
@@ -188,24 +193,15 @@ var gameView = {
 
         html = $('#tile-template').html();
 
-        createdValues = [];
-
-        // 5x5 grid.
-//        for (i = 0; i < gridSize; i++) {
-//            for (j = 0; j < gridSize; j++) {
-//                value = Math.ceil((Math.random() * gridSize * gridSize));
-//
-//                // Create a unique random value for the tile.
-//                while (createdValues.lastIndexOf(value) !== -1) {
-//                    value = Math.ceil((Math.random() * gridSize * gridSize));
-//                }
-//
-//                createdValues.push(value);
-//
-//                // Create the tile and show it.
-//                tile = $(html).width(width).height(width).css('line-height', width + 'px').text(value).appendTo('#tile-container');
-//            }
-//        }
+        for (i = 0; i < values.length; i++) {
+            tile = $(html).width(width).height(width).css('line-height', width + 'px').text(values[i]).appendTo('#tile-container');
+        }
+    },
+    /**
+     * Rotate the visible tiles, starting with the given start value.
+     * @param {type} value
+     */
+    rotateTiles: function(value) {
     },
     showMoveCount: function(count) {
         if (count !== 1) {
