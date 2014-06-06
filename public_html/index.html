@@ -46,7 +46,13 @@ and open the template in the editor.
         </div>
         
         <div id='game' data-role='page'>
-            <div id='tile-container' class='stretch-left stretch-right absolute stretch-top stretch-bottom ui-content'></div>
+            <div class='ui-header'>
+                <div id='timer' class='ui-bar ui-bar-a h-centered'>00:00:00</div>
+            </div>
+            
+            <div id='game-content' class='ui-content ui-body relative'>
+                <div id='tile-container' class='ui-content'></div>
+            </div>            
         </div>
         
         <!-- Templates -->
