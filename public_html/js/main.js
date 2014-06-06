@@ -107,7 +107,7 @@ var gamePresenter = {
     gridSize: 4,
     moveCount: 0,
     newGame: true,
-    values: [],
+    values: null,
     /**
      * Entry point.
      */
@@ -119,7 +119,10 @@ var gamePresenter = {
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.values);
         }
 
-        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
+        eventBus.installHandler('gamePresenter.onSwipeDownTile', gamePresenter.onSwipeDownTile, '.tile', 'swipedown');
+        eventBus.installHandler('gamePresenter.onSwipeLeftTile', gamePresenter.onSwipeLeftTile, '.tile', 'swipeleft');
+        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
+        eventBus.installHandler('gamePresenter.onSwipeUpTile', gamePresenter.onSwipeUpTile, '.tile', 'swipeup');
     },
     /**
      * Evaluate the order of the tiles.
@@ -128,21 +131,25 @@ var gamePresenter = {
 
     },
     generateValues: function() {
-        var value, i, gridSquare;
-        
+        var value, i, j, gridSquare;
+
         gamePresenter.values = [];
-        
+
         gridSquare = gamePresenter.gridSize * gamePresenter.gridSize;
 
-        for (i = 0; i < gridSquare; i++) {
-            value = Math.ceil((Math.random() * gridSquare));
+        for (i = 0; i < gamePresenter.gridSize; i++) {
+            gamePresenter.values[i] = [];
 
-            // Create a unique random value for the tile.
-            while (gamePresenter.values.lastIndexOf(value) !== -1) {
+            for (j = 0; j < gamePresenter.gridSize; j++) {
                 value = Math.ceil((Math.random() * gridSquare));
-            }
 
-            gamePresenter.values.push(value);
+                // Create a unique random value for the tile.
+                while (gamePresenter.values.lastIndexOf(value) !== -1) {
+                    value = Math.ceil((Math.random() * gridSquare));
+                }
+
+                gamePresenter.values[i].push(value);
+            }
         }
     },
     /**
@@ -150,12 +157,6 @@ var gamePresenter = {
      */
     incrementMoveCount: function() {
         gamePresenter.setMoveCount(gamePresenter.moveCount + 1);
-    },
-    rotateTiles: function(value) {
-        
-        
-        
-        gameView.rotateTiles(value);
     },
     /**
      * Setter for moveCount
@@ -165,13 +166,26 @@ var gamePresenter = {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
     },
-    onTapTile: function(e) {
-        var value = $(e.currentTarget).text();
-        
-        gamePresenter.incrementMoveCount();
-        gamePresenter.rotateTiles(value);
-        gamePresenter.evaluateState();
+    onSwipeLeftTile: function(e) {
+
+    },
+    onSwipeRightTile: function(e) {
+        console.log('Start: ' + e.swipestart.coords.toString());
+        console.log('Stop: ' + e.swipestop.coords.toString());
+    },
+    onSwipeUpTile: function(e) {
+
+    },
+    onSwipeDownTile: function(e) {
+
     }
+//    onTapTile: function(e) {
+//        var value = $(e.currentTarget).text();
+//        
+//        gamePresenter.incrementMoveCount();
+//        gamePresenter.slideTiles(value);
+//        gamePresenter.evaluateState();
+//    }
 };
 
 /**
@@ -185,7 +199,7 @@ var gameView = {
      * @param {type} values
      */
     loadTiles: function(gridSize, values) {
-        var html, i, width, tile;
+        var html, i, j, width, tile;
 
         $('#tile-container').empty();
 
@@ -193,15 +207,11 @@ var gameView = {
 
         html = $('#tile-template').html();
 
-        for (i = 0; i < values.length; i++) {
-            tile = $(html).width(width).height(width).css('line-height', width + 'px').text(values[i]).appendTo('#tile-container');
+        for (i = 0; i < gridSize; i++) {
+            for (j = 0; j < gridSize; j++) {
+                tile = $(html).width(width).height(width).css('line-height', width + 'px').text(values[i][j]).appendTo('#tile-container');
+            }
         }
-    },
-    /**
-     * Rotate the visible tiles, starting with the given start value.
-     * @param {type} value
-     */
-    rotateTiles: function(value) {
     },
     showMoveCount: function(count) {
         if (count !== 1) {
