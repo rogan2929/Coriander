@@ -17,37 +17,42 @@ and open the template in the editor.
 
     <body>
         <!-- Start Page -->
-        <div id='start' class='tiled-background' data-role="page">
+        <div id='start' data-role="page">
             <div class='ui-content ui-body h-centered'>
-                <h2 class='ui-bar ui-bar-a ui-shadow'>Quick Sort</h2>
+                <span class='page-title'>QUICK SORT</span>
             </div>
 
             <div class='ui-content ui-body stretch-left stretch-right'>
-                <a href="#new-game" data-transition="fade" class='ui-btn ui-btn-b ui-icon-star ui-corner-all ui-btn-icon-left ui-shadow'>New Game</a>
-                <a href="#high-scores" data-transition="fade" class='ui-btn ui-icon-grid ui-corner-all ui-btn-icon-left ui-shadow'>High Scores</a>
-                <a href="#rate" data-transition="fade" class='ui-btn ui-icon-action ui-btn-icon-left ui-corner-all ui-shadow'>Leave a Review</a>
-                <a href="#ad-wall" data-transition="fade" class='ui-btn ui-btn-b ui-icon-plus ui-btn-icon-left ui-corner-all ui-shadow'>More Apps!</a>
+                <a href="#game" data-transition="fade" class='ui-btn'>New Game</a>
+                <a href="#game" id='button-resume' data-transition="fade" class='ui-btn'>Resume</a>
+                <a href="#high-scores" data-transition="fade" class='ui-btn'>High Scores</a>
+                <a href="#rate" data-transition="fade" class='ui-btn'>Rate</a>
+                <a href="#directions" data-transition="fade" class='ui-btn'>Directions</a>
+                <a href="#ad-wall" data-transition="fade" class='ui-btn ui-btn-b'>More Apps!</a>
             </div>
         </div>
-
-        <div id='new-game' class='tiled-background' data-role="page">
-            <div class='h-centered' data-role='header'>
-                <h2>New Game</h2>
+        
+        <div id='directions' data-role='page'>
+            <div class='ui-content ui-body h-centered'>
+                <span class='page-title'>HOW TO PLAY</span>
             </div>
-
+            
             <div role='main' class='ui-content'>
-                <p class='h-centered no-margin ui-content ui-body ui-body-a ui-shadow ui-corner-all'>Put all the tiles in the right order by swiping up, down, left, or right.<br/><br/><b>The fewer the moves the better!</b></p>
+                <p class='h-centered no-margin ui-content ui-body ui-body-a'>Put all the tiles in the right order by swiping up, down, left, or right.<br/><br/><b>The fewer the moves the better!</b></p>
             </div>
-
-            <div class='ui-bar'></div>
-
-            <a href='#game' id='button-ready' data-transition="fade" class='ui-btn ui-btn-b ui-icon-star ui-corner-all ui-btn-icon-left ui-shadow'>Start New Game</a>
-            <a href="#start" data-transition="fade" class='ui-btn ui-icon-back ui-btn-icon-left ui-shadow ui-corner-all'>Back</a>
+            
+            <a href="#start" data-transition="fade" class='ui-btn'>Menu</a>
         </div>
 
         <div id='game' data-role='page'>
-            <h2 id='score' class='ui-bar score h-centered no-margin'>0 Moves</h2>
+            <div class='ui-header no-border margin-left margin-right'>
+                <h2 class='game-content'>QUICK SORT</h2>
+                <h2 id='score' class='ui-bar-a game-status float-left'></h2>
+                <a href="#start" data-transition="fade" class='ui-btn float-right'><h2>Menu</h2></a>
+            </div>
+            
             <div id='tile-container' class='game-content'></div>
+            
             <div id='ad-game' class='ui-footer h-centered ui-bar ui-bar-a absolute stretch-bottom stretch-left stretch-right'>[Ads Go Here]</div>
         </div>
 

@@ -31,8 +31,8 @@ String.prototype.toHHMMSS = function() {
     return time;
 };
 
-$(document).on('pagebeforeshow', '#new-game', function(e) {
-    newGamePresenter.init();
+$(document).on('pagebeforeshow', '#start', function(e) {
+    startPresenter.init();
 });
 
 $(document).on('pagebeforeshow', '#game', function(e) {
@@ -64,16 +64,16 @@ var model = {
 };
 
 /**
- * Presenter for #new-game
+ * Presenter for #start
  * @type type
  */
-var newGamePresenter = {
+var startPresenter = {
     /**
      * 
      */
     init: function() {
-        eventBus.installHandler('newGamePresenter.onTapButtonReady', newGamePresenter.onTapButtonReady, '#button-ready', 'tap');
-        newGameView.toggleButtonResume(!gamePresenter.newGame);
+        eventBus.installHandler('newGamePresenter.onTapButtonReady', startPresenter.onTapButtonReady, '#button-ready', 'tap');
+        startView.toggleButtonResume(!gamePresenter.newGame);
     },
     onTapButtonReady: function(e) {
         gamePresenter.newGame = true;
@@ -81,10 +81,10 @@ var newGamePresenter = {
 };
 
 /**
- * View for #new-game
+ * View for #start
  * @type type
  */
-var newGameView = {
+var startView = {
     /**
      * Enable/disable the resume button.
      * @param {type} enable
@@ -245,11 +245,6 @@ var gameView = {
         }
     },
     showMoveCount: function(count) {
-        if (count !== 1) {
-            $('#score').text(count + ' Moves');
-        }
-        else {
-            $('#score').text(count + ' Move');
-        }
+        $('#score').text('Moves: ' + count);
     }
 };
