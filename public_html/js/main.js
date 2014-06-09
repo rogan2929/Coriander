@@ -119,11 +119,11 @@ var gamePresenter = {
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.values);
         }
 
-        //eventBus.installHandler('gamePresenter.onTouchMoveTile', gamePresenter.onTouchMoveTile, '.tile', 'touchmove');
-        eventBus.installHandler('gamePresenter.onSwipeDownTile', gamePresenter.onSwipeDownTile, '.tile', 'swipedown');
-        eventBus.installHandler('gamePresenter.onSwipeLeftTile', gamePresenter.onSwipeLeftTile, '.tile', 'swipeleft');
-        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
-        eventBus.installHandler('gamePresenter.onSwipeUpTile', gamePresenter.onSwipeUpTile, '.tile', 'swipeup');
+        eventBus.installHandler('gamePresenter.onTouchMoveTile', gamePresenter.onTouchMoveTile, '.tile', 'touchmove');
+//        eventBus.installHandler('gamePresenter.onSwipeDownTile', gamePresenter.onSwipeDownTile, '.tile', 'swipedown');
+//        eventBus.installHandler('gamePresenter.onSwipeLeftTile', gamePresenter.onSwipeLeftTile, '.tile', 'swipeleft');
+//        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
+//        eventBus.installHandler('gamePresenter.onSwipeUpTile', gamePresenter.onSwipeUpTile, '.tile', 'swipeup');
     },
     /**
      * Evaluate the order of the tiles.
@@ -165,24 +165,24 @@ var gamePresenter = {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
     },
-    onSwipeDownTile: function(e) {
-        
-    },
-    onSwipeLeftTile: function(e) {
-        
-    },
-    onSwipeRightTile: function(e) {
-        var distance;
-        
-        distance = e.swipestop.coords[0] - e.swipestart.coords[0];
-        
-        console.log(e);
-        console.log(distance);
-        
-    },
-    onSwipeUpTile: function(e) {
-        
-    },
+//    onSwipeDownTile: function(e) {
+//        
+//    },
+//    onSwipeLeftTile: function(e) {
+//        
+//    },
+//    onSwipeRightTile: function(e) {
+//        var distance;
+//        
+//        distance = e.swipestop.coords[0] - e.swipestart.coords[0];
+//        
+//        console.log(e);
+//        console.log(distance);
+//        
+//    },
+//    onSwipeUpTile: function(e) {
+//        
+//    },
     onTouchMoveTile: function(e) {
         // Here's how this will work.
         // 1. During touchmove, row or column will move.
@@ -192,8 +192,8 @@ var gamePresenter = {
 
         //console.log($(e.currentTarget).attr('class'));
 
-//        console.log('(' + e.originalEvent.changedTouches[0].clientX + ', ' + e.originalEvent.changedTouches[0].clientY + ')');
-        //$(e.currentTarget).css('left', e.originalEvent.changedTouches[0].clientX + 'px');
+        console.log('(' + e.originalEvent.changedTouches[0].clientX + ', ' + e.originalEvent.changedTouches[0].clientY + ')');
+        $(e.currentTarget).css('left', e.originalEvent.changedTouches[0].clientX + 'px');
     }
 };
 

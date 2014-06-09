@@ -31,36 +31,30 @@ and open the template in the editor.
                 <a href="#ad-wall" data-transition="fade" class='ui-btn ui-btn-b'>More Apps!</a>
             </div>
         </div>
-        
+
         <div id='directions' data-role='page'>
             <div class='ui-content ui-body h-centered'>
                 <span class='page-title'>HOW TO PLAY</span>
             </div>
-            
+
             <div role='main' class='ui-content'>
                 <p class='h-centered no-margin ui-content ui-body ui-body-a'>Put all the tiles in the right order by swiping up, down, left, or right.<br/><br/><b>The fewer the moves the better!</b></p>
             </div>
-            
+
             <a href="#start" data-transition="fade" class='ui-btn'>Menu</a>
         </div>
 
         <div id='game' data-role='page'>
-            <div class='ui-header no-border margin-left margin-right'>
-                <h2 class='game-content'>QUICK SORT</h2>
-                <h2 id='score' class='ui-bar-a game-status float-left'></h2>
-                <a href="#start" data-transition="fade" class='ui-btn float-right'><h2>Menu</h2></a>
-            </div>
-            
+            <div id='score' class='ui-bar-a game-title game-status absolute h-centered stretch-left stretch-right stretch-top'></div>
             <div id='tile-container' class='game-content'></div>
-            
-            <div id='ad-game' class='ui-footer h-centered ui-bar ui-bar-a absolute stretch-bottom stretch-left stretch-right'>[Ads Go Here]</div>
+            <div id='ad-game' class='ad-bar ui-footer h-centered ui-bar ui-bar-a absolute stretch-bottom stretch-left stretch-right'>[Ads Go Here]</div>
         </div>
 
         <!-- Templates -->
         <div id='tile-template' class='hidden'>
             <div class='tile absolute'></div>
         </div>
-        
+
         <div id='guidline-template' class='hidden'>
             <div class='guideline absolute'></div>
         </div>
