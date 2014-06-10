@@ -108,6 +108,8 @@ var gamePresenter = {
     moveCount: 0,
     newGame: true,
     values: null,
+    currentTouchStart: null,
+    
     /**
      * Entry point.
      */
@@ -120,6 +122,7 @@ var gamePresenter = {
         }
 
         eventBus.installHandler('gamePresenter.onTouchMoveTile', gamePresenter.onTouchMoveTile, '.tile', 'touchmove');
+        eventBus.installHandler('gamePresenter.onTouchStartTile', gamePresenter.onTouchStartTile, '.tile', 'touchstart');
 //        eventBus.installHandler('gamePresenter.onSwipeDownTile', gamePresenter.onSwipeDownTile, '.tile', 'swipedown');
 //        eventBus.installHandler('gamePresenter.onSwipeLeftTile', gamePresenter.onSwipeLeftTile, '.tile', 'swipeleft');
 //        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
@@ -191,9 +194,20 @@ var gamePresenter = {
         // 4. Evaluate closeness to solution.
 
         //console.log($(e.currentTarget).attr('class'));
+        var currentLeft = parseInt($(e.currentTarget).css('left'));
+        var diff = gamePresenter.currentTouchStart[0] - currentLeft;
+        
 
-        console.log('(' + e.originalEvent.changedTouches[0].clientX + ', ' + e.originalEvent.changedTouches[0].clientY + ')');
-        $(e.currentTarget).css('left', e.originalEvent.changedTouches[0].clientX + 'px');
+//        console.log('(' + e.originalEvent.changedTouches[0].clientX + ', ' + e.originalEvent.changedTouches[0].clientY + ')');
+        $(e.currentTarget).css('left', e.originalEvent.changedTouches[0].clientX - diff + 'px');
+    },
+    onTouchStartTile: function(e) {
+        var x, y;
+        
+        x = e.originalEvent.targetTouches[0].clientX;
+        y = e.originalEvent.targetTouches[0].clientY;
+        
+        gamePresenter.currentTouchStart = [x, y];
     }
 };
 
