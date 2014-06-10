@@ -37,6 +37,6 @@ var gameView = {
         $('#tile-container').height(gridSize * height + 'px');
     },
     showMoveCount: function(count) {
-        $('#score').text('Moves: ' + count);
+        $('#score').text('MOVES: ' + count);
     }
 };
