@@ -16,43 +16,25 @@ var gameView = {
      * @param {type} values
      */
     loadTiles: function(gridSize, values) {
-        var html, i, j, width, tile, row, col, left, top, vertGuide, horGuide;
+        var html, i, j, width, tile;
 
         $('#tile-container').empty();
 
         // - (gridSize * 5 * 2) - 10)
-        width = ($(window).width() - 20) / gridSize;
+        width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
 
         html = $('#tile-template').html();
 
-        row = 1;
-        col = 1;
-
-        //for (i = 0; i < gridSize * gridSize; i += gridSize) {
-        for (i = 0; i < 1; i += gridSize) {
-            col = 0;
-            
-            horGuide = $($('#guideline-template').html());
-            horGuide.addClass('horizontal').css('left', left).appendTo('#tile-container');
-
-            //for (j = 0; j < gridSize; j++) {
-            for (j = 0; j < 1; j++) {
-
-                left = col * width + 10 + 'px';
-                top = row * width + 10 + 'px';
-
-                tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('row' + row).addClass('col' + col).css('left', left).css('top', top).text(values[i + j]);
-
-                $(tile).appendTo('#tile-container');
-                
-                vertGuide = $($('#guideline-template').html());
-                vertGuide.addClass('vertical').css('left', left).appendTo('#tile-container');
-
-                col++;
+        for (i = 0; i < gridSize * gridSize; i += gridSize) {
+            for (j = 0; j < gridSize; j++) {
+                tile = $(html).width(width).height(width).css('line-height', width + 'px').text(values[i + j]).appendTo('#tile-container');
             }
-
-            row++;
         }
+        
+        var height = (width + (1 * 2));
+        console.log(height);
+        
+        $('#tile-container').height(gridSize * height + 'px');
     },
     showMoveCount: function(count) {
         $('#score').text('Moves: ' + count);
