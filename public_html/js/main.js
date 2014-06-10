@@ -108,8 +108,7 @@ var gamePresenter = {
     moveCount: 0,
     newGame: true,
     values: null,
-    currentTouchStart: null,
-    
+    touchStartOffset: null,
     /**
      * Entry point.
      */
@@ -121,11 +120,11 @@ var gamePresenter = {
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.values);
         }
 
-        eventBus.installHandler('gamePresenter.onTouchMoveTile', gamePresenter.onTouchMoveTile, '.tile', 'touchmove');
-        eventBus.installHandler('gamePresenter.onTouchStartTile', gamePresenter.onTouchStartTile, '.tile', 'touchstart');
+        //eventBus.installHandler('gamePresenter.onTouchMoveTile', gamePresenter.onTouchMoveTile, '.tile', 'touchmove');
+        //eventBus.installHandler('gamePresenter.onTouchStartTile', gamePresenter.onTouchStartTile, '.tile', 'touchstart');
 //        eventBus.installHandler('gamePresenter.onSwipeDownTile', gamePresenter.onSwipeDownTile, '.tile', 'swipedown');
 //        eventBus.installHandler('gamePresenter.onSwipeLeftTile', gamePresenter.onSwipeLeftTile, '.tile', 'swipeleft');
-//        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
+        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
 //        eventBus.installHandler('gamePresenter.onSwipeUpTile', gamePresenter.onSwipeUpTile, '.tile', 'swipeup');
     },
     /**
@@ -174,15 +173,14 @@ var gamePresenter = {
 //    onSwipeLeftTile: function(e) {
 //        
 //    },
-//    onSwipeRightTile: function(e) {
-//        var distance;
-//        
-//        distance = e.swipestop.coords[0] - e.swipestart.coords[0];
-//        
-//        console.log(e);
-//        console.log(distance);
-//        
-//    },
+    onSwipeRightTile: function(e) {
+        console.log(e);
+        
+        //$(e.currentTarget).css('left', e.swipestop.coords[0] + 'px');
+        $(e.currentTarget).animate({
+            left: e.swipestop.coords[0] + 'px'
+        }, 200);
+    },
 //    onSwipeUpTile: function(e) {
 //        
 //    },
@@ -193,21 +191,19 @@ var gamePresenter = {
         // 3. When snap is complete, row & col classes are updated on the tiles.
         // 4. Evaluate closeness to solution.
 
-        //console.log($(e.currentTarget).attr('class'));
-        var currentLeft = parseInt($(e.currentTarget).css('left'));
-        var diff = gamePresenter.currentTouchStart[0] - currentLeft;
-        
-
-//        console.log('(' + e.originalEvent.changedTouches[0].clientX + ', ' + e.originalEvent.changedTouches[0].clientY + ')');
-        $(e.currentTarget).css('left', e.originalEvent.changedTouches[0].clientX - diff + 'px');
+        $(e.currentTarget).css('left', e.originalEvent.changedTouches[0].clientX - gamePresenter.touchStartOffset.x + 'px');
+        $(e.currentTarget).css('top', e.originalEvent.changedTouches[0].clientY - gamePresenter.touchStartOffset.y + 'px');
     },
     onTouchStartTile: function(e) {
         var x, y;
         
-        x = e.originalEvent.targetTouches[0].clientX;
-        y = e.originalEvent.targetTouches[0].clientY;
+        x = e.originalEvent.targetTouches[0].clientX - parseInt($(e.currentTarget).css('left'));
+        y = e.originalEvent.targetTouches[0].clientY - parseInt($(e.currentTarget).css('top'));
         
-        gamePresenter.currentTouchStart = [x, y];
+        gamePresenter.touchStartOffset = {
+            x: x,
+            y: y
+        };
     }
 };
 
@@ -234,13 +230,15 @@ var gameView = {
         row = 1;
         col = 1;
 
-        for (i = 0; i < gridSize * gridSize; i += gridSize) {
+        //for (i = 0; i < gridSize * gridSize; i += gridSize) {
+        for (i = 0; i < 1; i += gridSize) {
             col = 0;
             
             horGuide = $($('#guideline-template').html());
             horGuide.addClass('horizontal').css('left', left).appendTo('#tile-container');
 
-            for (j = 0; j < gridSize; j++) {
+            //for (j = 0; j < gridSize; j++) {
+            for (j = 0; j < 1; j++) {
 
                 left = col * width + 10 + 'px';
                 top = row * width + 10 + 'px';
