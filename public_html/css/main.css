@@ -144,8 +144,7 @@ and open the template in the editor.
 
 .game-title {
     font-size: 1.6em;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 0.5em;
 }
 
 .ad-bar {
