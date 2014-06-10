@@ -27,7 +27,10 @@ var gamePresenter = {
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
     },
     onTapTile: function(e) {
-        var target = e.currentTarget;
+        var target, text;
+                
+        target = e.currentTarget;
+        text = $(target).text();
         
         $(target).text('').addClass('flip');
         
@@ -35,7 +38,7 @@ var gamePresenter = {
             $(target).removeClass('flip');
             
             setTimeout(function() {
-                $(target).text(1);
+                $(target).text(text);
             }, 800);
         }, 800);
     },
