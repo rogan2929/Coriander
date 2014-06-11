@@ -31,6 +31,10 @@ String.prototype.toHHMMSS = function() {
     return time;
 };
 
+$(document).bind('mobileinit', function() {
+    $.event.special.swipe.horizontalDistanceThreshold = 10;
+});
+
 $(document).on('pagebeforeshow', '#start', function(e) {
     startPresenter.init();
 });

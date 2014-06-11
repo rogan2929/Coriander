@@ -95,12 +95,9 @@ var gamePresenter = {
         // Right: +1
         // Above: -gridSize
         // Below: +gridSize
-        $.event.special.swipe.horizontalDistanceThreshold = 15;
-        
         alert('SwipeRight');
     },
     onSwipeLeftTile: function(e) {
-        $.event.special.swipe.horizontalDistanceThreshold = 15;
         alert('SwipeLeft');
     }
 };
