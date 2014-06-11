@@ -125,7 +125,8 @@ and open the template in the editor.
     vertical-align: middle;
     color: #444;
     font-size: 2em;
-    margin: 1px;
+    margin: 5px;
+    border-radius: 3px;
 
     -webkit-transition-duration: 0.8s;
     -moz-transition-duration: 0.8s;

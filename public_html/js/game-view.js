@@ -49,7 +49,7 @@ var gameView = {
             }
         }
 
-        $('#tile-container').height(gridSize * (width + (1 * 2)) + 'px');
+        $('#tile-container').height(gridSize * (width + (5 * 2)) + 'px');
     },
     /**
      * Do a nice little effect upon loading and animate all the tiles.

@@ -88,7 +88,11 @@ var gamePresenter = {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
     },
-    onTapTile: function(e) {
+    /**
+     * Update tile values.
+     * @param {type} decrement
+     */
+    updateTileValues: function(tileDiv, decrement) {
         // Update tiles that are to the left, right, above, and below.
         // Left: -1
         // Right: +1
@@ -97,8 +101,8 @@ var gamePresenter = {
 
         var value, index, classList, updatedTiles;
 
-        value = parseInt($(e.currentTarget).text());
-        classList = $(e.currentTarget).attr('class');
+        value = parseInt($(tileDiv).text());
+        classList = $(tileDiv).attr('class');
 
         index = parseInt(classList.substring(classList.indexOf('tile-') + 5, classList.indexOf('tile-') + 7));
 
@@ -109,25 +113,45 @@ var gamePresenter = {
 
         // Left tile.
         if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0) {
-            gamePresenter.tiles[index - 1].incrementValue();
+            if (!decrement) {
+                gamePresenter.tiles[index - 1].incrementValue();
+            }
+            else {
+                gamePresenter.tiles[index - 1].decrementValue();
+            }
             updatedTiles.push(gamePresenter.tiles[index - 1]);
         }
 
         // Right tile
         if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0) {
-            gamePresenter.tiles[index + 1].incrementValue();
+            if (!decrement) {
+                gamePresenter.tiles[index + 1].incrementValue();
+            }
+            else {
+                gamePresenter.tiles[index + 1].decrementValue();
+            }
             updatedTiles.push(gamePresenter.tiles[index + 1]);
         }
 
         // Above tile
         if (index - gamePresenter.gridSize >= 0) {
-            gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
+            if (!decrement) {
+                gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
+            }
+            else {
+                gamePresenter.tiles[index - gamePresenter.gridSize].decrementValue();
+            }
             updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize]);
         }
 
         // Below tile
         if (index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-            gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
+            if (!decrement) {
+                gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
+            }
+            else {
+                gamePresenter.tiles[index + gamePresenter.gridSize].decrementValue();
+            }
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
         }
 
@@ -142,7 +166,10 @@ var gamePresenter = {
             gamePresenter.evaluateState();
         }, 1800);
     },
+    onTapTile: function(e) {
+        gamePresenter.updateTileValues(e.currentTarget, false);
+    },
     onTapholdTile: function(e) {
-
+        gamePresenter.updateTileValues(e.currentTarget, true);
     }
 };
