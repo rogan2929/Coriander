@@ -9,7 +9,11 @@
  * @type type
  */
 var gamePresenter = {
+    // Constants
     gridSize: 4,
+    maxTileSize: 25,
+    
+    // Class variables
     moveCount: 0,
     newGame: true,
     values: null,
@@ -49,21 +53,23 @@ var gamePresenter = {
 
     },
     generateValues: function() {
-        var value, i, gridSquare;
+        var value, i, gridSquare, values;
 
+        values = [];
         gamePresenter.values = [];
 
         gridSquare = gamePresenter.gridSize * gamePresenter.gridSize;
 
         for (i = 0; i < gridSquare; i++) {
-            value = Math.ceil((Math.random() * gridSquare));
+            value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
 
             // Create a unique random value for the tile.
-            while (gamePresenter.values.lastIndexOf(value) !== -1) {
-                value = Math.ceil((Math.random() * gridSquare));
+            while (values.lastIndexOf(value) !== -1) {
+                value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
             }
 
-            gamePresenter.values.push(value);
+            values.push(value);
+            gamePresenter.values.push(new Tile(value));
         }
 
         console.log(gamePresenter.values);
