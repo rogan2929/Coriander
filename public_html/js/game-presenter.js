@@ -28,8 +28,8 @@ var gamePresenter = {
         }
 
         //eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
-        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
-        eventBus.installHandler('gamePresenter.onSwipeLeftTile', gamePresenter.onSwipeLeftTile, '.tile', 'swipeleft');
+        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
+        eventBus.installHandler('gamePresenter.onTapholdTile', gamePresenter.onTapholdTile, '.tile', 'taphold');
     },
     /**
      * Evaluate the order of the tiles.
@@ -73,31 +73,31 @@ var gamePresenter = {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
     },
+//    onTapTile: function(e) {
+//        var target, text;
+//
+//        target = e.currentTarget;
+//        text = $(target).text();
+//
+//        $(target).text('').addClass('flip');
+//
+//        setTimeout(function() {
+//            $(target).removeClass('flip');
+//
+//            setTimeout(function() {
+//                $(target).text(text);
+//            }, 800);
+//        }, 800);
+//    },
     onTapTile: function(e) {
-        var target, text;
-
-        target = e.currentTarget;
-        text = $(target).text();
-
-        $(target).text('').addClass('flip');
-
-        setTimeout(function() {
-            $(target).removeClass('flip');
-
-            setTimeout(function() {
-                $(target).text(text);
-            }, 800);
-        }, 800);
-    },
-    onSwipeRightTile: function(e) {
         // Update tiles that are to the left, right, above, and below.
         // Left: -1
         // Right: +1
         // Above: -gridSize
         // Below: +gridSize
-        alert('SwipeRight');
+        alert('tap');
     },
-    onSwipeLeftTile: function(e) {
-        alert('SwipeLeft');
+    onTapholdTile: function(e) {
+        alert('taphold');
     }
 };
