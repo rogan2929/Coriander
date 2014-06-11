@@ -126,7 +126,7 @@ and open the template in the editor.
     color: #444;
     font-size: 2em;
     margin: 1px;
-    
+
     -webkit-transition-duration: 0.8s;
     -moz-transition-duration: 0.8s;
     -o-transition-duration: 0.8s;
@@ -136,7 +136,7 @@ and open the template in the editor.
     -moz-transition-property: -moz-transform;
     -o-transition-property: -o-transform;
     transition-property: transform;
-    
+
     transform-style: preserve-3d;
 
     overflow: hidden;
@@ -154,10 +154,15 @@ and open the template in the editor.
     -o-transform: rotate(360deg);
 }
 
-.reverse-flip {
-    -webkit-transform: rotateY(-360deg);
-    -moz-transform: rotateY(-360deg);
-    -o-transform: rotateY(-360deg);
+.fade {
+    transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -webkit-transition: all 0.8s;
+    -o-transition: all 0.8s;
+}
+
+.flipped {
+    background-color: #ffcccc;
 }
 
 .v-centered {

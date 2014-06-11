@@ -11,7 +11,7 @@
 var gamePresenter = {
     // Constants
     gridSize: 4,
-    maxTileSize: 10,
+    maxTileSize: 9,
     // Class variables
     moveCount: 0,
     newGame: true,
@@ -33,18 +33,26 @@ var gamePresenter = {
         eventBus.installHandler('gamePresenter.onTapholdTile', gamePresenter.onTapholdTile, '.tile', 'taphold');
     },
     /**
-     * Finds the tile object with the given value.
-     * @param {type} value
-     * @returns {Tile}
-     */
-    findTile: function(value) {
-        
-    },
-    /**
-     * Evaluate the order of the tiles.
+     * Check if all tiles have the same value.
      */
     evaluateState: function() {
+        var value, i, allMatch;
 
+        allMatch = true;
+
+        value = gamePresenter.tiles[0].getValue();
+
+        for (i = 1; i < gamePresenter.tiles.length; i++) {
+            if (gamePresenter.tiles[i].getValue() !== value) {
+                allMatch = false;
+                break;
+            }
+        }
+
+        if (allMatch) {
+            // Do a victory dance, or something.
+            alert('You won!');
+        }
     },
     generateTiles: function() {
         var value, i, gridSquare, values;
@@ -55,7 +63,7 @@ var gamePresenter = {
         gridSquare = gamePresenter.gridSize * gamePresenter.gridSize;
 
         for (i = 0; i < gridSquare; i++) {
-            value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
+            value = Math.floor((Math.random() * gamePresenter.maxTileSize));
 
             // Create a unique random value for the tile.
 //            while (values.lastIndexOf(value) !== -1) {
@@ -63,7 +71,7 @@ var gamePresenter = {
 //            }
 
             values.push(value);
-            gamePresenter.tiles.push(new Tile(value));
+            gamePresenter.tiles.push(new Tile(value, i));
         }
     },
     /**
@@ -80,31 +88,61 @@ var gamePresenter = {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
     },
-//    onTapTile: function(e) {
-//        var target, text;
-//
-//        target = e.currentTarget;
-//        text = $(target).text();
-//
-//        $(target).text('').addClass('flip');
-//
-//        setTimeout(function() {
-//            $(target).removeClass('flip');
-//
-//            setTimeout(function() {
-//                $(target).text(text);
-//            }, 800);
-//        }, 800);
-//    },
     onTapTile: function(e) {
         // Update tiles that are to the left, right, above, and below.
         // Left: -1
         // Right: +1
         // Above: -gridSize
         // Below: +gridSize
-        
+
+        var value, index, classList, updatedTiles;
+
+        value = parseInt($(e.currentTarget).text());
+        classList = $(e.currentTarget).attr('class');
+
+        index = parseInt(classList.substring(classList.indexOf('tile-') + 5, classList.indexOf('tile-') + 7));
+
+        updatedTiles = [];
+
+        gamePresenter.tiles[index].incrementValue();
+        updatedTiles.push(gamePresenter.tiles[index]);
+
+        // Left tile.
+        if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0) {
+            gamePresenter.tiles[index - 1].incrementValue();
+            updatedTiles.push(gamePresenter.tiles[index - 1]);
+        }
+
+        // Right tile
+        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0) {
+            gamePresenter.tiles[index + 1].incrementValue();
+            updatedTiles.push(gamePresenter.tiles[index + 1]);
+        }
+
+        // Above tile
+        if (index - gamePresenter.gridSize >= 0) {
+            gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
+            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize]);
+        }
+
+        // Below tile
+        if (index + gamePresenter.gridSize < gamePresenter.tiles.length) {
+            gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
+            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
+        }
+
+        // Update tiles on the view.
+        gameView.updateTiles(updatedTiles);
+
+        // Increment move count
+        gamePresenter.incrementMoveCount();
+
+        setTimeout(function() {
+            // Evaluate Game Status.
+            gamePresenter.evaluateState();
+        }, 1800);
     },
     onTapholdTile: function(e) {
-        
+
     }
 };

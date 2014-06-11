@@ -7,9 +7,11 @@
 /**
  * Tile
  * @param {type} value
+ * @param {type} index
  */
-function Tile(value) {
+function Tile(value, index) {
     this.value = value;
+    this.index = index;
 };
 
 /**
@@ -28,6 +30,14 @@ Tile.prototype.decrementValue = function() {
 Tile.prototype.incrementValue = function() {
     this.value += 1;
     return this.value;
+};
+
+/**
+ * Gets the tile's index value.
+ * @returns {type}
+ */
+Tile.prototype.getIndex = function() {
+    return this.index;
 };
 
 /**

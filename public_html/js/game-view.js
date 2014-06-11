@@ -10,13 +10,28 @@
  * @type type
  */
 var gameView = {
+    flipTile: function(index, value) {
+        $('.tile-' + index).text('').addClass('flip');
+
+        setTimeout(function() {
+            $('.tile-' + index).removeClass('flip');
+
+            setTimeout(function() {
+                $('.tile-' + index).addClass('flipped').text(value);
+                
+                setTimeout(function() {
+                    $('.tile-' + index).removeClass('flipped');
+                }, 1250);
+            }, 800);
+        }, 800);
+    },
     /**
      * Loads tiles into the view.
      * @param {type} gridSize
      * @param {type} tiles
      */
     loadTiles: function(gridSize, tiles) {
-        var html, i, j, width, tile;
+        var html, i, j, width, tile, index, value;
 
         $('#tile-container').empty();
 
@@ -27,7 +42,10 @@ var gameView = {
 
         for (i = 0; i < gridSize * gridSize; i += gridSize) {
             for (j = 0; j < gridSize; j++) {
-                tile = $(html).width(width).height(width).css('line-height', width + 'px').text(tiles[i + j]).appendTo('#tile-container');
+                value = tiles[i + j].getValue();
+                index = tiles[i + j].getIndex();
+
+                tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('tile-' + index).text(value).appendTo('#tile-container');
             }
         }
 
@@ -48,13 +66,20 @@ var gameView = {
      * @param {type} count
      */
     showMoveCount: function(count) {
-        $('#score').text('MOVES: ' + count);
+        $('#score').text('Moves: ' + count);
     },
     /**
      * Update displayed tiles.
      * @param {type} tiles
      */
     updateTiles: function(tiles) {
-        
+        var i, index, value;
+
+        for (i = 0; i < tiles.length; i++) {
+            index = tiles[i].getIndex();
+            value = tiles[i].getValue();
+
+            gameView.flipTile(index, value);
+        }
     }
 };
