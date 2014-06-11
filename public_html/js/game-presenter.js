@@ -30,7 +30,7 @@ var gamePresenter = {
 
         //eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
-        eventBus.installHandler('gamePresenter.onTapholdTile', gamePresenter.onTapholdTile, '.tile', 'taphold');
+        //eventBus.installHandler('gamePresenter.onTapholdTile', gamePresenter.onTapholdTile, '.tile', 'taphold');
     },
     /**
      * Check if all tiles have the same value.
@@ -90,6 +90,7 @@ var gamePresenter = {
     },
     /**
      * Update tile values.
+     * @param {type} tileDiv
      * @param {type} decrement
      */
     updateTileValues: function(tileDiv, decrement) {
