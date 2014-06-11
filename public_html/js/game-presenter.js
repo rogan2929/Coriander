@@ -11,12 +11,11 @@
 var gamePresenter = {
     // Constants
     gridSize: 4,
-    maxTileSize: 25,
-    
+    maxTileSize: 10,
     // Class variables
     moveCount: 0,
     newGame: true,
-    values: null,
+    tiles: null,
     /**
      * Entry point.
      */
@@ -24,27 +23,13 @@ var gamePresenter = {
         if (gamePresenter.newGame) {
             gamePresenter.setMoveCount(0);
             gamePresenter.newGame = false;
-            gamePresenter.generateValues();
-            gameView.loadTiles(gamePresenter.gridSize, gamePresenter.values);
+            gamePresenter.generateTiles();
+            gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
         }
 
-        eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
-    },
-    onTapTile: function(e) {
-        var target, text;
-                
-        target = e.currentTarget;
-        text = $(target).text();
-        
-        $(target).text('').addClass('flip');
-        
-        setTimeout(function() {
-            $(target).removeClass('flip');
-            
-            setTimeout(function() {
-                $(target).text(text);
-            }, 800);
-        }, 800);
+        //eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
+        eventBus.installHandler('gamePresenter.onSwipeRightTile', gamePresenter.onSwipeRightTile, '.tile', 'swiperight');
+        eventBus.installHandler('gamePresenter.onSwipeLeftTile', gamePresenter.onSwipeLeftTile, '.tile', 'swipeleft');
     },
     /**
      * Evaluate the order of the tiles.
@@ -52,11 +37,11 @@ var gamePresenter = {
     evaluateState: function() {
 
     },
-    generateValues: function() {
+    generateTiles: function() {
         var value, i, gridSquare, values;
 
         values = [];
-        gamePresenter.values = [];
+        gamePresenter.tiles = [];
 
         gridSquare = gamePresenter.gridSize * gamePresenter.gridSize;
 
@@ -64,15 +49,15 @@ var gamePresenter = {
             value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
 
             // Create a unique random value for the tile.
-            while (values.lastIndexOf(value) !== -1) {
-                value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
-            }
+//            while (values.lastIndexOf(value) !== -1) {
+//                value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
+//            }
 
             values.push(value);
-            gamePresenter.values.push(new Tile(value));
+            gamePresenter.tiles.push(new Tile(value));
         }
 
-        console.log(gamePresenter.values);
+        console.log(gamePresenter.tiles);
     },
     /**
      * Increment the moveCount variable.
@@ -87,5 +72,32 @@ var gamePresenter = {
     setMoveCount: function(count) {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
+    },
+    onTapTile: function(e) {
+        var target, text;
+
+        target = e.currentTarget;
+        text = $(target).text();
+
+        $(target).text('').addClass('flip');
+
+        setTimeout(function() {
+            $(target).removeClass('flip');
+
+            setTimeout(function() {
+                $(target).text(text);
+            }, 800);
+        }, 800);
+    },
+    onSwipeRightTile: function(e) {
+        // Update tiles that are to the left, right, above, and below.
+        // Left: -1
+        // Right: +1
+        // Above: -gridSize
+        // Below: +gridSize
+        alert('SwipeRight');
+    },
+    onSwipeLeftTile: function(e) {
+        alert('SwipeLeft');
     }
 };

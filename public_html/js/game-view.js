@@ -13,9 +13,9 @@ var gameView = {
     /**
      * Loads tiles into the view.
      * @param {type} gridSize
-     * @param {type} values
+     * @param {type} tiles
      */
-    loadTiles: function(gridSize, values) {
+    loadTiles: function(gridSize, tiles) {
         var html, i, j, width, tile;
 
         $('#tile-container').empty();
@@ -27,7 +27,7 @@ var gameView = {
 
         for (i = 0; i < gridSize * gridSize; i += gridSize) {
             for (j = 0; j < gridSize; j++) {
-                tile = $(html).width(width).height(width).css('line-height', width + 'px').text(values[i + j]).appendTo('#tile-container');
+                tile = $(html).width(width).height(width).css('line-height', width + 'px').text(tiles[i + j]).appendTo('#tile-container');
             }
         }
         
@@ -36,7 +36,18 @@ var gameView = {
         
         $('#tile-container').height(gridSize * height + 'px');
     },
+    /**
+     * Show how many moves have been done.
+     * @param {type} count
+     */
     showMoveCount: function(count) {
         $('#score').text('MOVES: ' + count);
+    },
+    /**
+     * Update displayed tiles.
+     * @param {type} tiles
+     */
+    updateTiles: function(tiles) {
+        
     }
 };

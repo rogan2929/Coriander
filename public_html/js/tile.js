@@ -13,6 +13,15 @@ function Tile(value) {
 };
 
 /**
+ * Decrements the tile's value by one.
+ * @returns {type}
+ */
+Tile.prototype.decrementValue = function() {
+    this.value -= 1;
+    return this.value;
+};
+
+/**
  * Increments the tile's value by one.
  * @returns {type}
  */
