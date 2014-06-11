@@ -148,6 +148,12 @@ and open the template in the editor.
     -o-transform: rotateY(360deg);
 }
 
+.spin {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+}
+
 .reverse-flip {
     -webkit-transform: rotateY(-360deg);
     -moz-transform: rotateY(-360deg);

@@ -30,11 +30,18 @@ var gameView = {
                 tile = $(html).width(width).height(width).css('line-height', width + 'px').text(tiles[i + j]).appendTo('#tile-container');
             }
         }
-        
-        var height = (width + (1 * 2));
-        console.log(height);
-        
-        $('#tile-container').height(gridSize * height + 'px');
+
+        $('#tile-container').height(gridSize * (width + (1 * 2)) + 'px');
+    },
+    /**
+     * Do a nice little effect upon loading and animate all the tiles.
+     */
+    spinAllTiles: function() {
+        $('.tile').addClass('spin');
+
+        setTimeout(function() {
+            $('.tile').removeClass('spin');
+        }, 800);
     },
     /**
      * Show how many moves have been done.

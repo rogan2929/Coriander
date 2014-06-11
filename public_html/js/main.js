@@ -32,6 +32,8 @@ String.prototype.toHHMMSS = function() {
 };
 
 $(document).bind('mobileinit', function() {
+    // Do not emit tap events when taphold fires.
+    $.event.special.tap.emitTapOnTaphold = false;
 });
 
 $(document).on('pagebeforeshow', '#start', function(e) {

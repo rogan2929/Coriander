@@ -25,11 +25,20 @@ var gamePresenter = {
             gamePresenter.newGame = false;
             gamePresenter.generateTiles();
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
+            gameView.spinAllTiles();
         }
 
         //eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapholdTile', gamePresenter.onTapholdTile, '.tile', 'taphold');
+    },
+    /**
+     * Finds the tile object with the given value.
+     * @param {type} value
+     * @returns {Tile}
+     */
+    findTile: function(value) {
+        
     },
     /**
      * Evaluate the order of the tiles.
@@ -56,8 +65,6 @@ var gamePresenter = {
             values.push(value);
             gamePresenter.tiles.push(new Tile(value));
         }
-
-        console.log(gamePresenter.tiles);
     },
     /**
      * Increment the moveCount variable.
@@ -95,9 +102,9 @@ var gamePresenter = {
         // Right: +1
         // Above: -gridSize
         // Below: +gridSize
-        alert('tap');
+        
     },
     onTapholdTile: function(e) {
-        alert('taphold');
+        
     }
 };
