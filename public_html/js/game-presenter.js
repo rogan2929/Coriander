@@ -21,6 +21,7 @@ var gamePresenter = {
      */
     init: function() {
         if (gamePresenter.newGame) {
+            gameView.init();
             gamePresenter.setMoveCount(0);
             gamePresenter.newGame = false;
             gamePresenter.generateTiles();

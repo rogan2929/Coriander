@@ -11,13 +11,12 @@
  */
 var gameView = {
     colors: null,
-    
     /**
      * Initialize the view.
      */
     init: function() {
         gameView.colors = [];
-        
+
         gameView.colors.push('color0');
         gameView.colors.push('color1');
         gameView.colors.push('color2');
@@ -32,7 +31,7 @@ var gameView = {
 
             setTimeout(function() {
                 $('.tile-' + index).addClass('flipped');
-                
+
                 setTimeout(function() {
                     $('.tile-' + index).removeClass('flipped');
                 }, 1250);
@@ -59,7 +58,9 @@ var gameView = {
                 value = tiles[i + j].getValue();
                 index = tiles[i + j].getIndex();
 
-                tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('tile-' + index).addClass(gameView.colors[value]).appendTo('#tile-container');
+                console.log(gameView.colors[value]);
+
+                tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value]).appendTo('#tile-container');
             }
         }
 
@@ -82,6 +83,25 @@ var gameView = {
     showMoveCount: function(count) {
         $('#score').text('Moves: ' + count);
     },
+    switchTileColor: function(index, value) {
+        var i;
+
+        for (i = 0; i < gameView.colors.length; i++) {
+            $('.tile-' + index).removeClass('fade').removeClass(gameView.colors[i]);
+        }
+
+        $('.tile-' + index).text('').addClass('fade').addClass('flip');
+
+        setTimeout(function() {
+            $('.tile-' + index).removeClass('flip');
+
+            setTimeout(function() {
+                $('.tile-' + index).addClass(gameView.colors[value]).text(value);
+            }, 800);
+        }, 800);
+
+        //$('.tile-' + index).text(value).addClass(gameView.colors[value]);
+    },
     /**
      * Update displayed tiles.
      * @param {type} tiles
@@ -94,7 +114,7 @@ var gameView = {
             value = tiles[i].getValue();
 
             //gameView.flipTile(index, value);
-            $('.tile-' + index).addClass(gameView.colors[value]);
+            gameView.switchTileColor(index, value);
         }
     }
 };

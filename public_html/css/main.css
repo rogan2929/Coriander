@@ -120,7 +120,7 @@ and open the template in the editor.
 
 .tile {
     display: inline-block;
-    background-color: #FFF4D2;
+/*    background-color: #FFF4D2;*/
     text-align: center;
     vertical-align: middle;
     color: #444;
@@ -128,10 +128,10 @@ and open the template in the editor.
     margin: 5px;
     border-radius: 3px;
 
-    -webkit-transition-duration: 0.8s;
+/*    -webkit-transition-duration: 0.8s;
     -moz-transition-duration: 0.8s;
     -o-transition-duration: 0.8s;
-    transition-duration: 0.8s;
+    transition-duration: 0.8s;*/
 
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
@@ -181,21 +181,21 @@ and open the template in the editor.
 }
 
 .color0 {
-    
+    background-color: #e7d5c1;
 }
 
 .color1 {
-    
+    background-color: #90d3f0;
 }
 
 .color2 {
-    
+    background-color: #f6898c;
 }
 
 .color3 {
-    
+    background-color: #a1d162;
 }
 
 .color4 {
-    
+    background-color: #ffd761;
 }
