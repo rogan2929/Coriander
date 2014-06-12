@@ -109,8 +109,8 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        gamePresenter.tiles[index].incrementValue();
-        updatedTiles.push(gamePresenter.tiles[index]);
+//        gamePresenter.tiles[index].incrementValue();
+//        updatedTiles.push(gamePresenter.tiles[index]);
 
         // Left tile.
         if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0) {
