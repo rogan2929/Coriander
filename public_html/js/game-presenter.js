@@ -11,7 +11,7 @@
 var gamePresenter = {
     // Constants
     gridSize: 4,
-    maxTileSize: 9,
+    maxTileSize: 5,
     // Class variables
     moveCount: 0,
     newGame: true,
@@ -91,9 +91,8 @@ var gamePresenter = {
     /**
      * Update tile values.
      * @param {type} tileDiv
-     * @param {type} decrement
      */
-    updateTileValues: function(tileDiv, decrement) {
+    updateTileValues: function(tileDiv) {
         // Update tiles that are to the left, right, above, and below.
         // Left: -1
         // Right: +1
@@ -120,45 +119,25 @@ var gamePresenter = {
 
         // Left tile.
         if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0) {
-            if (!decrement) {
-                gamePresenter.tiles[index - 1].incrementValue();
-            }
-            else {
-                gamePresenter.tiles[index - 1].decrementValue();
-            }
+            gamePresenter.tiles[index - 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - 1]);
         }
 
         // Right tile
         if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0) {
-            if (!decrement) {
-                gamePresenter.tiles[index + 1].incrementValue();
-            }
-            else {
-                gamePresenter.tiles[index + 1].decrementValue();
-            }
+            gamePresenter.tiles[index + 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + 1]);
         }
 
         // Above tile
         if (index - gamePresenter.gridSize >= 0) {
-            if (!decrement) {
-                gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
-            }
-            else {
-                gamePresenter.tiles[index - gamePresenter.gridSize].decrementValue();
-            }
+            gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize]);
         }
 
         // Below tile
         if (index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-            if (!decrement) {
-                gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
-            }
-            else {
-                gamePresenter.tiles[index + gamePresenter.gridSize].decrementValue();
-            }
+            gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
         }
 
@@ -167,12 +146,7 @@ var gamePresenter = {
         // index % gamePresenter.gridSize !== 0
         // index - gamePresenter.gridSize >= 0
         if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index - gamePresenter.gridSize >= 0) {
-            if (!decrement) {
-                gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
-            }
-            else {
-                gamePresenter.tiles[index - gamePresenter.gridSize - 1].decrementValue();
-            }
+            gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize - 1]);
         }
 
@@ -181,12 +155,7 @@ var gamePresenter = {
         // (index + 1) % (gamePresenter.gridSize) !== 0
         // index - gamePresenter.gridSize >= 0
         if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index - gamePresenter.gridSize >= 0) {
-            if (!decrement) {
-                gamePresenter.tiles[index - gamePresenter.gridSize + 1].incrementValue();
-            }
-            else {
-                gamePresenter.tiles[index - gamePresenter.gridSize + 1].decrementValue();
-            }
+            gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize + 1]);
         }
 
@@ -195,12 +164,7 @@ var gamePresenter = {
         // index % gamePresenter.gridSize !== 0
         // index + gamePresenter.gridSize < gamePresenter.tiles.length
         if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-            if (!decrement) {
-                gamePresenter.tiles[index + gamePresenter.gridSize - 1].incrementValue();
-            }
-            else {
-                gamePresenter.tiles[index + gamePresenter.gridSize - 1].decrementValue();
-            }
+            gamePresenter.tiles[index + gamePresenter.gridSize - 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize - 1]);
         }
 
@@ -209,12 +173,7 @@ var gamePresenter = {
         // (index + 1) % (gamePresenter.gridSize) !== 0
         // index + gamePresenter.gridSize < gamePresenter.tiles.length
         if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-            if (!decrement) {
-                gamePresenter.tiles[index + gamePresenter.gridSize + 1].incrementValue();
-            }
-            else {
-                gamePresenter.tiles[index + gamePresenter.gridSize + 1].decrementValue();
-            }
+            gamePresenter.tiles[index + gamePresenter.gridSize + 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize + 1]);
         }
 
