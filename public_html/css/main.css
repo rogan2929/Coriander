@@ -172,3 +172,10 @@ and open the template in the editor.
     margin-top: auto;
     margin-bottom: auto;
 }
+
+.horizontal .ui-btn {
+    left: auto;
+    right: auto;
+    margin: auto;
+    width: auto;
+}

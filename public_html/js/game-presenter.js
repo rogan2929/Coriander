@@ -155,6 +155,14 @@ var gamePresenter = {
             }
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
         }
+        
+        // Upper Left
+        
+        // Upper Right
+        
+        // Below Left
+        
+        // Below Right
 
         // Update tiles on the view.
         gameView.updateTiles(updatedTiles);

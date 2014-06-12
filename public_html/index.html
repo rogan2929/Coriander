@@ -57,7 +57,10 @@ and open the template in the editor.
         <div id='game' data-role='page'>
             <div id='score' class='game-title h-centered ui-shadow ui-body-b'></div>
             <div id='tile-container' class='h-centered v-centered absolute'></div>
-            <div id='ad-game' class='ad-bar h-centered absolute stretch-bottom stretch-left stretch-right'>[Ads Go Here]</div>
+            <div data-role='controlgroup' data-type='horizontal' class='horizontal absolute stretch-bottom stretch-left stretch-right h-centered'>
+                <a class='ui-btn'>Shuffle</a>
+                <a href="#start" data-transition="fade" class='ui-btn'>Back</a>
+            </div>
         </div>
 
         <!-- Templates -->
