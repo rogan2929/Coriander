@@ -112,6 +112,12 @@ var gamePresenter = {
 //        gamePresenter.tiles[index].incrementValue();
 //        updatedTiles.push(gamePresenter.tiles[index]);
 
+        // Edge detection:
+        // Left edge: index % gamePresenter.gridSize !== 0
+        // Right edge: (index + 1) % (gamePresenter.gridSize) !== 0
+        // Top edge: index - gamePresenter.gridSize >= 0
+        // Bottom edge: index + gamePresenter.gridSize < gamePresenter.tiles.length
+
         // Left tile.
         if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0) {
             if (!decrement) {
@@ -155,14 +161,62 @@ var gamePresenter = {
             }
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
         }
-        
+
         // Upper Left
-        
+        // index - gridSize - 1
+        // index % gamePresenter.gridSize !== 0
+        // index - gamePresenter.gridSize >= 0
+        if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index - gamePresenter.gridSize >= 0) {
+            if (!decrement) {
+                gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
+            }
+            else {
+                gamePresenter.tiles[index - gamePresenter.gridSize - 1].decrementValue();
+            }
+            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize - 1]);
+        }
+
         // Upper Right
-        
+        // index - gridSize + 1
+        // (index + 1) % (gamePresenter.gridSize) !== 0
+        // index - gamePresenter.gridSize >= 0
+        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index - gamePresenter.gridSize >= 0) {
+            if (!decrement) {
+                gamePresenter.tiles[index - gamePresenter.gridSize + 1].incrementValue();
+            }
+            else {
+                gamePresenter.tiles[index - gamePresenter.gridSize + 1].decrementValue();
+            }
+            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize + 1]);
+        }
+
         // Below Left
-        
+        // index + gridSize - 1
+        // index % gamePresenter.gridSize !== 0
+        // index + gamePresenter.gridSize < gamePresenter.tiles.length
+        if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
+            if (!decrement) {
+                gamePresenter.tiles[index + gamePresenter.gridSize - 1].incrementValue();
+            }
+            else {
+                gamePresenter.tiles[index + gamePresenter.gridSize - 1].decrementValue();
+            }
+            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize - 1]);
+        }
+
         // Below Right
+        // index + gridSize + 1
+        // (index + 1) % (gamePresenter.gridSize) !== 0
+        // index + gamePresenter.gridSize < gamePresenter.tiles.length
+        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
+            if (!decrement) {
+                gamePresenter.tiles[index + gamePresenter.gridSize + 1].incrementValue();
+            }
+            else {
+                gamePresenter.tiles[index + gamePresenter.gridSize + 1].decrementValue();
+            }
+            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize + 1]);
+        }
 
         // Update tiles on the view.
         gameView.updateTiles(updatedTiles);
