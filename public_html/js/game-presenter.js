@@ -142,41 +142,41 @@ var gamePresenter = {
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
         }
 
-        // Upper Left
-        // index - gridSize - 1
-        // index % gamePresenter.gridSize !== 0
-        // index - gamePresenter.gridSize >= 0
-        if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index - gamePresenter.gridSize >= 0) {
-            gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
-            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize - 1]);
-        }
-
-        // Upper Right
-        // index - gridSize + 1
-        // (index + 1) % (gamePresenter.gridSize) !== 0
-        // index - gamePresenter.gridSize >= 0
-        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index - gamePresenter.gridSize >= 0) {
-            gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
-            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize + 1]);
-        }
-
-        // Below Left
-        // index + gridSize - 1
-        // index % gamePresenter.gridSize !== 0
-        // index + gamePresenter.gridSize < gamePresenter.tiles.length
-        if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-            gamePresenter.tiles[index + gamePresenter.gridSize - 1].incrementValue();
-            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize - 1]);
-        }
-
-        // Below Right
-        // index + gridSize + 1
-        // (index + 1) % (gamePresenter.gridSize) !== 0
-        // index + gamePresenter.gridSize < gamePresenter.tiles.length
-        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-            gamePresenter.tiles[index + gamePresenter.gridSize + 1].incrementValue();
-            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize + 1]);
-        }
+//        // Upper Left
+//        // index - gridSize - 1
+//        // index % gamePresenter.gridSize !== 0
+//        // index - gamePresenter.gridSize >= 0
+//        if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index - gamePresenter.gridSize >= 0) {
+//            gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
+//            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize - 1]);
+//        }
+//
+//        // Upper Right
+//        // index - gridSize + 1
+//        // (index + 1) % (gamePresenter.gridSize) !== 0
+//        // index - gamePresenter.gridSize >= 0
+//        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index - gamePresenter.gridSize >= 0) {
+//            gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
+//            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize + 1]);
+//        }
+//
+//        // Below Left
+//        // index + gridSize - 1
+//        // index % gamePresenter.gridSize !== 0
+//        // index + gamePresenter.gridSize < gamePresenter.tiles.length
+//        if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
+//            gamePresenter.tiles[index + gamePresenter.gridSize - 1].incrementValue();
+//            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize - 1]);
+//        }
+//
+//        // Below Right
+//        // index + gridSize + 1
+//        // (index + 1) % (gamePresenter.gridSize) !== 0
+//        // index + gamePresenter.gridSize < gamePresenter.tiles.length
+//        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
+//            gamePresenter.tiles[index + gamePresenter.gridSize + 1].incrementValue();
+//            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize + 1]);
+//        }
 
         // Update tiles on the view.
         gameView.updateTiles(updatedTiles);
