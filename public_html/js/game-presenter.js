@@ -71,7 +71,7 @@ var gamePresenter = {
 //            }
 
             values.push(value);
-            gamePresenter.tiles.push(new Tile(value, i));
+            gamePresenter.tiles.push(new Tile(value, i, gamePresenter.maxTileSize));
         }
     },
     /**

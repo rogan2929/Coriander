@@ -9,9 +9,10 @@
  * @param {type} value
  * @param {type} index
  */
-function Tile(value, index) {
+function Tile(value, index, max) {
     this.value = value;
     this.index = index;
+    this.max = max + 1;
 };
 
 /**
@@ -28,7 +29,7 @@ Tile.prototype.decrementValue = function() {
  * @returns {type}
  */
 Tile.prototype.incrementValue = function() {
-    this.value += 1;
+    this.value = (this.value + 1) % this.max;
     return this.value;
 };
 
