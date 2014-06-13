@@ -9,16 +9,5 @@
  * @type type
  */
 var newGameView = {
-    /**
-     * Enable/disable the resume button.
-     * @param {type} enable
-     */
-    toggleButtonResume: function(enable) {
-        if (enable) {
-            $('#button-resume').removeClass('ui-state-disabled');
-        }
-        else {
-            $('#button-resume').addClass('ui-state-disabled');
-        }
-    }
+
 };

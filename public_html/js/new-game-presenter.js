@@ -10,13 +10,17 @@
  */
 var newGamePresenter = {
     /**
-     * 
+     * Entry point.
      */
     init: function() {
-        eventBus.installHandler('newGamePresenter.onTapButtonReady', newGamePresenter.onTapButtonReady, '#button-ready', 'tap');
-        newGameView.toggleButtonResume(!gamePresenter.newGame);
+        eventBus.installHandler('newGamePresenter.onTapButtonStart', newGamePresenter.onTapButtonStart, '#button-start', 'tap');
+        eventBus.installHandler('newGamePresenter.onChangeGridRadio', newGamePresenter.onChangeGridRadio, '.grid-radio', 'change');
     },
-    onTapButtonReady: function(e) {
-        gamePresenter.newGame = true;
+    
+    onChangeGridRadio: function(e) {
+        gamePresenter.setGridSize(parseInt($(e.currentTarget).attr('value')));
+    },
+    onTapButtonStart: function(e) {
+        gamePresenter.setNewGame(true);
     }
 };

@@ -23,21 +23,6 @@ var gameView = {
         gameView.colors.push('color3');
         gameView.colors.push('color4');
     },
-    flipTile: function(index, value) {
-        $('.tile-' + index).text('').addClass('flip');
-
-        setTimeout(function() {
-            $('.tile-' + index).removeClass('flip');
-
-            setTimeout(function() {
-                $('.tile-' + index).addClass('flipped');
-
-                setTimeout(function() {
-                    $('.tile-' + index).removeClass('flipped');
-                }, 1250);
-            }, 800);
-        }, 800);
-    },
     /**
      * Loads tiles into the view.
      * @param {type} gridSize
@@ -97,8 +82,8 @@ var gameView = {
 
             setTimeout(function() {
                 $('.tile-' + index).addClass(gameView.colors[value]).text(value);
-            }, 800);
-        }, 800);
+            }, 500);
+        }, 500);
 
         //$('.tile-' + index).text(value).addClass(gameView.colors[value]);
     },
@@ -113,7 +98,6 @@ var gameView = {
             index = tiles[i].getIndex();
             value = tiles[i].getValue();
 
-            //gameView.flipTile(index, value);
             gameView.switchTileColor(index, value);
         }
     }

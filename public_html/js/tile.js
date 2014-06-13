@@ -8,6 +8,7 @@
  * Tile
  * @param {type} value
  * @param {type} index
+ * @param {type} max
  */
 function Tile(value, index, max) {
     this.value = value;

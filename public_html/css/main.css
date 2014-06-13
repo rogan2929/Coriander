@@ -16,6 +16,10 @@ and open the template in the editor.
     margin: 0;
 }
 
+.auto-margin {
+    margin: auto;
+}
+
 .ui-btn, .h-centered .ui-btn {
     width: 50%;
     left: 0;
@@ -156,10 +160,10 @@ and open the template in the editor.
 }
 
 .fade {
-    transition: all 0.8s;
-    -moz-transition: all 0.8s;
-    -webkit-transition: all 0.8s;
-    -o-transition: all 0.8s;
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
 }
 
 .flipped {
@@ -198,4 +202,24 @@ and open the template in the editor.
 
 .color4 {
     background-color: #ffd761;
+}
+
+.display-table {
+    display: table;
+}
+
+.display-table.h-centered {
+    margin: 0 auto;
+}
+
+.display-table.h-centered .ui-btn {
+    width: auto;
+}
+
+.display-block {
+    display: block;
+}
+
+.bold {
+    font-weight: bold;
 }

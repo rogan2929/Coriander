@@ -36,10 +36,18 @@ $(document).bind('mobileinit', function() {
     $.event.special.tap.emitTapOnTaphold = false;
 });
 
+$(document).on('pagebeforeshow', '#start', function(e) {
+    startPresenter.init();
+});
+
 $(document).on('pagebeforeshow', '#new-game', function(e) {
     newGamePresenter.init();
 });
 
 $(document).on('pagebeforeshow', '#game', function(e) {
     gamePresenter.init();
+});
+
+$(document).on('pagebeforeshow', '#victory', function(e) {
+    victoryPresenter.init();
 });

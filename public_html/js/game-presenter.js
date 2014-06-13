@@ -14,6 +14,7 @@ var gamePresenter = {
     maxTileSize: 5,
     // Class variables
     moveCount: 0,
+    difficulty: 'easy',
     newGame: true,
     tiles: null,
     /**
@@ -27,17 +28,27 @@ var gamePresenter = {
             gamePresenter.generateTiles();
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
             gameView.spinAllTiles();
+
+            switch (gamePresenter.gridSize) {
+                case 3:
+                    gamePresenter.difficulty = 'easy';
+                    break;
+                case 4:
+                    gamePresenter.difficulty = 'medium';
+                    break;
+                case 5:
+                    gamePresenter.difficulty = 'hard';
+                    break;
+            }
         }
 
-        //eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
-        //eventBus.installHandler('gamePresenter.onTapholdTile', gamePresenter.onTapholdTile, '.tile', 'taphold');
     },
     /**
      * Check if all tiles have the same value.
      */
     evaluateState: function() {
-        var value, i, allMatch;
+        var value, i, allMatch, score, topScore;
 
         allMatch = true;
 
@@ -52,7 +63,23 @@ var gamePresenter = {
 
         if (allMatch) {
             // Do a victory dance, or something.
-            alert('You won!');
+            //alert('You won!');
+            score = new Score(gamePresenter.moveCount, gamePresenter.difficulty);
+            topScore = model.getTopScore(gamePresenter.difficulty);
+            
+            // If a new top score has been reached.
+            if (score.moves < topScore || topScore === null) {
+                model.saveTopScore(score);
+                victoryPresenter.setNewRecord(true);
+            }
+            else {
+                victoryPresenter.setNewRecord(false);
+            }
+            
+            gamePresenter.newGame = true;
+
+            victoryPresenter.setScore(score);
+            $('body').pagecontainer('change', '#victory');
         }
     },
     generateTiles: function() {
@@ -76,10 +103,24 @@ var gamePresenter = {
         }
     },
     /**
+     * Getter for newGame
+     * @returns {Boolean}
+     */
+    getNewGame: function() {
+        return gamePresenter.newGame;
+    },
+    /**
      * Increment the moveCount variable.
      */
     incrementMoveCount: function() {
         gamePresenter.setMoveCount(gamePresenter.moveCount + 1);
+    },
+    /**
+     * Setter for gridSize
+     * @param {type} gridSize
+     */
+    setGridSize: function(gridSize) {
+        gamePresenter.gridSize = gridSize;
     },
     /**
      * Setter for moveCount
@@ -88,6 +129,13 @@ var gamePresenter = {
     setMoveCount: function(count) {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
+    },
+    /**
+     * Setter for newGame.
+     * @param {type} newGame
+     */
+    setNewGame: function(newGame) {
+        gamePresenter.newGame = newGame;
     },
     /**
      * Update tile values.
@@ -190,9 +238,6 @@ var gamePresenter = {
         }, 1800);
     },
     onTapTile: function(e) {
-        gamePresenter.updateTileValues(e.currentTarget, false);
+        gamePresenter.updateTileValues(e.currentTarget);
     },
-    onTapholdTile: function(e) {
-        gamePresenter.updateTileValues(e.currentTarget, true);
-    }
 };

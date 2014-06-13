@@ -9,4 +9,20 @@
  * @type type
  */
 var model = {
+    /**
+     * Gets the current top score.
+     * @param {type} difficulty
+     * @returns {unresolved}
+     */
+    getTopScore: function(difficulty) {
+        return localStorage.getItem(difficulty);
+    },
+    /**
+     * Save a top score.
+     * @param {Score} score
+     */
+    saveTopScore: function(score) {
+        console.log(score);
+        localStorage.setItem(score.difficulty, score.moves);
+    }
 };
