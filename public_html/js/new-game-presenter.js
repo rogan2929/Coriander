@@ -8,13 +8,13 @@
  * Presenter for #start
  * @type type
  */
-var startPresenter = {
+var newGamePresenter = {
     /**
      * 
      */
     init: function() {
-        eventBus.installHandler('newGamePresenter.onTapButtonReady', startPresenter.onTapButtonReady, '#button-ready', 'tap');
-        startView.toggleButtonResume(!gamePresenter.newGame);
+        eventBus.installHandler('newGamePresenter.onTapButtonReady', newGamePresenter.onTapButtonReady, '#button-ready', 'tap');
+        newGameView.toggleButtonResume(!gamePresenter.newGame);
     },
     onTapButtonReady: function(e) {
         gamePresenter.newGame = true;

@@ -8,7 +8,7 @@
  * View for #start
  * @type type
  */
-var startView = {
+var newGameView = {
     /**
      * Enable/disable the resume button.
      * @param {type} enable
