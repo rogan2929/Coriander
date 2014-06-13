@@ -259,9 +259,14 @@ var gamePresenter = {
         }, 1800);
     },
     onTapButtonShuffle: function(e) {
-        // Shuffle the tiles and increment move count.
-        gamePresenter.shuffleTiles();
-        gamePresenter.incrementMoveCount();
+        if (gamePresenter.tapTimeout === null) {
+            // Implement some throttling on tile tapping. This prevents glitches during animations.
+            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, 1500);
+
+            // Shuffle the tiles and increment move count.
+            gamePresenter.shuffleTiles();
+            gamePresenter.incrementMoveCount();
+        }
     },
     onTapTile: function(e) {
         if (gamePresenter.tapTimeout === null) {
