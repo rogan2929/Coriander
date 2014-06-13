@@ -11,6 +11,22 @@ window.onerror = function(msg, url, linenumber) {
     return true;
 };
 
+// http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
+Array.prototype.shuffle = function(){
+    var counter = this.length, temp, index;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        index = (Math.random() * counter--) | 0;
+
+        // And swap the last element with it
+        temp = this[counter];
+        this[counter] = this[index];
+        this[index] = temp;
+    }
+};
+
 // http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-with-format-hhmmss
 String.prototype.toHHMMSS = function() {
     var sec_num = parseInt(this, 10); // don't forget the second param

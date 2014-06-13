@@ -31,25 +31,29 @@ var gameView = {
     loadTiles: function(gridSize, tiles) {
         var html, i, j, width, tile, index, value;
 
-        $('#tile-container').empty();
+        $('#tile-container').fadeOut(300, function() {
+            $('#tile-container').empty();
 
-        // - (gridSize * 5 * 2) - 10)
-        width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
+            // - (gridSize * 5 * 2) - 10)
+            width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
 
-        html = $('#tile-template').html();
+            html = $('#tile-template').html();
 
-        for (i = 0; i < gridSize * gridSize; i += gridSize) {
-            for (j = 0; j < gridSize; j++) {
-                value = tiles[i + j].getValue();
-                index = tiles[i + j].getIndex();
+            for (i = 0; i < gridSize * gridSize; i += gridSize) {
+                for (j = 0; j < gridSize; j++) {
+                    value = tiles[i + j].getValue();
+                    index = tiles[i + j].getIndex();
 
-                console.log(gameView.colors[value]);
-
-                tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value]).appendTo('#tile-container');
+                    tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value]).appendTo('#tile-container');
+                }
             }
-        }
 
-        $('#tile-container').height(gridSize * (width + (5 * 2)) + 'px');
+            $('#tile-container').height(gridSize * (width + (5 * 2)) + 'px').fadeIn(300, function() {
+                gameView.spinAllTiles();
+                // Re-register event hookups.
+                eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
+            });
+        });
     },
     /**
      * Do a nice little effect upon loading and animate all the tiles.
@@ -59,7 +63,7 @@ var gameView = {
 
         setTimeout(function() {
             $('.tile').removeClass('spin');
-        }, 800);
+        }, 500);
     },
     /**
      * Show how many moves have been done.

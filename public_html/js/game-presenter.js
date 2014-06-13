@@ -27,7 +27,6 @@ var gamePresenter = {
             gamePresenter.newGame = false;
             gamePresenter.generateTiles();
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
-            gameView.spinAllTiles();
 
             switch (gamePresenter.gridSize) {
                 case 3:
@@ -43,6 +42,7 @@ var gamePresenter = {
         }
 
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
+        eventBus.installHandler('gamePresenter.onTapButtonShuffle', gamePresenter.onTapButtonShuffle, '#button-shuffle', 'tap');
     },
     /**
      * Check if all tiles have the same value.
@@ -66,7 +66,7 @@ var gamePresenter = {
             //alert('You won!');
             score = new Score(gamePresenter.moveCount, gamePresenter.difficulty);
             topScore = model.getTopScore(gamePresenter.difficulty);
-            
+
             // If a new top score has been reached.
             if (score.moves < topScore || topScore === null) {
                 model.saveTopScore(score);
@@ -75,7 +75,7 @@ var gamePresenter = {
             else {
                 victoryPresenter.setNewRecord(false);
             }
-            
+
             gamePresenter.newGame = true;
 
             victoryPresenter.setScore(score);
@@ -136,6 +136,16 @@ var gamePresenter = {
      */
     setNewGame: function(newGame) {
         gamePresenter.newGame = newGame;
+    },
+    /**
+     * Shuffles all the tiles.
+     */
+    shuffleTiles: function() {
+        // Call our handy shuffle function. This is just brill.
+        gamePresenter.tiles.shuffle();
+
+        // Load the tiles in the new order.
+        gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
     },
     /**
      * Update tile values.
@@ -237,7 +247,12 @@ var gamePresenter = {
             gamePresenter.evaluateState();
         }, 1800);
     },
+    onTapButtonShuffle: function(e) {
+        // Shuffle the tiles and increment move count.
+        gamePresenter.shuffleTiles();
+        gamePresenter.incrementMoveCount();
+    },
     onTapTile: function(e) {
         gamePresenter.updateTileValues(e.currentTarget);
-    },
+    }
 };
