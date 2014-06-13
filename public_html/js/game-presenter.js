@@ -10,7 +10,7 @@
  */
 var gamePresenter = {
     // Constants
-    gridSize: 4,
+    gridSize: 3,
     maxTileSize: 5,
     // Class variables
     moveCount: 0,
