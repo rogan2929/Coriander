@@ -17,6 +17,7 @@ var gamePresenter = {
     difficulty: 'easy',
     newGame: true,
     tiles: null,
+    tapTimeout: null,
     /**
      * Entry point.
      */
@@ -141,11 +142,21 @@ var gamePresenter = {
      * Shuffles all the tiles.
      */
     shuffleTiles: function() {
+        var i;
+
         // Call our handy shuffle function. This is just brill.
         gamePresenter.tiles.shuffle();
 
+        for (i = 0; i < gamePresenter.tiles.length; i++) {
+            gamePresenter.tiles[i].setIndex(i);
+        }
+
         // Load the tiles in the new order.
         gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
+    },
+    tapTimeoutFunction: function() {
+        clearTimeout(gamePresenter.tapTimeout);
+        gamePresenter.tapTimeout = null;
     },
     /**
      * Update tile values.
@@ -253,6 +264,10 @@ var gamePresenter = {
         gamePresenter.incrementMoveCount();
     },
     onTapTile: function(e) {
-        gamePresenter.updateTileValues(e.currentTarget);
+        if (gamePresenter.tapTimeout === null) {
+            // Implement some throttling on tile tapping. This prevents glitches during animations.
+            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, 1500);
+            gamePresenter.updateTileValues(e.currentTarget);
+        }
     }
 };

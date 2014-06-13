@@ -34,6 +34,14 @@ Tile.prototype.getIndex = function() {
 };
 
 /**
+ * Sets the tile's index value.
+ * @param {type} index
+ */
+Tile.prototype.setIndex = function(index) {
+    this.index = index;
+};
+
+/**
  * Setter for Tile value.
  * @param {type} value
  */
