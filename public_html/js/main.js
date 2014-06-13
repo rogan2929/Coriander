@@ -60,6 +60,10 @@ $(document).on('pagebeforeshow', '#new-game', function(e) {
     newGamePresenter.init();
 });
 
+$(document).on('pagebeforeshow', '#high-scores', function(e) {
+    highScoresPresenter.init();
+});
+
 $(document).on('pagebeforeshow', '#game', function(e) {
     gamePresenter.init();
 });

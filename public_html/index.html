@@ -21,6 +21,8 @@ and open the template in the editor.
     <script src="js/start-presenter.js"></script>
     <script src="js/new-game-view.js"></script>
     <script src="js/new-game-presenter.js"></script>
+    <script src="js/high-scores-view.js"></script>
+    <script src="js/high-scores-presenter.js"></script>
     <script src="js/victory-view.js"></script>
     <script src="js/victory-presenter.js"></script>
     <script src="js/tile.js"></script>
@@ -69,6 +71,23 @@ and open the template in the editor.
                 <a href="#game" id='button-start' data-transition="fade" class='ui-btn ui-btn-b'>Let's Go!</a>
                 <a href="#start" data-transition="fade" class='ui-btn'>Menu</a>
             </div>
+        </div>
+
+        <div id='high-scores' data-role='page'>
+            <div class='ui-content ui-body h-centered'>
+                <span class='page-title'>HIGH SCORES</span>
+            </div>
+            
+            <div role='main' class='ui-content h-centered'>
+                <h3>Easy</h3>
+                <div id='top-score-easy'>You haven't solved this yet!</div>
+                <h3>Medium</h3>
+                <div id='top-score-medium'>You haven't solved this yet!</div>
+                <h3>Hard</h3>
+                <div id='top-score-hard'>You haven't solved this yet!</div>
+            </div>
+            
+            <a href="#start" data-transition="fade" class='ui-btn ui-corner-all'>Menu</a>
         </div>
 
         <div id='directions' data-role='page'>
