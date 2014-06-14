@@ -108,13 +108,16 @@ and open the template in the editor.
     margin-right: 10px;
 }
 
+.margin-top {
+    margin-top: 10px;
+}
+
 .no-border {
     border: none;
 }
 
 .game-title {
     font-size: 1.6em;
-    padding: 0.5em;
 }
 
 .ad-bar {
@@ -199,6 +202,10 @@ and open the template in the editor.
     display: table;
 }
 
+.display-inline-block {
+    display: inline-block;
+}
+
 .display-table.h-centered {
     margin: 0 auto;
 }
@@ -213,4 +220,13 @@ and open the template in the editor.
 
 .bold {
     font-weight: bold;
+}
+
+.ad-wall {
+    display: block;
+    border-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 1600px;
 }
