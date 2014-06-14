@@ -31,13 +31,13 @@ var gamePresenter = {
 
             switch (gamePresenter.gridSize) {
                 case 3:
-                    gamePresenter.difficulty = 'easy';
+                    gamePresenter.difficulty = 'regular';
                     break;
                 case 4:
-                    gamePresenter.difficulty = 'medium';
+                    gamePresenter.difficulty = 'hard';
                     break;
                 case 5:
-                    gamePresenter.difficulty = 'hard';
+                    gamePresenter.difficulty = 'insane';
                     break;
             }
         }
@@ -154,6 +154,9 @@ var gamePresenter = {
         // Load the tiles in the new order.
         gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
     },
+    /**
+     * Timeout function.
+     */
     tapTimeoutFunction: function() {
         clearTimeout(gamePresenter.tapTimeout);
         gamePresenter.tapTimeout = null;
