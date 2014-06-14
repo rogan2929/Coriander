@@ -16,6 +16,14 @@ function Tile(value, index, max) {
     this.max = max;
 };
 
+Tile.prototype.decrementValue = function() {
+    this.value -= 1;
+    
+    if (this.value < 0) {
+        this.value = this.max - 1;
+    }
+};
+
 /**
  * Increments the tile's value by one.
  * @returns {type}

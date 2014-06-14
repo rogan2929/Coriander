@@ -178,7 +178,7 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        gamePresenter.tiles[index].incrementValue();
+        gamePresenter.tiles[index].decrementValue();
         updatedTiles.push(gamePresenter.tiles[index]);
 
         // Edge detection:
