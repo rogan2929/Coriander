@@ -72,8 +72,16 @@ var gameView = {
     showMoveCount: function(count) {
         $('#score').text('Moves: ' + count);
     },
-    switchTileColor: function(index, value) {
-        var i;
+    /**
+     * Switch a tile's color.
+     * @param {Tile} tile
+     */
+    switchTileColor: function(tile) {
+        var i, index, value, delta;
+        
+        index = tile.getIndex();
+        value = tile.getValue();
+        delta = tile.getDelta();
 
         for (i = 0; i < gameView.colors.length; i++) {
             $('.tile-' + index).removeClass('fade').removeClass(gameView.colors[i]);
@@ -96,13 +104,10 @@ var gameView = {
      * @param {type} tiles
      */
     updateTiles: function(tiles) {
-        var i, index, value;
+        var i;
 
         for (i = 0; i < tiles.length; i++) {
-            index = tiles[i].getIndex();
-            value = tiles[i].getValue();
-
-            gameView.switchTileColor(index, value);
+            gameView.switchTileColor(tiles[i]);
         }
     }
 };

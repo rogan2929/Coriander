@@ -22,6 +22,9 @@ Tile.prototype.decrementValue = function() {
     if (this.value < 0) {
         this.value = this.max - 1;
     }
+    
+    // Set the delta
+    this.delta = -1;
 };
 
 /**
@@ -30,7 +33,16 @@ Tile.prototype.decrementValue = function() {
  */
 Tile.prototype.incrementValue = function() {
     this.value = (this.value + 1) % this.max;
+    this.delta = 1;         // Set the delta.
     return this.value;
+};
+
+/**
+ * Getter for delta.
+ * @returns {undefined}
+ */
+Tile.prototype.getDelta = function() {
+    return this.delta;
 };
 
 /**
