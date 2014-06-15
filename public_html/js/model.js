@@ -10,12 +10,28 @@
  */
 var model = {
     /**
+     * Loads the game state from LocalStorage.
+     */
+    getGameState: function() {
+        
+    },
+    /**
      * Gets the current top score.
      * @param {type} difficulty
      * @returns {unresolved}
      */
     getTopScore: function(difficulty) {
         return localStorage.getItem(difficulty);
+    },
+    /**
+     * Saves the game state to LocalStorage.
+     * @param {type} tiles
+     * @param {type} moves
+     * @param {type} gridSize
+     * @param {type} difficulty
+     */
+    saveGameState: function(tiles, moves, gridSize, difficulty) {
+        
     },
     /**
      * Save a top score.
