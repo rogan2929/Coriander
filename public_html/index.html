@@ -54,6 +54,9 @@ and open the template in the editor.
             <div class='display-table h-centered'>
                 <fieldset data-role="controlgroup">
                     <legend class='auto-margin'>Choose a grid size:</legend>
+                    <input type="radio" name="radio-choice" id="dif-easy" class='grid-radio' value="2" checked="checked" />
+                    <label for="dif-easy">2 x 2 (Easy)</label>
+                    
                     <input type="radio" name="radio-choice" id="dif-regular" class='grid-radio' value="3" checked="checked" />
                     <label for="dif-regular">3 x 3 (Regular)</label>
 
@@ -75,6 +78,8 @@ and open the template in the editor.
             </div>
 
             <div role='main' class='ui-content h-centered'>
+                <h3>Easy</h3>
+                <div id='top-score-easy'>You haven't solved this yet!</div>
                 <h3>Regular</h3>
                 <div id='top-score-regular'>You haven't solved this yet!</div>
                 <h3>Hard</h3>

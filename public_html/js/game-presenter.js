@@ -30,6 +30,9 @@ var gamePresenter = {
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
 
             switch (gamePresenter.gridSize) {
+                case 2:
+                    gamePresenter.difficulty = 'easy';
+                    break;
                 case 3:
                     gamePresenter.difficulty = 'regular';
                     break;
