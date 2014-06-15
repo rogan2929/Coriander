@@ -30,9 +30,9 @@ var gamePresenter = {
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
 
             switch (gamePresenter.gridSize) {
-                case 2:
-                    gamePresenter.difficulty = 'easy';
-                    break;
+//                case 2:
+//                    gamePresenter.difficulty = 'easy';
+//                    break;
                 case 3:
                     gamePresenter.difficulty = 'regular';
                     break;
@@ -184,8 +184,8 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        gamePresenter.tiles[index].incrementValue();
-        updatedTiles.push(gamePresenter.tiles[index]);
+//        gamePresenter.tiles[index].incrementValue();
+//        updatedTiles.push(gamePresenter.tiles[index]);
 
         // Edge detection:
         // Left edge: index % gamePresenter.gridSize !== 0
