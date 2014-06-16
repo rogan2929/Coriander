@@ -24,6 +24,16 @@ var gameView = {
         gameView.colors.push('color4');
     },
     /**
+     * Do a nice little effect upon loading and animate all the tiles.
+     */
+    flipAllTiles: function() {
+        $('.tile').addClass('flip');
+
+        setTimeout(function() {
+            $('.tile').removeClass('flip');
+        }, 500);
+    },
+    /**
      * Loads tiles into the view.
      * @param {type} gridSize
      * @param {type} tiles
@@ -32,7 +42,7 @@ var gameView = {
         var html, i, j, width, tile, index, value;
 
         $('#tile-container').fadeOut(300, function() {
-            $('#tile-container').empty();
+            $('#tile-container .tile').remove();
 
             // - (gridSize * 5 * 2) - 10)
             width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
@@ -56,16 +66,6 @@ var gameView = {
         });
     },
     /**
-     * Do a nice little effect upon loading and animate all the tiles.
-     */
-    flipAllTiles: function() {
-        $('.tile').addClass('flip');
-
-        setTimeout(function() {
-            $('.tile').removeClass('flip');
-        }, 500);
-    },
-    /**
      * Show how many moves have been done.
      * @param {type} count
      */
@@ -78,7 +78,7 @@ var gameView = {
      */
     switchTileColor: function(tile) {
         var i, index, value, delta;
-        
+
         index = tile.getIndex();
         value = tile.getValue();
         delta = tile.getDelta();

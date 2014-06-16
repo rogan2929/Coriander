@@ -242,3 +242,7 @@ and open the template in the editor.
     display: block;
     font-weight: bold;
 }
+
+.ui-btn.fixed-size {
+    width: 5em;
+}
