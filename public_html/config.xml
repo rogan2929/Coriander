@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.coriander"
+        version   = "1.0.0">
+    
+    <name>Flipee</name>
+    
+    <description></description>
+    
+    <author href="http://flippeethegame.blogspot.com/" email="richard.scales@live.com">
+        Richard Scales
+    </author>
+    
+    <preference name="permissions" value="none"/>
+    <preference name="orientation" value="portrait" />
+    
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+</widget>
