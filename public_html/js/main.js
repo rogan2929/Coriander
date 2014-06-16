@@ -12,7 +12,7 @@ window.onerror = function(msg, url, linenumber) {
 };
 
 // http://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array-in-javascript
-Array.prototype.shuffle = function(){
+Array.prototype.shuffle = function() {
     var counter = this.length, temp, index;
 
     // While there are elements in the array
@@ -53,6 +53,13 @@ $(document).on('pagebeforeshow', '#start', function(e) {
 
 $(document).on('pagebeforeshow', '#new-game', function(e) {
     newGamePresenter.init();
+    FB.ui({
+        method: 'share_open_graph',
+        action_type: 'og.likes',
+        action_properties: JSON.stringify({
+            object: 'https://developers.facebook.com/docs/',
+        })
+    }, function(response){});
 });
 
 $(document).on('pagebeforeshow', '#high-scores', function(e) {
