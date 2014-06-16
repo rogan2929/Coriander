@@ -16,6 +16,8 @@
     <preference name="permissions" value="none"/>
     <preference name="orientation" value="portrait" />
     
+    <icon src="res/icon_512.png" />
+    
     <gap:platform name="ios" />
     <gap:platform name="android" />
 </widget>
