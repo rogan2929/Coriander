@@ -5,6 +5,17 @@
  */
 
 /**
+ * An enum for difficulty levels.
+ * @type type
+ */
+var difficulties = {
+    easy: 'easy',
+    regular: 'regular',
+    hard: 'hard',
+    insane: 'insane'
+};
+
+/**
  * Presenter for #game
  * @type type
  */
@@ -30,17 +41,17 @@ var gamePresenter = {
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
 
             switch (gamePresenter.gridSize) {
-//                case 2:
-//                    gamePresenter.difficulty = 'easy';
-//                    break;
+                case 2:
+                    gamePresenter.difficulty = difficulties.easy;
+                    break;
                 case 3:
-                    gamePresenter.difficulty = 'regular';
+                    gamePresenter.difficulty = difficulties.regular;
                     break;
                 case 4:
-                    gamePresenter.difficulty = 'hard';
+                    gamePresenter.difficulty = difficulties.hard;
                     break;
                 case 5:
-                    gamePresenter.difficulty = 'insane';
+                    gamePresenter.difficulty = difficulties.hard;
                     break;
             }
         }
