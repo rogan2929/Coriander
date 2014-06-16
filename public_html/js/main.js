@@ -53,13 +53,6 @@ $(document).on('pagebeforeshow', '#start', function(e) {
 
 $(document).on('pagebeforeshow', '#new-game', function(e) {
     newGamePresenter.init();
-    FB.ui({
-        method: 'share_open_graph',
-        action_type: 'og.likes',
-        action_properties: JSON.stringify({
-            object: 'https://developers.facebook.com/docs/',
-        })
-    }, function(response){});
 });
 
 $(document).on('pagebeforeshow', '#high-scores', function(e) {

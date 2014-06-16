@@ -11,13 +11,16 @@
 var victoryPresenter = {
     score: null,
     newRecord: null,
-    
     /**
      * Entry point.
      */
     init: function() {
-        victoryView.displayScore(victoryPresenter.score);
-        
+        eventBus.installHandler('victoryPresenter.onTapButtonFacebook', victoryPresenter.onTapButtonFacebook, '#button-facebook', 'tap');
+
+        if (victoryPresenter.score) {
+            victoryView.displayScore(victoryPresenter.score);
+        }
+
         if (victoryPresenter.newRecord) {
             victoryView.displayNewRecord();
         }
@@ -38,5 +41,8 @@ var victoryPresenter = {
      */
     setScore: function(score) {
         victoryPresenter.score = score;
+    },
+    onTapButtonFacebook: function(e) {
+        alert('Not yet implemented...');
     }
 };
