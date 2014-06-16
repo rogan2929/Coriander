@@ -47,11 +47,6 @@ String.prototype.toHHMMSS = function() {
     return time;
 };
 
-$(document).bind('mobileinit', function() {
-    // Do not emit tap events when taphold fires.
-    $.event.special.tap.emitTapOnTaphold = false;
-});
-
 $(document).on('pagebeforeshow', '#start', function(e) {
     startPresenter.init();
 });
