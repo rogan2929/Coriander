@@ -49,7 +49,7 @@ var gameView = {
             }
 
             $('#tile-container').height(gridSize * (width + (5 * 2)) + 'px').fadeIn(300, function() {
-                gameView.spinAllTiles();
+                gameView.flipAllTiles();
                 // Re-register event hookups.
                 eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
             });
@@ -58,11 +58,11 @@ var gameView = {
     /**
      * Do a nice little effect upon loading and animate all the tiles.
      */
-    spinAllTiles: function() {
-        $('.tile').addClass('spin');
+    flipAllTiles: function() {
+        $('.tile').addClass('flip');
 
         setTimeout(function() {
-            $('.tile').removeClass('spin');
+            $('.tile').removeClass('flip');
         }, 500);
     },
     /**
