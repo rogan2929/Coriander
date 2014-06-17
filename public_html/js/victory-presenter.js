@@ -44,15 +44,8 @@ var victoryPresenter = {
     },
     onTapButtonFacebook: function(e) {
         FB.ui({
-            method: 'share_open_graph',
-            action_type: 'flippee:solve',
-            action_properties: {
-                object: {
-                    app_id: 714454361933938,
-                    type: "flippee:flippee_puzzle",
-                    title: "an easy"
-                }
-            }
+            method: 'share',
+            href: 'http://coriander.azurewebsites.net'
         }, function(response) {
             console.log(response);
         });
