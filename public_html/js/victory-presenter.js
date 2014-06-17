@@ -48,7 +48,8 @@ var victoryPresenter = {
             action_type: 'flippee:solve',
             action_properties: JSON.stringify({
                 type: 'flippee:puzzle',
-                title: 'an easy'
+                title: 'an easy',
+                score: ''
             })
         }, function(response) {
             console.log(response);
