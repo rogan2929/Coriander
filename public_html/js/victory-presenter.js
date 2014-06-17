@@ -48,8 +48,9 @@ var victoryPresenter = {
             action_type: 'flippee:solve',
             action_properties: {
                 flippee_puzzle: {
-                    'og:type': 'flippee_puzzle',
-                    'og:title': 'an easy'
+                    app_id: 714454361933938,
+                    type: "flippee:flippee_puzzle",
+                    title: "an easy"
                 }
             }
         }, function(response) {
