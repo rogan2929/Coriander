@@ -48,7 +48,7 @@ var victoryPresenter = {
             action_type: 'flippee:solve',
             action_properties: {
                 flippee_puzzle: {
-                    'og:type': 'flippee:flippee_puzzle',
+                    'og:type': 'flippee_puzzle',
                     'og:title': 'an easy'
                 }
             }
