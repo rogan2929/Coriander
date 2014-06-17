@@ -43,6 +43,13 @@ var victoryPresenter = {
         victoryPresenter.score = score;
     },
     onTapButtonFacebook: function(e) {
-        alert('Not yet implemented...');
+        FB.ui({
+            method: 'share_open_graph',
+            action_type: 'og.likes',
+            action_properties: JSON.stringify({
+                object: 'http://infowars.com',
+            })
+        }, function(response) {
+        });
     }
 };
