@@ -45,7 +45,7 @@ var victoryPresenter = {
     onTapButtonFacebook: function(e) {
         FB.ui({
             method: 'share',
-            href: 'http://coriander.azurewebsites.net'
+            href: 'http://flippeethegame.blogspot.com/'
         }, function(response) {
             console.log(response);
         });
