@@ -45,9 +45,10 @@ var victoryPresenter = {
     onTapButtonFacebook: function(e) {
         FB.ui({
             method: 'share_open_graph',
-            action_type: 'og.likes',
+            action_type: 'flippee:solve',
             action_properties: JSON.stringify({
-                object: 'http://infowars.com',
+                type: 'flippee:puzzle',
+                title: 'an easy'
             })
         }, function(response) {
         });
