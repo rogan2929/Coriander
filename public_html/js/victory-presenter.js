@@ -51,6 +51,7 @@ var victoryPresenter = {
                 title: 'an easy'
             })
         }, function(response) {
+            console.log(response);
         });
     }
 };
