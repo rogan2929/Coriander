@@ -48,8 +48,8 @@ var victoryPresenter = {
             action_type: 'flippee:solve',
             action_properties: JSON.stringify({
                 flippee_puzzle: {
-                    type: 'flippee:flippee_puzzle',
-                    title: 'an easy'
+                    'og:type': 'flippee:flippee_puzzle',
+                    'og:title': 'an easy'
                 }
             })
         }, function(response) {
