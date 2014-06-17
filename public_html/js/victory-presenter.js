@@ -46,12 +46,12 @@ var victoryPresenter = {
         FB.ui({
             method: 'share_open_graph',
             action_type: 'flippee:solve',
-            action_properties: JSON.stringify({
-                flippee_puzzle: {
+            action_properties: {
+                flippee_puzzle: JSON.stringify({
                     'og:type': 'flippee:flippee_puzzle',
                     'og:title': 'an easy'
-                }
-            })
+                })
+            }
         }, function(response) {
             console.log(response);
         });
