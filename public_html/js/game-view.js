@@ -26,11 +26,11 @@ var gameView = {
     /**
      * Do a nice little effect upon loading and animate all the tiles.
      */
-    flipAllTiles: function() {
-        $('.tile').addClass('flip');
+    animateAllTiles: function() {
+        $('.tile').addClass('spin');
 
         setTimeout(function() {
-            $('.tile').removeClass('flip');
+            $('.tile').removeClass('spin');
         }, 500);
     },
     /**
@@ -59,7 +59,7 @@ var gameView = {
             }
 
             $('#tile-container').height(gridSize * (width + (5 * 2)) + 'px').fadeIn(300, function() {
-                gameView.flipAllTiles();
+                gameView.animateAllTiles();
                 // Re-register event hookups.
                 eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
             });
