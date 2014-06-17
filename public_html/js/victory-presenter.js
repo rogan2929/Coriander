@@ -47,7 +47,7 @@ var victoryPresenter = {
             method: 'share_open_graph',
             action_type: 'flippee:solve',
             action_properties: {
-                flippee_puzzle: {
+                object: {
                     app_id: 714454361933938,
                     type: "flippee:flippee_puzzle",
                     title: "an easy"
