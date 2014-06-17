@@ -43,11 +43,15 @@ var victoryPresenter = {
         victoryPresenter.score = score;
     },
     onTapButtonFacebook: function(e) {
+        var puzzle = {
+            title: 'an easy'
+        };
+        
         FB.ui({
             method: 'share_open_graph',
             action_type: 'flippee:solve',
             action_properties: JSON.stringify({
-                flippee_puzzle: 'test'
+                flippee_puzzle: puzzle
             })
         }, function(response) {
             console.log(response);
