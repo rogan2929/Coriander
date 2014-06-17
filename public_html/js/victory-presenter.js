@@ -47,8 +47,9 @@ var victoryPresenter = {
             method: 'share_open_graph',
             action_type: 'flippee:solve',
             action_properties: JSON.stringify({
-                type: 'flippee:puzzle',
-                title: 'an easy'
+                flippee_puzzle: {
+                    title: 'an easy'
+                }
             })
         }, function(response) {
             console.log(response);
