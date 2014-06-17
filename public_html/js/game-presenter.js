@@ -195,8 +195,8 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        gamePresenter.tiles[index].incrementValue();
-        updatedTiles.push(gamePresenter.tiles[index]);
+//        gamePresenter.tiles[index].incrementValue();
+//        updatedTiles.push(gamePresenter.tiles[index]);
 
         // Edge detection:
         // Left edge: index % gamePresenter.gridSize !== 0
