@@ -43,11 +43,13 @@ var victoryPresenter = {
         victoryPresenter.score = score;
     },
     onTapButtonFacebook: function(e) {
+        
+        
         FB.ui({
             method: 'share_open_graph',
             action_type: 'flippee:solve',
             action_properties: JSON.stringify({
-                flippee_puzzle: 'http://coriander.azurewebsites.net/og_regular.html'
+                flippee_puzzle: 'http://coriander.azurewebsites.net/og_' + victoryPresenter.score.difficulty + '.html'
             })
         }, function(response) {
             console.log(response);
