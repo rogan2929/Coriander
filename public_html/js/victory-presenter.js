@@ -44,8 +44,11 @@ var victoryPresenter = {
     },
     onTapButtonFacebook: function(e) {
         FB.ui({
-            method: 'share',
-            href: 'http://flippeethegame.blogspot.com/'
+            method: 'share_open_graph',
+            action_type: 'flippee:solve',
+            action_properties: JSON.stringify({
+                puzzle_tile: 'http://coriander.azurewebsites.net/regular.html'
+            })
         }, function(response) {
             console.log(response);
         });
