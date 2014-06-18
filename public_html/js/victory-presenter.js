@@ -17,8 +17,6 @@ var victoryPresenter = {
     init: function() {
         eventBus.installHandler('victoryPresenter.onTapButtonFacebook', victoryPresenter.onTapButtonFacebook, '#button-facebook', 'tap');
 
-        victoryPresenter.score = new Score(50, 'regular');
-
         if (victoryPresenter.score) {
             victoryView.displayScore(victoryPresenter.score);
         }
