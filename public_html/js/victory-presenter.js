@@ -43,6 +43,10 @@ var victoryPresenter = {
         victoryPresenter.score = score;
     },
     onTapButtonFacebook: function(e) {
+        if (!victoryPresenter.score) {
+            victoryPresenter.score = new Score(15, 'regular');
+        }
+        
         FB.ui({
             method: 'share_open_graph',
             action_type: 'flippee:solve',
