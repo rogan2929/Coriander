@@ -43,16 +43,34 @@ var victoryPresenter = {
         victoryPresenter.score = score;
     },
     onTapButtonFacebook: function(e) {
+        var actionProperties;
+
         if (!victoryPresenter.score) {
             victoryPresenter.score = new Score(15, 'regular');
         }
-        
+
+        switch (victoryPresenter.score) {
+            case difficulties.easy:
+                actionProperties = {
+                    easy_puzzle: 'http://coriander.azurewebsites.net/og_easy.html'
+                };
+                break;
+            case difficulties.regular:
+                actionProperties = {
+                    regular_puzzle: 'http://coriander.azurewebsites.net/og_regular.html'
+                };
+                break;
+            case difficulties.hard:
+                actionProperties = {
+                    hard_puzzle: 'http://coriander.azurewebsites.net/og_hard.html'
+                };
+                break;
+        }
+
         FB.ui({
             method: 'share_open_graph',
             action_type: 'flippee:solve',
-            action_properties: JSON.stringify({
-                flippee_puzzle: 'http://coriander.azurewebsites.net/og_' + victoryPresenter.score.difficulty + '.html'
-            })
+            action_properties: JSON.stringify(actionProperties)
         }, function(response) {
             console.log(response);
         });
