@@ -54,10 +54,10 @@ var startView = {
      */
     toggleButtonResume: function(enable) {
         if (enable) {
-            $('#tile-resume').removeClass('ui-state-disabled');
+            $('#tile-game').removeClass('ui-state-disabled');
         }
         else {
-            $('#tile-resume').addClass('ui-state-disabled');
+            $('#tile-game').addClass('ui-state-disabled');
         }
     }
 };
