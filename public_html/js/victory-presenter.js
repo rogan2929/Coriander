@@ -49,7 +49,7 @@ var victoryPresenter = {
             victoryPresenter.score = new Score(15, difficulties.regular);
         }
 
-        switch (victoryPresenter.score) {
+        switch (victoryPresenter.score.difficulty) {
             case difficulties.easy:
                 actionProperties = {
                     easy_puzzle: 'http://coriander.azurewebsites.net/og_easy.html'
