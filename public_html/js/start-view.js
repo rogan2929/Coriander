@@ -17,9 +17,9 @@ var startView = {
         
         windowWidth = $(window).width();
         
-        size = ((windowWidth - (windowWidth * 0.20)) / 2);
+        size = ((windowWidth - (windowWidth * 0.30)) / 2);
         
-        textSize = size / 8;
+        textSize = size / 7;
         
         size += 'px';
 
