@@ -26,6 +26,6 @@ var startPresenter = {
         
         setTimeout(function() {
             startView.navigateTo(page);
-        }, 1200);
+        }, 1050);
     }
 };
