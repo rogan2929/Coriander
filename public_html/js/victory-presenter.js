@@ -17,6 +17,8 @@ var victoryPresenter = {
     init: function() {
         eventBus.installHandler('victoryPresenter.onTapButtonFacebook', victoryPresenter.onTapButtonFacebook, '#button-facebook', 'tap');
 
+        victoryPresenter.score = new Score(50, 'regular');
+
         if (victoryPresenter.score) {
             victoryView.displayScore(victoryPresenter.score);
         }
@@ -43,8 +45,6 @@ var victoryPresenter = {
         victoryPresenter.score = score;
     },
     onTapButtonFacebook: function(e) {
-        
-        
         FB.ui({
             method: 'share_open_graph',
             action_type: 'flippee:solve',
