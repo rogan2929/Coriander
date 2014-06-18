@@ -47,7 +47,7 @@ var victoryPresenter = {
             method: 'share_open_graph',
             action_type: 'flippee:solve',
             action_properties: JSON.stringify({
-                flippee_puzzle: 'http://coriander.azurewebsites.net/regular.html'
+                flippee_puzzle: 'http://coriander.azurewebsites.net/og_regular.html'
             })
         }, function(response) {
             console.log(response);
