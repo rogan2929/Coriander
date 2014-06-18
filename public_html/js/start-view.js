@@ -10,15 +10,54 @@
  */
 var startView = {
     /**
+     * Make them there button tiles all perdy.
+     */
+    configureButtonTiles: function() {
+        var size, windowWidth, textSize;
+        
+        windowWidth = $(window).width();
+        
+        size = ((windowWidth - (windowWidth * 0.20)) / 2);
+        
+        textSize = size / 8;
+        
+        size += 'px';
+
+        $('.button-tile').width(size).height(size).css('line-height', size).css('font-size', textSize);
+    },
+    /**
+     * Flip a button tile.
+     * @param {type} tile
+     */
+    flipTile: function(tile) {
+        var text;
+        
+        text = $(tile).text();
+        
+        $(tile).text('').addClass('fade').addClass('flip');
+
+        setTimeout(function() {
+            $(tile).removeClass('flip');
+
+            setTimeout(function() {
+                $(tile).text(text);
+            }, 500);
+        }, 500);
+    },
+    
+    navigateTo: function(page) {
+        $('body').pagecontainer('change', '#' + page);
+    },
+    /**
      * Enable/disable the resume button.
      * @param {type} enable
      */
     toggleButtonResume: function(enable) {
         if (enable) {
-            $('#button-resume').removeClass('ui-state-disabled');
+            $('#tile-resume').removeClass('ui-state-disabled');
         }
         else {
-            $('#button-resume').addClass('ui-state-disabled');
+            $('#tile-resume').addClass('ui-state-disabled');
         }
     }
 };

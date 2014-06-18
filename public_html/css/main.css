@@ -130,7 +130,7 @@ and open the template in the editor.
     overflow: hidden !important;
 }
 
-.tile {
+.tile, .button-tile {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -246,4 +246,10 @@ and open the template in the editor.
 
 .ui-btn.fixed-size {
     width: 5em;
+}
+
+.button-tile {
+    text-decoration: none;
+    color: #333333;
+    font-weight: normal;
 }

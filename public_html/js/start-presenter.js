@@ -13,6 +13,19 @@ var startPresenter = {
      * Entry point.
      */
     init: function() {
+        startView.configureButtonTiles();
         startView.toggleButtonResume(!gamePresenter.getNewGame());
+        eventBus.installHandler('startPresenter.onTapButtonTile', startPresenter.onTapButtonTile, '.button-tile', 'tap');
+    },
+    onTapButtonTile: function(e) {
+        var page;
+        
+        page = ($(e.currentTarget).attr('id')).substr(5);
+
+        startView.flipTile(e.currentTarget);
+        
+        setTimeout(function() {
+            startView.navigateTo(page);
+        }, 1200);
     }
 };
