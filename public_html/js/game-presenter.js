@@ -11,8 +11,7 @@
 var difficulties = {
     easy: 'easy',
     regular: 'regular',
-    hard: 'hard',
-    insane: 'insane'
+    hard: 'hard'
 };
 
 /**
@@ -25,7 +24,7 @@ var gamePresenter = {
     maxTileSize: 5,
     // Class variables
     moveCount: 0,
-    difficulty: 'easy',
+    difficulty: null,
     newGame: true,
     tiles: null,
     tapTimeout: null,
@@ -41,14 +40,11 @@ var gamePresenter = {
             gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
 
             switch (gamePresenter.gridSize) {
-                case 2:
+                case 3:
                     gamePresenter.difficulty = difficulties.easy;
                     break;
-                case 3:
-                    gamePresenter.difficulty = difficulties.regular;
-                    break;
                 case 4:
-                    gamePresenter.difficulty = difficulties.hard;
+                    gamePresenter.difficulty = difficulties.regular;
                     break;
                 case 5:
                     gamePresenter.difficulty = difficulties.hard;
