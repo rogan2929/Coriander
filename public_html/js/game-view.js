@@ -73,6 +73,13 @@ var gameView = {
         $('#score').text('Moves: ' + count);
     },
     /**
+     * Shows the current score.
+     * @param {type} score
+     */
+    showScore: function(score) {
+        //$('#score').text('Match: ' + score.toFixed(0) + '%');
+    },
+    /**
      * Switch a tile's color.
      * @param {Tile} tile
      */

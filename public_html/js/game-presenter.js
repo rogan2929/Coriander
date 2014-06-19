@@ -50,10 +50,33 @@ var gamePresenter = {
                     gamePresenter.difficulty = difficulties.hard;
                     break;
             }
+            
+            gamePresenter.calculateScore();
         }
 
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapButtonShuffle', gamePresenter.onTapButtonShuffle, '#button-shuffle', 'tap');
+    },
+    calculateScore: function() {
+        var score, i, j, counts;
+        
+        counts = [];
+        
+        for (i = 0; i < gamePresenter.maxTileSize; i++) {
+            counts[i] = 0;
+            
+            for (j = 0; j < gamePresenter.tiles.length; j++) {
+                if (gamePresenter.tiles[j].getValue() === i) {
+                    counts[i] += 1;
+                }
+            }
+        }
+        
+        counts.sort();
+        
+        score = counts[counts.length - 1] / gamePresenter.tiles.length * 100;
+        
+        gameView.showScore(score);
     },
     /**
      * Check if all tiles have the same value.
@@ -269,6 +292,7 @@ var gamePresenter = {
         setTimeout(function() {
             // Evaluate Game Status.
             gamePresenter.evaluateState();
+            gamePresenter.calculateScore();
         }, 1800);
     },
     onTapButtonShuffle: function(e) {
