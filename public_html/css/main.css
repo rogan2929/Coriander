@@ -20,7 +20,7 @@ and open the template in the editor.
     margin: auto;
 }
 
-.ui-btn, .h-centered .ui-btn {
+.h-centered .ui-btn, .ui-btn.half {
     width: 50%;
     left: 0;
     right: 0;
@@ -117,8 +117,9 @@ and open the template in the editor.
 }
 
 .game-title {
-    padding: .7em 0em;
+/*    padding: .7em 0em;*/
     font-weight: bold;
+    font-size: 1.3em;
 }
 
 .ad-bar {
