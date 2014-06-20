@@ -28,6 +28,7 @@ var gamePresenter = {
     tiles: null,
     tapTimeout: null,
     saveStateInterval: null,
+    victoryAchieved: null,
     /**
      * Entry point.
      */
@@ -52,6 +53,8 @@ var gamePresenter = {
             }
         }
 
+        gamePresenter.victoryAchieved = false;
+
         gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
 
         // Immediate save the game state and then start the interval.
@@ -62,6 +65,13 @@ var gamePresenter = {
 
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapButtonShuffle', gamePresenter.onTapButtonShuffle, '#button-shuffle', 'tap');
+    },
+    /**
+     * Clears the save state interval.
+     */
+    clearSaveStateInterval: function() {
+        clearInterval(gamePresenter.saveStateInterval);
+        gamePresenter.saveStateInterval = null;
     },
     /**
      * Check if all tiles have the same value.
@@ -96,11 +106,12 @@ var gamePresenter = {
             }
 
             // Clear the save timer.
-            clearInterval(gamePresenter.saveStateInterval);
-            gamePresenter.saveStateInterval = null;
+            gamePresenter.clearSaveStateInterval();
 
             // Delete saved gamestate.
             model.clearGameState();
+            
+            gamePresenter.victoryAchieved = false;
 
             victoryPresenter.setScore(score);
             $('body').pagecontainer('change', '#victory');
@@ -133,9 +144,11 @@ var gamePresenter = {
     saveState: function() {
         var gameState;
 
-        gameState = new GameState(gamePresenter.tiles, gamePresenter.gridSize, new Score(gamePresenter.moveCount, gamePresenter.difficulty));
+        if (!gamePresenter.victoryAchieved) {
+            gameState = new GameState(gamePresenter.tiles, gamePresenter.gridSize, new Score(gamePresenter.moveCount, gamePresenter.difficulty));
 
-        model.saveGameState(gameState);
+            model.saveGameState(gameState);
+        }
     },
     /**
      * Setter for gameState.

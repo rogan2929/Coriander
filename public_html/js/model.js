@@ -10,7 +10,7 @@
  */
 var model = {
     clearGameState: function() {
-        
+        localStorage.removeItem('gamestate');
     },
     /**
      * Loads the game state from LocalStorage.

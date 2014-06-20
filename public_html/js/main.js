@@ -63,6 +63,11 @@ $(document).on('pagebeforeshow', '#game', function(e) {
     gamePresenter.init();
 });
 
+$(document).on('pagehide', '#game', function(e) {
+    gamePresenter.clearSaveStateInterval();
+    gamePresenter.saveState();
+});
+
 $(document).on('pagebeforeshow', '#victory', function(e) {
     victoryPresenter.init();
 });
