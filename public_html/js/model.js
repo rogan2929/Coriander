@@ -31,7 +31,10 @@ var model = {
      * @param {type} difficulty
      */
     saveGameState: function(tiles, moves, gridSize, difficulty) {
-        
+        localStorage.setItem('tiles', JSON.stringify(tiles));
+        localStorage.setItem('moves', JSON.stringify(moves));
+        localStorage.setItem('gridSize', JSON.stringify(gridSize));
+        localStorage.setItem('difficulty', JSON.stringify(difficulty));
     },
     /**
      * Save a top score.
