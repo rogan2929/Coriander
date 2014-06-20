@@ -164,7 +164,7 @@ var gamePresenter = {
         }
 
         gamePresenter.gridSize = gameState.gridSize;
-        gamePresenter.moveCount = gameState.score.moves;
+        gamePresenter.setMoveCount(gameState.score.moves);
         gamePresenter.difficulty = gameState.score.difficulty;
     },
     /**
@@ -303,7 +303,6 @@ var gamePresenter = {
         setTimeout(function() {
             // Evaluate Game Status.
             gamePresenter.evaluateState();
-            gamePresenter.calculateScore();
         }, 1800);
     },
     onTapButtonShuffle: function(e) {
