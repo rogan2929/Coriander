@@ -9,11 +9,24 @@
  * @type type
  */
 var model = {
+    clearGameState: function() {
+        
+    },
     /**
      * Loads the game state from LocalStorage.
      */
     getGameState: function() {
+        var gameStateString, gameState;
         
+        gameState = null;
+                
+        gameStateString = localStorage.getItem('gamestate');
+        
+        if (gameStateString) {
+            gameState = JSON.parse(gameStateString);
+        }
+        
+        return gameState;
     },
     /**
      * Gets the current top score.

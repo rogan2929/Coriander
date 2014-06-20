@@ -20,24 +20,24 @@ var difficulties = {
  */
 var gamePresenter = {
     // Constants
-    gridSize: 3,
     maxTileSize: 5,
     // Class variables
+    gridSize: 3,
     moveCount: 0,
     difficulty: null,
-    newGame: true,
     tiles: null,
     tapTimeout: null,
+    saveStateInterval: null,
     /**
      * Entry point.
      */
     init: function() {
-        if (gamePresenter.newGame) {
-            gameView.init();
+        gameView.init();
+
+        if (startPresenter.getNewGame()) {
             gamePresenter.setMoveCount(0);
-            gamePresenter.newGame = false;
+            startPresenter.setNewGame(false);
             gamePresenter.generateTiles();
-            gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
 
             switch (gamePresenter.gridSize) {
                 case 3:
@@ -50,33 +50,18 @@ var gamePresenter = {
                     gamePresenter.difficulty = difficulties.hard;
                     break;
             }
-            
-            gamePresenter.calculateScore();
         }
+
+        gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
+
+        // Immediate save the game state and then start the interval.
+        gamePresenter.saveState();
+
+        // Auto save every ten seconds.
+        gamePresenter.saveStateInterval = setInterval(gamePresenter.saveState, 10000);
 
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapButtonShuffle', gamePresenter.onTapButtonShuffle, '#button-shuffle', 'tap');
-    },
-    calculateScore: function() {
-        var score, i, j, counts;
-        
-        counts = [];
-        
-        for (i = 0; i < gamePresenter.maxTileSize; i++) {
-            counts[i] = 0;
-            
-            for (j = 0; j < gamePresenter.tiles.length; j++) {
-                if (gamePresenter.tiles[j].getValue() === i) {
-                    counts[i] += 1;
-                }
-            }
-        }
-        
-        counts.sort();
-        
-        score = counts[counts.length - 1] / gamePresenter.tiles.length * 100;
-        
-        gameView.showScore(score);
     },
     /**
      * Check if all tiles have the same value.
@@ -110,7 +95,12 @@ var gamePresenter = {
                 victoryPresenter.setNewRecord(false);
             }
 
-            gamePresenter.newGame = true;
+            // Clear the save timer.
+            clearInterval(gamePresenter.saveStateInterval);
+            gamePresenter.saveStateInterval = null;
+
+            // Delete saved gamestate.
+            model.clearGameState();
 
             victoryPresenter.setScore(score);
             $('body').pagecontainer('change', '#victory');
@@ -127,27 +117,42 @@ var gamePresenter = {
         for (i = 0; i < gridSquare; i++) {
             value = Math.floor((Math.random() * gamePresenter.maxTileSize));
 
-            // Create a unique random value for the tile.
-//            while (values.lastIndexOf(value) !== -1) {
-//                value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
-//            }
-
             values.push(value);
             gamePresenter.tiles.push(new Tile(value, i, gamePresenter.maxTileSize));
         }
-    },
-    /**
-     * Getter for newGame
-     * @returns {Boolean}
-     */
-    getNewGame: function() {
-        return gamePresenter.newGame;
     },
     /**
      * Increment the moveCount variable.
      */
     incrementMoveCount: function() {
         gamePresenter.setMoveCount(gamePresenter.moveCount + 1);
+    },
+    /**
+     * Saves the current gameState to local storage.
+     */
+    saveState: function() {
+        var gameState;
+
+        gameState = new GameState(gamePresenter.tiles, gamePresenter.gridSize, new Score(gamePresenter.moveCount, gamePresenter.difficulty));
+
+        model.saveGameState(gameState);
+    },
+    /**
+     * Setter for gameState.
+     * @param {GameState} gameState
+     */
+    setGameState: function(gameState) {
+        var i;
+
+        gamePresenter.tiles = [];
+
+        for (i = 0; i < gameState.tiles.length; i++) {
+            gamePresenter.tiles.push(new Tile(gameState.tiles[i].value, gameState.tiles[i].index, gameState.tiles[i].max));
+        }
+
+        gamePresenter.gridSize = gameState.gridSize;
+        gamePresenter.moveCount = gameState.score.moves;
+        gamePresenter.difficulty = gameState.score.difficulty;
     },
     /**
      * Setter for gridSize
@@ -163,13 +168,6 @@ var gamePresenter = {
     setMoveCount: function(count) {
         gamePresenter.moveCount = count;
         gameView.showMoveCount(count);
-    },
-    /**
-     * Setter for newGame.
-     * @param {type} newGame
-     */
-    setNewGame: function(newGame) {
-        gamePresenter.newGame = newGame;
     },
     /**
      * Shuffles all the tiles.

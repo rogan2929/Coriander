@@ -21,6 +21,6 @@ var newGamePresenter = {
         gamePresenter.setGridSize(parseInt($(e.currentTarget).attr('value')));
     },
     onTapButtonStart: function(e) {
-        gamePresenter.setNewGame(true);
+        startPresenter.setNewGame(true);
     }
 };
