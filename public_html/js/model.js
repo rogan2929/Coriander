@@ -25,16 +25,10 @@ var model = {
     },
     /**
      * Saves the game state to LocalStorage.
-     * @param {type} tiles
-     * @param {type} moves
-     * @param {type} gridSize
-     * @param {type} difficulty
+     * @param {GameState} gameState
      */
-    saveGameState: function(tiles, moves, gridSize, difficulty) {
-        localStorage.setItem('tiles', JSON.stringify(tiles));
-        localStorage.setItem('moves', JSON.stringify(moves));
-        localStorage.setItem('gridSize', JSON.stringify(gridSize));
-        localStorage.setItem('difficulty', JSON.stringify(difficulty));
+    saveGameState: function(gameState) {
+        localStorage.setItem('gamestate', JSON.stringify(gameState));
     },
     /**
      * Save a top score.
