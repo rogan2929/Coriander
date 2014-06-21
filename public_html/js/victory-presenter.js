@@ -46,7 +46,7 @@ var victoryPresenter = {
         var actionProperties;
 
         if (!victoryPresenter.score) {
-            victoryPresenter.score = new Score(15, difficulties.hard);
+            victoryPresenter.score = new Score(15, difficulties.regular);
         }
 
         switch (victoryPresenter.score.difficulty) {
