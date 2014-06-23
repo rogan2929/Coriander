@@ -339,9 +339,9 @@ var gamePresenter = {
         }
     },
     onTapTile: function(e) {
-        gamePresenter.flipTiles(e.currentTarget, true);
+        gamePresenter.flipTiles(e.currentTarget, false);
     },
     onTapHoldTile: function(e) {
-        gamePresenter.flipTiles(e.currentTarget, false);
+        gamePresenter.flipTiles(e.currentTarget, true);
     }
 };
