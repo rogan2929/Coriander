@@ -232,9 +232,9 @@ var gamePresenter = {
     /**
      * Update tile values.
      * @param {type} index
-     * @param {type} hold
+     * @param {type} alt
      */
-    updateTileValues: function(index, hold) {
+    updateTileValues: function(index, alt) {
         // Update tiles that are to the left, right, above, and below.
         // Left: -1
         // Right: +1
@@ -245,7 +245,7 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        if (hold) {
+        if (!alt) {
             // Indicates the user held.
             gamePresenter.tiles[index].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index]);
@@ -339,9 +339,9 @@ var gamePresenter = {
         }
     },
     onTapTile: function(e) {
-        gamePresenter.flipTiles(e.currentTarget, false);
+        gamePresenter.flipTiles(e.currentTarget, true);
     },
     onTapHoldTile: function(e) {
-        gamePresenter.flipTiles(e.currentTarget, true);
+        gamePresenter.flipTiles(e.currentTarget, false);
     }
 };
