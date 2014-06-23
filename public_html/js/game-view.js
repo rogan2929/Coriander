@@ -70,7 +70,7 @@ var gameView = {
      * @param {type} count
      */
     showMoveCount: function(count) {
-        $('#score').text('Moves: ' + count);
+        $('#score').text('Flips: ' + count);
     },
     /**
      * Switch a tile's color.
