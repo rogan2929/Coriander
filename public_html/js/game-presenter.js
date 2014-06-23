@@ -64,6 +64,7 @@ var gamePresenter = {
         gamePresenter.saveStateInterval = setInterval(gamePresenter.saveState, 10000);
 
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
+        eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
         eventBus.installHandler('gamePresenter.onTapButtonShuffle', gamePresenter.onTapButtonShuffle, '#button-shuffle', 'tap');
     },
     /**
@@ -110,13 +111,36 @@ var gamePresenter = {
 
             // Delete saved gamestate.
             model.clearGameState();
-            
+
             gamePresenter.victoryAchieved = true;
 
             victoryPresenter.setScore(score);
             $('body').pagecontainer('change', '#victory');
         }
     },
+    /**
+     * Begins flipping calculations.
+     * @param {type} target
+     * @param {type} hold
+     */
+    flipTiles: function(target, hold) {
+        var value, index, classList;
+
+        if (gamePresenter.tapTimeout === null) {
+            // Implement some throttling on tile tapping. This prevents glitches during animations.
+            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, 1500);
+
+            value = parseInt($(target).text());
+            classList = $(target).attr('class');
+
+            index = parseInt(classList.substring(classList.indexOf('tile-') + 5, classList.indexOf('tile-') + 7));
+
+            gamePresenter.updateTileValues(index, hold);
+        }
+    },
+    /**
+     * Generate tile values and colors.
+     */
     generateTiles: function() {
         var value, i, gridSquare, values;
 
@@ -207,26 +231,25 @@ var gamePresenter = {
     },
     /**
      * Update tile values.
-     * @param {type} tileDiv
+     * @param {type} index
+     * @param {type} hold
      */
-    updateTileValues: function(tileDiv) {
+    updateTileValues: function(index, hold) {
         // Update tiles that are to the left, right, above, and below.
         // Left: -1
         // Right: +1
         // Above: -gridSize
         // Below: +gridSize
 
-        var value, index, classList, updatedTiles;
-
-        value = parseInt($(tileDiv).text());
-        classList = $(tileDiv).attr('class');
-
-        index = parseInt(classList.substring(classList.indexOf('tile-') + 5, classList.indexOf('tile-') + 7));
+        var updatedTiles;
 
         updatedTiles = [];
 
-        gamePresenter.tiles[index].incrementValue();
-        updatedTiles.push(gamePresenter.tiles[index]);
+        if (hold) {
+            // Indicates the user held.
+            gamePresenter.tiles[index].incrementValue();
+            updatedTiles.push(gamePresenter.tiles[index]);
+        }
 
         // Edge detection:
         // Left edge: index % gamePresenter.gridSize !== 0
@@ -316,10 +339,9 @@ var gamePresenter = {
         }
     },
     onTapTile: function(e) {
-        if (gamePresenter.tapTimeout === null) {
-            // Implement some throttling on tile tapping. This prevents glitches during animations.
-            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, 1500);
-            gamePresenter.updateTileValues(e.currentTarget);
-        }
+        gamePresenter.flipTiles(e.currentTarget, false);
+    },
+    onTapHoldTile: function(e) {
+        gamePresenter.flipTiles(e.currentTarget, true);
     }
 };

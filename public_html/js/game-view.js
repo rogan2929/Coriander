@@ -62,6 +62,7 @@ var gameView = {
                 gameView.animateAllTiles();
                 // Re-register event hookups.
                 eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
+                eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
             });
         });
     },
