@@ -117,7 +117,7 @@ and open the template in the editor.
 }
 
 .game-title {
-/*    padding: .7em 0em;*/
+    /*    padding: .7em 0em;*/
     font-weight: bold;
     font-size: 1.3em;
 }
@@ -145,6 +145,9 @@ and open the template in the editor.
     transition-property: transform;
     transform-style: preserve-3d;
     overflow: hidden;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
 }
 
 .flip {
