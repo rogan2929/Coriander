@@ -218,6 +218,10 @@ and open the template in the editor.
     background-color: #ffd761;
 }
 
+.color5 {
+    background-color: #ece8e4;
+}
+
 .display-table {
     display: table;
 }
