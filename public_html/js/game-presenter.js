@@ -20,7 +20,7 @@ var difficulties = {
  */
 var gamePresenter = {
     // Constants
-    maxTileSize: 6,
+    maxTileSize: 5,
     // Class variables
     gridSize: 3,
     moveCount: 0,
