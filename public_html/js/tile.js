@@ -8,23 +8,14 @@
  * Tile
  * @param {type} value
  * @param {type} index
+ * @param {type} min
  * @param {type} max
  */
-function Tile(value, index, max) {
+function Tile(value, index, min, max) {
     this.value = value;
     this.index = index;
+    this.min = min;
     this.max = max;
-};
-
-Tile.prototype.decrementValue = function() {
-    this.value -= 1;
-    
-    if (this.value < 0) {
-        this.value = this.max - 1;
-    }
-    
-    // Set the delta
-    this.delta = -1;
 };
 
 /**
@@ -32,7 +23,12 @@ Tile.prototype.decrementValue = function() {
  * @returns {type}
  */
 Tile.prototype.incrementValue = function() {
-    this.value = (this.value + 1) % this.max;
+    this.value = (this.value + 1) % (this.max + 1);
+    
+    if (this.value <= this.min) {
+        this.value = this.min;
+    }
+    
     this.delta = 1;         // Set the delta.
     return this.value;
 };

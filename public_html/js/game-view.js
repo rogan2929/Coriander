@@ -17,12 +17,12 @@ var gameView = {
     init: function() {
         gameView.colors = [];
 
-        gameView.colors.push('color0');
         gameView.colors.push('color1');
         gameView.colors.push('color2');
         gameView.colors.push('color3');
         gameView.colors.push('color4');
         gameView.colors.push('color5');
+        //gameView.colors.push('color6');
     },
     /**
      * Do a nice little effect upon loading and animate all the tiles.
@@ -55,7 +55,7 @@ var gameView = {
                     value = tiles[i + j].getValue();
                     index = tiles[i + j].getIndex();
 
-                    tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value]).appendTo('#tile-container');
+                    tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
                 }
             }
 
@@ -95,7 +95,7 @@ var gameView = {
             $('.tile-' + index).removeClass('flip');
 
             setTimeout(function() {
-                $('.tile-' + index).addClass(gameView.colors[value]).text(value);
+                $('.tile-' + index).addClass(gameView.colors[value - 1]).text(value);
             }, 500);
         }, 500);
 

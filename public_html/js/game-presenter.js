@@ -20,7 +20,8 @@ var difficulties = {
  */
 var gamePresenter = {
     // Constants
-    maxTileSize: 6,
+    MIN_TILE_SIZE: 1,
+    MAX_TILE_SIZE: 5,
     // Class variables
     gridSize: 3,
     moveCount: 0,
@@ -150,10 +151,10 @@ var gamePresenter = {
         gridSquare = gamePresenter.gridSize * gamePresenter.gridSize;
 
         for (i = 0; i < gridSquare; i++) {
-            value = Math.floor((Math.random() * gamePresenter.maxTileSize));
+            value = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
 
             values.push(value);
-            gamePresenter.tiles.push(new Tile(value, i, gamePresenter.maxTileSize));
+            gamePresenter.tiles.push(new Tile(value, i, gamePresenter.MIN_TILE_SIZE, gamePresenter.MAX_TILE_SIZE));
         }
     },
     /**
