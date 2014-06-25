@@ -19,20 +19,21 @@ var startView = {
         
         size = ((windowWidth - (windowWidth * 0.30)) / 2);
         
-        textSize = size / 7;
+        textSize = size / 5;
         
         size += 'px';
 
-        $('.button-tile').width(size).height(size).css('line-height', size).css('font-size', textSize);
+        //$('.button-tile').width(size).height(size).css('line-height', size).css('font-size', textSize);
+        $('.button-tile').width(size).height(size).css('font-size', textSize);
     },
     /**
      * Flip a button tile.
      * @param {type} tile
      */
     flipTile: function(tile) {
-        var text;
+        var html;
         
-        text = $(tile).text();
+        html = $(tile).html();
         
         $(tile).text('').addClass('fade').addClass('flip');
 
@@ -40,7 +41,7 @@ var startView = {
             $(tile).removeClass('flip');
 
             setTimeout(function() {
-                $(tile).text(text);
+                $(tile).html(html);
             }, 500);
         }, 500);
     },

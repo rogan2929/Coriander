@@ -161,6 +161,37 @@ and open the template in the editor.
     overflow: hidden;
 }
 
+.button-tile {
+    position: relative;
+}
+
+.button-tile .tile-text {
+    position: absolute;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.button-tile .tile-text p {
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center; 
+}
+
+/*.button-tile {
+    position: relative;
+}
+
+.button-tile p {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    left: 0;
+    right: 0;
+}*/
+
 .flip {
     -webkit-transform: rotateY(360deg);
     -moz-transform: rotateY(360deg);

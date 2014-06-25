@@ -327,7 +327,7 @@ var gamePresenter = {
         setTimeout(function() {
             // Evaluate Game Status.
             gamePresenter.evaluateState();
-        }, 1800);
+        }, 1600);
     },
     onTapButtonShuffle: function(e) {
         if (gamePresenter.tapTimeout === null) {
