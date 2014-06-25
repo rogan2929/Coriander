@@ -70,6 +70,13 @@ var gameView = {
         });
     },
     /**
+     * Play the associated flipping sound.
+     */
+    playFlipEffect: function() {
+        var flipeffect = new Audio('flip.wav');
+        flipeffect.play();
+    },
+    /**
      * Show how many moves have been done.
      * @param {type} count
      */
@@ -109,6 +116,8 @@ var gameView = {
      */
     updateTiles: function(tiles) {
         var i;
+        
+        gameView.playFlipEffect();
 
         for (i = 0; i < tiles.length; i++) {
             gameView.switchTileColor(tiles[i]);
