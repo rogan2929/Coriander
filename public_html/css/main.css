@@ -198,7 +198,7 @@ and open the template in the editor.
     width: auto;
 }
 
-/*.color1 {
+.color1 {
     background-color: #e7d5c1;
 }
 
@@ -228,7 +228,9 @@ and open the template in the editor.
 
 .color8 {
     background-color: #f799c2;
-}*/
+}
+
+/*
 
 .color1 {
     background-color: #F5888C;
@@ -261,6 +263,8 @@ and open the template in the editor.
 .color8 {
     background-color: #EBEBEB;
 }
+
+*/
 
 .display-table {
     display: table;
