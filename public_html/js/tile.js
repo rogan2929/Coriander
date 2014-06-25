@@ -20,16 +20,21 @@ function Tile(value, index, min, max) {
 
 /**
  * Increments the tile's value by one.
+ * @param {type} inc
  * @returns {type}
  */
-Tile.prototype.incrementValue = function() {
-    this.value = (this.value + 1) % (this.max + 1);
+Tile.prototype.incrementValue = function(inc) {
+    if (!inc) {
+        inc = 1;
+    }
+    
+    this.value = (this.value + inc) % (this.max + inc);
     
     if (this.value <= this.min) {
         this.value = this.min;
     }
     
-    this.delta = 1;         // Set the delta.
+    this.delta = inc;         // Set the delta.
     return this.value;
 };
 

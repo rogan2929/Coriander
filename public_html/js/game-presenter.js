@@ -248,7 +248,7 @@ var gamePresenter = {
 
         if (!alt) {
             // Indicates the user held.
-            gamePresenter.tiles[index].incrementValue();
+            gamePresenter.tiles[index].incrementValue(2);
             updatedTiles.push(gamePresenter.tiles[index]);
         }
 
