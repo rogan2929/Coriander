@@ -22,7 +22,9 @@ var gameView = {
         gameView.colors.push('color3');
         gameView.colors.push('color4');
         gameView.colors.push('color5');
-        //gameView.colors.push('color6');
+        gameView.colors.push('color6');
+        gameView.colors.push('color7');
+        gameView.colors.push('color8');
     },
     /**
      * Do a nice little effect upon loading and animate all the tiles.
