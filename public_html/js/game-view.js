@@ -73,8 +73,8 @@ var gameView = {
      * Play the associated flipping sound.
      */
     playFlipEffect: function() {
-        var flipeffect = new Audio('flip.mp3');
-        flipeffect.play();
+//        var flipeffect = new Audio('flip.mp3');
+//        flipeffect.play();
     },
     /**
      * Show how many moves have been done.
