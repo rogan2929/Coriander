@@ -73,7 +73,7 @@ var gameView = {
      * Play the associated flipping sound.
      */
     playFlipEffect: function() {
-        var flipeffect = new Audio('flip.wav');
+        var flipeffect = new Audio('flip.mp3');
         flipeffect.play();
     },
     /**
