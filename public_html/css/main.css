@@ -163,6 +163,7 @@ and open the template in the editor.
 
 .button-tile {
     position: relative;
+    padding: 10px;
 }
 
 .button-tile .tile-text {
@@ -250,15 +251,15 @@ and open the template in the editor.
 }
 
 .color6 {
-    background-color: #74dcdc;
+    background-color: #4FE7E7;
 }
 
 .color7 {
-    background-color: #fdf472;
+    background-color: #FFF12A;
 }
 
 .color8 {
-    background-color: #f799c2;
+    background-color: #C299F7;
 }
 
 /*
@@ -345,5 +346,5 @@ and open the template in the editor.
 .button-tile {
     text-decoration: none;
     color: #333333;
-    font-weight: bold;
+/*    font-weight: bold;*/
 }

@@ -17,7 +17,7 @@ var startView = {
         
         windowWidth = $(window).width();
         
-        size = ((windowWidth - (windowWidth * 0.30)) / 2);
+        size = ((windowWidth - (windowWidth * 0.30)) / 2) - 20;
         
         textSize = size / 5;
         
