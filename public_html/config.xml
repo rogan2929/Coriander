@@ -28,6 +28,8 @@
         <param name="APP_NAME" value="Flippee" />
     </gap:plugin>
     
+    <access origin="*" />
+    
     <!--
     <access origin="http://127.0.0.1*" />
     <access origin="http://ad.leadboltmobile.net" subdomains="true" />

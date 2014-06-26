@@ -9,4 +9,6 @@ $(document).bind('mobileinit', function() {
     $.event.special.tap.emitTapOnTaphold = false;
     $.event.special.tap.tapholdThreshold = 500;
     $.mobile.defaultPageTransition = 'flip';
+    
+    alert(window.device.platform);
 });
