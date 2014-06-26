@@ -28,9 +28,11 @@
         <param name="APP_NAME" value="Flippee" />
     </gap:plugin>
     
-    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.1.0" />
+    <gap:plugin name="com.phonegap.plugins.childbrowser" version="5.0.0" />
 
     <access origin="*" />
+    
+    <preference name="stay-in-webview" value="false" />
     
     <!--
     <access origin="http://127.0.0.1*" />

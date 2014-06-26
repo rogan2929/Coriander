@@ -49,6 +49,24 @@ String.prototype.toHHMMSS = function() {
 
 $(document).on('pagebeforeshow', '#start', function(e) {
     startPresenter.init();
+
+    setTimeout(function() {
+        // Force ads to open in the system browser.
+        $('a').not('.ui-btn').tap(function(e) {
+            var url;
+
+            e.preventDefault();
+
+            url = $(e.currentTarget).attr('href');
+
+            if (window.plugins) {
+                window.plugins.ChildBrowser.showWebPage(url, {showLocationBar: true});
+            }
+            else {
+                window.open(url, '_blank');
+            }
+        });
+    }, 2000);
 });
 
 $(document).on('pagebeforeshow', '#new-game', function(e) {
@@ -61,18 +79,6 @@ $(document).on('pagebeforeshow', '#high-scores', function(e) {
 
 $(document).on('pagebeforeshow', '#game', function(e) {
     gamePresenter.init();
-
-    // Force ads to open in the system browser.
-    $('a').tap(function(e) {
-        var url;
-        
-        e.preventDefault();
-
-        url = $(e.currentTarget).attr('href');
-
-        window.open(url, '_blank', 'location=yes');
-        //navigator.app.loadUrl(url, {openExternal: true});
-    });
 });
 
 $(document).on('pagehide', '#game', function(e) {
