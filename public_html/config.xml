@@ -28,6 +28,8 @@
         <param name="APP_NAME" value="Flippee" />
     </gap:plugin>
     
+    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.1.0" />
+
     <access origin="*" />
     
     <!--

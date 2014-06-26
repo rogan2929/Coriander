@@ -61,6 +61,18 @@ $(document).on('pagebeforeshow', '#high-scores', function(e) {
 
 $(document).on('pagebeforeshow', '#game', function(e) {
     gamePresenter.init();
+
+    // Force ads to open in the system browser.
+    $('a').tap(function(e) {
+        var url;
+        
+        e.preventDefault();
+
+        url = $(e.currentTarget).attr('href');
+
+        window.open(url, '_blank', 'location=yes');
+        //navigator.app.loadUrl(url, {openExternal: true});
+    });
 });
 
 $(document).on('pagehide', '#game', function(e) {
