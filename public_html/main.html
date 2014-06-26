@@ -8,13 +8,16 @@ and open the template in the editor.
     <title>Flippee</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta name="format-detection" content="telephone=no">
+
     <link rel="stylesheet" href="css/themes/Coriander/Coriander.min.css">
     <link rel="stylesheet" href="css/themes/Coriander/jquery.mobile.icons.min.css">
     <link rel="stylesheet" href="css/vendor/jquery.mobile.structure-1.4.2.min.css">
     <link rel='stylesheet' href='css/main.css'>
+
     <script src="js/vendor/jquery-2.1.1.min.js"></script>
     <script src="js/mobileinit.js"></script>
     <script src="js/vendor/jquery.mobile-1.4.2.min.js"></script>
+    <script src='http://my.mobfox.com/ad.js'></script>
 
     <script src="js/event-bus.js"></script>
     <script src="js/score.js"></script>
@@ -154,7 +157,7 @@ and open the template in the editor.
                     <b>The fewer the moves the better!</b>
                 </p>
             </div>
-            
+
             <a href="#start" class='ui-btn ui-corner-all ui-shadow half'>Menu</a>
         </div>
 
@@ -173,7 +176,21 @@ and open the template in the editor.
             </div>-->
             <div id='tile-container' class='h-centered v-centered absolute'></div>
             <div id='ad-bar' class='ad-bar absolute stretch-bottom h-centered stretch-left stretch-right'>
-                <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=314295128"></script>
+                <!--
+                <script type="text/javascript" src="http://ad.leadboltmobile.net/show_app_ad.js?section_id=314295128"></script>-->
+                <script>
+                    RequestAd_({
+                        // Ad Request Variables
+                        s: 'f2ffd94193a7f381bfbdf6dc81250ede',
+                        m: 'test',<!-- Change to 'test' to show a test ad -->
+                        adspace_width: '320',<!-- Maximum Width of your Banner -->
+                        adspace_height: '50',<!-- Maximum Height of your Banner -->
+                        adspace_strict: '0',<!-- If you change this parameter to 1, the ad size set above will be strict and no smaller ads will be shown. -->
+                        backfillhtml: '',<!-- Insert HTML Code here that should be shown when no ad is available -->
+                        prependclickcontent: '',<!-- Prepend something before Click URLs. It is recommended to leave this parameter empty.  -->
+                        trackingpixelurl: ''<!-- Ping a Tracking Pixel everytime an ad is shown. -->
+                    });
+                </script>
             </div>
         </div>
 
