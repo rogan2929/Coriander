@@ -185,7 +185,7 @@ var gamePresenter = {
         gamePresenter.tiles = [];
 
         for (i = 0; i < gameState.tiles.length; i++) {
-            gamePresenter.tiles.push(new Tile(gameState.tiles[i].value, gameState.tiles[i].index, gameState.tiles[i].max));
+            gamePresenter.tiles.push(new Tile(gameState.tiles[i].value, gameState.tiles[i].index, gameState.tiles[i].min, gameState.tiles[i].max));
         }
 
         gamePresenter.gridSize = gameState.gridSize;
