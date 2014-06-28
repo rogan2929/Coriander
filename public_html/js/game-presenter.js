@@ -23,7 +23,7 @@ var gamePresenter = {
     MIN_TILE_SIZE: 1,
     MAX_TILE_SIZE: 5,
     SAVE_STATE_TIME: 10000,
-    ENTROPY_TIME: 20000,
+    ENTROPY_TIME: 30000,
     TAP_TIMEOUT: 1500,
     // Class variables
     gridSize: 3,
