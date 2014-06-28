@@ -31,8 +31,6 @@ var startPresenter = {
         startView.toggleButtonResume(!startPresenter.newGame);
         eventBus.installHandler('startPresenter.onTapButtonTile', startPresenter.onTapButtonTile, '.button-tile', 'tap');
         eventBus.installHandler('startPresenter.onTapTileRate', startPresenter.onTapTileRate, '#tile-rate', 'tap');
-        
-        alert($('#tile-new-game').html());
     },
     /**
      * Getter for newGame.
@@ -75,6 +73,6 @@ var startPresenter = {
 
         setTimeout(function() {
             startView.navigateTo(page);
-        }, 1050);
+        }, 1500);
     }
 };
