@@ -35,13 +35,14 @@ var startView = {
         
         html = $(tile).html();
         
-        $(tile).html('').addClass('fade').addClass('flip');
+        //$(tile).html('').addClass('fade').addClass('flip');
+        $(tile).addClass('fade').addClass('flip');
 
         setTimeout(function() {
             $(tile).removeClass('flip');
 
             setTimeout(function() {
-                $(tile).html(html);
+                //$(tile).html(html);
             }, 500);
         }, 500);
     },
