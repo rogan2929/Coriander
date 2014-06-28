@@ -10,6 +10,7 @@
  */
 var startPresenter = {
     newGame: true,
+    tapTimeout: null,
     /**
      * Entry point.
      */
@@ -46,6 +47,13 @@ var startPresenter = {
     setNewGame: function(newGame) {
         startPresenter.newGame = newGame;
     },
+    /**
+     * Timeout function.
+     */
+    tapTimeoutFunction: function() {
+        clearTimeout(startPresenter.tapTimeout);
+        startPresenter.tapTimeout = null;
+    },
     onTapTileRate: function(e) {
         startView.flipTile(e.currentTarget);
 
@@ -67,12 +75,17 @@ var startPresenter = {
     onTapButtonTile: function(e) {
         var page;
 
-        page = ($(e.currentTarget).attr('id')).substr(5);
+        if (startPresenter.tapTimeout === null) {
+            // Implement some throttling on tile tapping. This prevents glitches during animations.
+            startPresenter.tapTimeout = setTimeout(startPresenter.tapTimeoutFunction, 1500);
 
-        startView.flipTile(e.currentTarget);
+            startView.flipTile(e.currentTarget);
 
-        setTimeout(function() {
-            //startView.navigateTo(page);
-        }, 1200);
+            page = ($(e.currentTarget).attr('id')).substr(5);
+
+            setTimeout(function() {
+                //startView.navigateTo(page);
+            }, 1200);
+        }
     }
 };

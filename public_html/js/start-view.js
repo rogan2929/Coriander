@@ -35,10 +35,6 @@ var startView = {
         
         html = $(tile).html();
         
-        if (!html) {
-            alert('Nada');
-        }
-        
         $(tile).empty().addClass('fade').addClass('flip');
 
         setTimeout(function() {
