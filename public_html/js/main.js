@@ -82,7 +82,7 @@ $(document).on('pagebeforeshow', '#game', function(e) {
 });
 
 $(document).on('pagehide', '#game', function(e) {
-    gamePresenter.clearSaveStateInterval();
+    gamePresenter.clearIntervals();
     gamePresenter.saveState();
 });
 
