@@ -72,7 +72,7 @@ var startPresenter = {
         startView.flipTile(e.currentTarget);
 
         setTimeout(function() {
-            startView.navigateTo(page);
-        }, 1500);
+            //startView.navigateTo(page);
+        }, 1200);
     }
 };
