@@ -35,6 +35,8 @@ var startView = {
         
         html = $(tile).html();
         
+        alert('test');
+        
         $(tile).empty().addClass('fade').addClass('flip');
 
         setTimeout(function() {
