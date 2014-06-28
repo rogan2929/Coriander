@@ -84,7 +84,7 @@ var startPresenter = {
             page = ($(e.currentTarget).attr('id')).substr(5);
 
             setTimeout(function() {
-                //startView.navigateTo(page);
+                startView.navigateTo(page);
             }, 1200);
         }
     }
