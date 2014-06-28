@@ -23,7 +23,8 @@ var gamePresenter = {
     MIN_TILE_SIZE: 1,
     MAX_TILE_SIZE: 5,
     SAVE_STATE_TIME: 10000,
-    ENTROPY_TIME: 10000,
+    ENTROPY_TIME: 20000,
+    TAP_TIMEOUT: 1500,
     // Class variables
     gridSize: 3,
     moveCount: 0,
@@ -87,28 +88,31 @@ var gamePresenter = {
     entropyIntervalFunction: function() {
         var index, updatedTiles;
 
-        index = Math.floor(Math.random() * gamePresenter.tiles.length);
-
-        updatedTiles = [];
-
-        gamePresenter.tiles[index].incrementValue();
-        updatedTiles.push(gamePresenter.tiles[index]);
-
-        // Update tiles on the view.
-        gameView.updateTiles(updatedTiles);
-        
-        if (gamePresenter.tapTimeout !== null) {
-            clearTimeout(gamePresenter.tapTimeout);
-            gamePresenter.tapTimeout = null;
-        }
-        
-        // Implement some throttling on tile tapping. This prevents glitches during animations.
-        gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, 1500);
-
+        // Before starting... wait for any existing tap timeout to clear.
         setTimeout(function() {
-            // Evaluate Game Status.
-            gamePresenter.evaluateState();
-        }, 1600);
+            index = Math.floor(Math.random() * gamePresenter.tiles.length);
+
+            updatedTiles = [];
+
+            gamePresenter.tiles[index].incrementValue();
+            updatedTiles.push(gamePresenter.tiles[index]);
+
+            // Update tiles on the view.
+            gameView.updateTiles(updatedTiles);
+
+            if (gamePresenter.tapTimeout !== null) {
+                clearTimeout(gamePresenter.tapTimeout);
+                gamePresenter.tapTimeout = null;
+            }
+
+            // Implement some throttling on tile tapping. This prevents glitches during animations.
+            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, gamePresenter.TAP_TIMEOUT);
+
+            setTimeout(function() {
+                // Evaluate Game Status.
+                gamePresenter.evaluateState();
+            }, gamePresenter.TAP_TIMEOUT + 100);
+        }, gamePresenter.TAP_TIMEOUT);
     },
     /**
      * Check if all tiles have the same value.
@@ -164,7 +168,7 @@ var gamePresenter = {
 
         if (gamePresenter.tapTimeout === null) {
             // Implement some throttling on tile tapping. This prevents glitches during animations.
-            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, 1500);
+            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, gamePresenter.TAP_TIMEOUT);
 
             value = parseInt($(target).text());
             classList = $(target).attr('class');
@@ -362,12 +366,12 @@ var gamePresenter = {
         setTimeout(function() {
             // Evaluate Game Status.
             gamePresenter.evaluateState();
-        }, 1600);
+        }, gamePresenter.TAP_TIMEOUT + 100);
     },
     onTapButtonShuffle: function(e) {
         if (gamePresenter.tapTimeout === null) {
             // Implement some throttling on tile tapping. This prevents glitches during animations.
-            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, 1500);
+            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, gamePresenter.TAP_TIMEOUT);
 
             // Shuffle the tiles and increment move count.
             gamePresenter.shuffleTiles();
