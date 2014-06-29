@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-function Score(moves, difficulty) {
+function Score(moves, size) {
     this.moves = moves;
-    this.difficulty = difficulty;
+    this.size = size;
 }

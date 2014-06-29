@@ -17,7 +17,7 @@ var highScoresView = {
         var i, id;
         
         for (i = 0; i < scores.length; i++) {
-            id = '#top-score-' + scores[i].difficulty;
+            id = '#top-score-' + scores[i].size;
             
             $(id).text(scores[i].moves + ' Moves');
         }

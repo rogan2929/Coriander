@@ -17,28 +17,28 @@ var highScoresPresenter = {
 
         scores = [];
 
-        score = model.getTopScore(difficulties.easy);
+        score = model.getTopScore(sizes.small);
 
         if (score) {
-            scores.push(new Score(score, difficulties.easy));
+            scores.push(new Score(score, sizes.small));
         }
 
-        score = model.getTopScore(difficulties.regular);
+        score = model.getTopScore(sizes.regular);
 
         if (score) {
-            scores.push(new Score(score, difficulties.regular));
+            scores.push(new Score(score, sizes.regular));
         }
 
-        score = model.getTopScore(difficulties.hard);
+        score = model.getTopScore(sizes.medium);
 
         if (score) {
-            scores.push(new Score(score, difficulties.hard));
+            scores.push(new Score(score, sizes.medium));
         }
         
-        score = model.getTopScore(difficulties.insane);
+        score = model.getTopScore(sizes.large);
         
         if (score) {
-            scores.push(new Score(score, difficulties.insane));
+            scores.push(new Score(score, sizes.large));
         }
         
         highScoresView.displayTopScores(scores);

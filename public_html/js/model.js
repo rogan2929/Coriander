@@ -30,11 +30,11 @@ var model = {
     },
     /**
      * Gets the current top score.
-     * @param {type} difficulty
+     * @param {type} size
      * @returns {unresolved}
      */
-    getTopScore: function(difficulty) {
-        return localStorage.getItem(difficulty);
+    getTopScore: function(size) {
+        return localStorage.getItem(size);
     },
     /**
      * Saves the game state to LocalStorage.
@@ -49,6 +49,6 @@ var model = {
      */
     saveTopScore: function(score) {
         console.log(score);
-        localStorage.setItem(score.difficulty, score.moves);
+        localStorage.setItem(score.size, score.moves);
     }
 };

@@ -110,18 +110,18 @@ and open the template in the editor.
             <div class='display-table h-centered'>
                 <fieldset data-role="controlgroup">
                     <legend class='auto-margin'>Choose a grid size:</legend>
-                    <!--
-                    <input type="radio" name="radio-choice" id="dif-easy" class='grid-radio' value="2" checked="checked" />
-                    <label for="dif-easy">2 x 2 (Easy)</label>-->
 
-                    <input type="radio" name="radio-choice" id="dif-easy" class='grid-radio' value="4" checked="checked" />
-                    <label for="dif-easy">4 x 4 (Easy)</label>
+                    <input type="radio" name="radio-choice" id="size-small" class='grid-radio' value="3" checked="checked" />
+                    <label for="size-small">3 x 3 (Small)</label>
 
-                    <input type="radio" name="radio-choice" id="dif-regular" class='grid-radio' value="5"  />
-                    <label for="dif-regular">5 x 5 (Regular)</label>
+                    <input type="radio" name="radio-choice" id="size-regular" class='grid-radio' value="4"  />
+                    <label for="size-regular">4 x 4 (Regular)</label>
 
-                    <input type="radio" name="radio-choice" id="dif-hard" class='grid-radio' value="6"  />
-                    <label for="dif-hard">6 x 6 (Hard)</label>
+                    <input type="radio" name="radio-choice" id="size-medium" class='grid-radio' value="5"  />
+                    <label for="size-medium">5 x 5 (Medium)</label>
+                    
+                    <input type="radio" name="radio-choice" id="size-large" class='grid-radio' value="6"  />
+                    <label for="size-large">6 x 6 (Large)</label>
                 </fieldset>
             </div>
 
@@ -135,15 +135,14 @@ and open the template in the editor.
             </div>
 
             <div role='main' class='ui-content h-centered'>
-                <!--
-                <span class='sub-heading'>Easy</span>
-                <div id='top-score-easy'>You haven't solved this yet!</div>-->
-                <span class='sub-heading'>Easy</span>
-                <div id='top-score-easy'>You haven't solved this yet!</div>
+                <span class='sub-heading'>Small</span>
+                <div id='top-score-small'>You haven't solved this yet!</div>
                 <span class='sub-heading'>Regular</span>
                 <div id='top-score-regular'>You haven't solved this yet!</div>
-                <span class='sub-heading'>Hard</span>
-                <div id='top-score-hard'>You haven't solved this yet!</div>
+                <span class='sub-heading'>Medium</span>
+                <div id='top-score-medium'>You haven't solved this yet!</div>
+                <span class='sub-heading'>Large</span>
+                <div id='top-score-large'>You haven't solved this yet!</div>
             </div>
 
             <a href="#start" class='ui-btn ui-corner-all ui-shadow half'>Menu</a>
@@ -159,9 +158,10 @@ and open the template in the editor.
                     Your goal is to make all the numbered tiles the same color.<br/><br/>
                     Tiles can be flipped by either tapping a tile, or tapping and holding a tile. Tapping on a tile flips adjacent tiles as well as the one that was tapped.
                     Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.<br/><br/>
-                    And lastly, to make things just a bit more interesting, every 30 seconds a random tile has its value change and is flipped. Try to keep up!<br/><br/>
                     <b>The fewer the moves the better!</b>
                 </p>
+                
+                <!--And lastly, to make things just a bit more interesting, every 30 seconds a random tile has its value change and is flipped. Try to keep up!<br/><br/>-->
             </div>
 
             <a href="#start" class='ui-btn ui-corner-all ui-shadow half'>Menu</a>

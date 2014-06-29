@@ -8,10 +8,11 @@
  * An enum for difficulty levels.
  * @type type
  */
-var difficulties = {
-    easy: 'easy',
+var sizes = {
+    small: 'small',
     regular: 'regular',
-    hard: 'hard'
+    medium: 'medium',
+    large: 'large'
 };
 
 /**
@@ -28,7 +29,7 @@ var gamePresenter = {
     // Class variables
     gridSize: 3,
     moveCount: 0,
-    difficulty: null,
+    gridName: null,
     tiles: null,
     tapTimeout: null,
     saveStateInterval: null,
@@ -47,13 +48,16 @@ var gamePresenter = {
 
             switch (gamePresenter.gridSize) {
                 case 3:
-                    gamePresenter.difficulty = difficulties.easy;
+                    gamePresenter.gridName = sizes.small;
                     break;
                 case 4:
-                    gamePresenter.difficulty = difficulties.regular;
+                    gamePresenter.gridName = sizes.regular;
                     break;
                 case 5:
-                    gamePresenter.difficulty = difficulties.hard;
+                    gamePresenter.gridName = sizes.medium;
+                    break;
+                case 6:
+                    gamePresenter.gridName = sizes.large;
                     break;
             }
         }
@@ -134,8 +138,8 @@ var gamePresenter = {
         if (allMatch) {
             // Do a victory dance, or something.
             //alert('You won!');
-            score = new Score(gamePresenter.moveCount, gamePresenter.difficulty);
-            topScore = model.getTopScore(gamePresenter.difficulty);
+            score = new Score(gamePresenter.moveCount, gamePresenter.gridName);
+            topScore = model.getTopScore(gamePresenter.gridName);
 
             // If a new top score has been reached.
             if (score.moves < topScore || topScore === null) {
@@ -209,7 +213,7 @@ var gamePresenter = {
         var gameState;
 
         if (!gamePresenter.victoryAchieved) {
-            gameState = new GameState(gamePresenter.tiles, gamePresenter.gridSize, new Score(gamePresenter.moveCount, gamePresenter.difficulty));
+            gameState = new GameState(gamePresenter.tiles, gamePresenter.gridSize, new Score(gamePresenter.moveCount, gamePresenter.gridName));
 
             model.saveGameState(gameState);
         }
@@ -229,7 +233,7 @@ var gamePresenter = {
 
         gamePresenter.gridSize = gameState.gridSize;
         gamePresenter.setMoveCount(gameState.score.moves);
-        gamePresenter.difficulty = gameState.score.difficulty;
+        gamePresenter.gridName = gameState.score.size;
     },
     /**
      * Setter for gridSize

@@ -22,7 +22,7 @@ var victoryView = {
     displayScore: function(score) {
         var text;
         
-        text = "You've completed a puzzle on " + score.difficulty + " difficulty in " + score.moves + " moves!";
+        text = "You've completed a " + score.size + " puzzle in " + score.moves + " moves!";
         
         $('#score-result').text(text);
     },

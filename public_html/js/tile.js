@@ -20,7 +20,6 @@ function Tile(value, index, min, max) {
 
 /**
  * Increments the tile's value by one.
- * @param {type} inc
  * @returns {type}
  */
 Tile.prototype.incrementValue = function() {

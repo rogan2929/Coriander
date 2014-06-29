@@ -46,23 +46,28 @@ var victoryPresenter = {
         var actionProperties;
 
         if (!victoryPresenter.score) {
-            victoryPresenter.score = new Score(15, difficulties.hard);
+            victoryPresenter.score = new Score(15, sizes.large);
         }
 
-        switch (victoryPresenter.score.difficulty) {
-            case difficulties.easy:
+        switch (victoryPresenter.score.size) {
+            case sizes.small:
                 actionProperties = {
-                    easy_puzzle: 'http://coriander.azurewebsites.net/og_easy.html'
+                    small_puzzle: 'http://coriander.azurewebsites.net/og_small.html'
                 };
                 break;
-            case difficulties.regular:
+            case sizes.regular:
                 actionProperties = {
                     regular_puzzle: 'http://coriander.azurewebsites.net/og_regular.html'
                 };
                 break;
-            case difficulties.hard:
+            case sizes.regular:
                 actionProperties = {
-                    hard_puzzle: 'http://coriander.azurewebsites.net/og_hard.html'
+                    medium_puzzle: 'http://coriander.azurewebsites.net/og_medium.html'
+                };
+                break;
+            case sizes.large:
+                actionProperties = {
+                    large_puzzle: 'http://coriander.azurewebsites.net/og_large.html'
                 };
                 break;
         }
