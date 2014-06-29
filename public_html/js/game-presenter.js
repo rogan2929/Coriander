@@ -70,7 +70,7 @@ var gamePresenter = {
         //gamePresenter.entropyInterval = setInterval(gamePresenter.entropyIntervalFunction, gamePresenter.ENTROPY_TIME);
 
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
-        //eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
+        eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
         eventBus.installHandler('gamePresenter.onTapButtonShuffle', gamePresenter.onTapButtonShuffle, '#button-shuffle', 'tap');
     },
     /**
@@ -285,11 +285,11 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-//        if (!alt) {
-//            // Indicates the user held.
-//            gamePresenter.tiles[index].incrementValue();
-//            updatedTiles.push(gamePresenter.tiles[index]);
-//        }
+        if (!alt) {
+            // Indicates the user held.
+            gamePresenter.tiles[index].incrementValue();
+            updatedTiles.push(gamePresenter.tiles[index]);
+        }
 
         // Edge detection:
         // Left edge: index % gamePresenter.gridSize !== 0
