@@ -96,10 +96,10 @@ var gameView = {
         delta = tile.getDelta();
 
         for (i = 0; i < gameView.colors.length; i++) {
-            $('.tile-' + index).removeClass('fade').removeClass(gameView.colors[i]);
+            $('.tile-' + index).removeClass(gameView.colors[i]);
         }
 
-        $('.tile-' + index).text('').addClass('fade').addClass('flip');
+        $('.tile-' + index).text('').addClass('flip');
 
         setTimeout(function() {
             $('.tile-' + index).removeClass('flip');
