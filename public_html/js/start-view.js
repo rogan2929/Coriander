@@ -10,6 +10,7 @@
  */
 var startView = {
     TRANSITION_LENGTH: 200,
+    
     /**
      * Make them there button tiles all perdy.
      */
@@ -32,17 +33,23 @@ var startView = {
      * @param {type} tile
      */
     flipTile: function(tile) {
-        var html;
+        var html, color, classList;
         
         html = $(tile).html();
         
+        classList = $(tile).attr('class');
+
+        color = classList.substring(classList.indexOf('color'), classList.indexOf('color') + 6);
+        
+        $(tile).removeClass(color);
+
         $(tile).empty().addClass('fade').addClass('flip');
 
         setTimeout(function() {
             $(tile).removeClass('flip');
 
             setTimeout(function() {
-                $(tile).html(html);
+                $(tile).html(html).addClass(color);
             }, startView.TRANSITION_LENGTH);
         }, startView.TRANSITION_LENGTH);
     },
