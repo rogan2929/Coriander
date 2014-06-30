@@ -9,6 +9,7 @@
  * @type type
  */
 var startView = {
+    TRANSITION_LENGTH: 200,
     /**
      * Make them there button tiles all perdy.
      */
@@ -19,7 +20,7 @@ var startView = {
         
         size = ((windowWidth - (windowWidth * 0.30)) / 2) - 20;
         
-        textSize = size / 5;
+        textSize = size / 4;
         
         size += 'px';
 
@@ -42,8 +43,8 @@ var startView = {
 
             setTimeout(function() {
                 $(tile).html(html);
-            }, 500);
-        }, 500);
+            }, startView.TRANSITION_LENGTH);
+        }, startView.TRANSITION_LENGTH);
     },
     
     navigateTo: function(page) {

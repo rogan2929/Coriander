@@ -40,7 +40,7 @@ and open the template in the editor.
     <script src="js/game-presenter.js"></script>
     <script src="js/main.js"></script>
 
-    <body>
+    <body class="background">
         <script>
             window.fbAsyncInit = function() {
                 FB.init({
@@ -63,39 +63,39 @@ and open the template in the editor.
         </script>
 
         <!-- Start Page -->
-        <div id='start' data-role="page">
-            <div class='ui-content ui-body-b h-centered ui-shadow'>
+        <div id='start' data-role="page" class="background">
+            <div class='ui-content ui-body-b h-centered shadow'>
                 <span class='page-title'>Flippee</span>
             </div>
 
             <div class='ui-content ui-body h-centered'>
-                <div id='tile-new-game' class='button-tile ui-corner-all ui-shadow color4'>
+                <div id='tile-new-game' class='button-tile shadow color4 ui-corner-all'>
                     <div class='tile-text'>
-                        <p>New Game</p>
+                        <p>New</p>
                     </div>
                 </div>
-                <div id='tile-game' class='button-tile ui-corner-all ui-shadow color1 ui-state-disabled'>
+                <div id='tile-game' class='button-tile shadow color1 ui-state-disabled ui-corner-all'>
                     <div class='tile-text'>
                         <p>Resume</p>
                     </div>
                 </div>
-                <div id='tile-high-scores' class='button-tile ui-corner-all ui-shadow color3'>
+                <div id='tile-high-scores' class='button-tile shadow color3 ui-corner-all'>
                     <div class='tile-text'>
                         <p>Best Scores</p>
                     </div>
                 </div>
-                <div id='tile-directions' class='button-tile ui-corner-all ui-shadow color2'>
+                <div id='tile-directions' class='button-tile shadow color2 ui-corner-all'>
                     <div class='tile-text'>
                         <p>How to Play</p>
                     </div>
                 </div>
-                <div id='tile-rate' class='button-tile ui-corner-all ui-shadow color4'>
+                <div id='tile-rate' class='button-tile shadow color4 ui-corner-all'>
                     <div class='tile-text'>
                         <p>Rate</p>
                     </div>
                 </div>
                 <!--
-                <div id='tile-ad-wall' class='button-tile ui-corner-all ui-shadow color3'>
+                <div id='tile-ad-wall' class='button-tile shadow color3'>
                     <div class='tile-text'>
                         <p>More Apps!</p>
                     </div>
@@ -103,8 +103,8 @@ and open the template in the editor.
             </div>
         </div>
 
-        <div id='new-game' data-role='page'>
-            <div class='ui-content ui-body h-centered'>
+        <div id='new-game' data-role='page' class="background">
+            <div class='ui-content ui-body-b h-centered shadow'>
                 <span class='page-title'>New Game</span>
             </div>
             <div class='display-table h-centered'>
@@ -125,39 +125,47 @@ and open the template in the editor.
                 </fieldset>
             </div>
 
-            <a href="#game" id='button-start'  class='ui-btn ui-corner-all ui-shadow half'>Let's Go!</a>
-            <a href="#start" class='ui-btn ui-corner-all ui-shadow half'>Menu</a>
+            <a href="#game" id='button-start'  class='ui-btn shadow half ui-corner-all'>Let's Go!</a>
+            <a href="#start" class='ui-btn shadow half ui-corner-all'>Menu</a>
         </div>
 
-        <div id='high-scores' data-role='page'>
-            <div class='ui-content ui-body h-centered'>
+        <div id='high-scores' data-role='page' class="background">
+            <div class='ui-content ui-body-b h-centered shadow'>
                 <span class='page-title'>Best Scores</span>
             </div>
 
             <div role='main' class='ui-content h-centered'>
-                <span class='sub-heading'>Small</span>
-                <div id='top-score-small'>You haven't solved this yet!</div>
-                <span class='sub-heading'>Regular</span>
-                <div id='top-score-regular'>You haven't solved this yet!</div>
-                <span class='sub-heading'>Medium</span>
-                <div id='top-score-medium'>You haven't solved this yet!</div>
-                <span class='sub-heading'>Large</span>
-                <div id='top-score-large'>You haven't solved this yet!</div>
+                <div class='shadow ui-body-a ui-body ui-corner-all'>
+                    <span class='sub-heading'>Small</span>
+                    <div id='top-score-small'>You haven't solved this yet!</div>
+                </div>
+                <div class='shadow ui-body-a ui-body ui-corner-all top-space'>
+                    <span class='sub-heading'>Regular</span>
+                    <div id='top-score-regular'>You haven't solved this yet!</div>
+                </div>
+                <div class='shadow ui-body-a ui-body ui-corner-all top-space'>
+                    <span class='sub-heading'>Medium</span>
+                    <div id='top-score-medium'>You haven't solved this yet!</div>
+                </div>
+                <div class='shadow ui-body-a ui-body ui-corner-all top-space'>
+                    <span class='sub-heading'>Large</span>
+                    <div id='top-score-large'>You haven't solved this yet!</div>
+                </div>
             </div>
 
-            <a href="#start" class='ui-btn ui-corner-all ui-shadow half'>Menu</a>
+            <a href="#start" class='ui-btn shadow half ui-corner-all'>Menu</a>
         </div>
 
-        <div id='directions' data-role='page'>
-            <div class='ui-content ui-body h-centered'>
+        <div id='directions' data-role='page' class="background">
+            <div class='ui-content ui-body-b h-centered shadow'>
                 <span class='page-title'>How to Play</span>
             </div>
 
             <div role='main' class='ui-content'>
-                <p class='h-centered no-margin ui-content ui-shadow ui-corner-all ui-body ui-body-a'>
+                <p class='h-centered no-margin ui-content shadow ui-body ui-body-a'>
                     Your goal is to make all the numbered tiles the same color.<br/><br/>
-                    Tiles can either be flipped by tapping a tile, or tapping and holding a tile. Differing adjacent tiles
-                    are flipped, depending on which method is used.<br/><br/>
+                    Tiles can be flipped by either tapping a tile, or tapping and holding a tile. Tapping on a tile flips adjacent tiles as well as the one that was tapped.
+                    Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.<br/><br/>
                     <b>The fewer the moves the better!</b>
                 </p>
 
@@ -167,18 +175,18 @@ and open the template in the editor.
                 And lastly, to make things just a bit more interesting, every 30 seconds a random tile has its value change and is flipped. Try to keep up!<br/><br/>-->
             </div>
 
-            <a href="#start" class='ui-btn ui-corner-all ui-shadow half'>Menu</a>
+            <a href="#start" class='ui-btn shadow half ui-corner-all'>Menu</a>
         </div>
 
-        <div id='game' data-role='page' class='no-scroll'>
-            <div id='score' class='game-title margin-top margin-left float-left'></div>
+        <div id='game' data-role='page' class='no-scroll background'>
+            <div id='score' class='game-title margin-top margin-left float-left ui-body-a shadow ui-corner-all'></div>
             <!--
             <div data-role='controlgroup' data-type='horizontal' class='margin-right margin-top horizontal display-inline-block float-right'>-->
             <div class='float-right'>
                 <!--
-                <a id='button-shuffle' class='ui-btn ui-btn-icon-notext ui-icon-recycle ui-corner-all ui-btn-inline'></a>
+                <a id='button-shuffle' class='ui-btn ui-btn-icon-notext ui-icon-recycle ui-btn-inline'></a>
                 If you get stuck, try hitting the shuffle button to reorder the tiles.<br/><br/>-->
-                <a href="#start" class='ui-btn ui-btn-icon-notext ui-icon-grid ui-corner-all ui-btn-inline'></a>
+                <a href="#start" class='ui-btn ui-btn-icon-notext ui-icon-grid ui-btn-inline shadow ui-corner-all'></a>
             </div>
             <!--
             </div>-->
@@ -200,7 +208,7 @@ and open the template in the editor.
             </div>
         </div>
 
-        <div id='victory' data-role='page'>
+        <div id='victory' data-role='page' class="background">
             <div class='ui-content ui-body h-centered'>
                 <span class='page-title'>Puzzle Solved</span>
             </div>
@@ -211,18 +219,18 @@ and open the template in the editor.
             </div>
 
             <!--
-            <a id='button-facebook' class='ui-btn ui-corner-all half'>Share on Facebook</a>-->
-            <a href="#start" class='ui-btn ui-corner-all half'>Menu</a>
+            <a id='button-facebook' class='ui-btn half'>Share on Facebook</a>-->
+            <a href="#start" class='ui-btn half'>Menu</a>
         </div>
 
         <!-- Templates -->
         <div id='tile-template' class='hidden'>
-            <div class='tile fade ui-shadow'></div>
+            <div class='tile fade shadow ui-corner-all'></div>
         </div>
 
         <!--
         <div id='ad-wall' data-role='page'>
-            <a href="#start" class='ui-btn ui-corner-all half'>Menu</a>
+            <a href="#start" class='ui-btn half'>Menu</a>
             <iframe class='ad-wall' src='http://ad.leadboltmobile.net/show_app_wall?section_id=453239542'></iframe>
         </div>-->
     </body>

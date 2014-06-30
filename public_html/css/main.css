@@ -1,4 +1,4 @@
-                    /*
+/*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
@@ -20,6 +20,21 @@ and open the template in the editor.
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.background {
+    background-image: url(img/background.png) !important;
+    background-color: transparent !important;
+}
+
+.shadow {
+    box-shadow: 2px 2px 2px #888888;
+    -webkit-box-shadow: 2px 2px 2px #888888;
+    -moz-box-shadow: 2px 2px 2px #888888;
+/*    -webkit-box-shadow: 0 2px 3px {global-box-shadow-size} rgba(0,0,0,.2) {global-box-shadow-color};
+    -moz-box-shadow: 0 2px 3px {global-box-shadow-size} rgba(0,0,0,.2) {global-box-shadow-color};
+    box-shadow: 0 2px 3px {global-box-shadow-size} rgba(0,0,0,.2) {global-box-shadow-color};*/
 }
 
 .h-centered {
@@ -131,7 +146,7 @@ and open the template in the editor.
 }
 
 .game-title {
-    /*    padding: .7em 0em;*/
+    padding: 7px;
     font-weight: bold;
     font-size: 1.3em;
 }
@@ -145,20 +160,26 @@ and open the template in the editor.
     overflow: hidden !important;
 }
 
+.top-space {
+    margin-top: 0.5em;
+}
+
 .tile, .button-tile {
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    color: #444;
+/*    color: #444;*/
     font-size: 2em;
     margin: 5px;
-    border-radius: 3px;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
     -o-transition-property: -o-transform;
     transition-property: transform;
     transform-style: preserve-3d;
     overflow: hidden;
+    text-shadow: none;
+    border-radius: 6px;
+/*    font-weight: bold;*/
 }
 
 .button-tile {
@@ -194,9 +215,9 @@ and open the template in the editor.
 }*/
 
 .flip {
-    -webkit-transform: rotateY(360deg);
-    -moz-transform: rotateY(360deg);
-    -o-transform: rotateY(360deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
 }
 
 .spin {
@@ -206,10 +227,10 @@ and open the template in the editor.
 }
 
 .fade {
-    transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
+    transition: all 0.30s;
+    -moz-transition: all 0.30s;
+    -webkit-transition: all 0.30s;
+    -o-transition: all 0.30s;
 }
 
 .flipped {
@@ -332,11 +353,9 @@ and open the template in the editor.
 }
 
 .sub-heading {
-    font-size: 1.17em;
-    margin-top: 1em;
+    font-size: 1.3em;
     margin-bottom: 4px;
     display: block;
-    font-weight: bold;
 }
 
 .ui-btn.fixed-size {
@@ -346,5 +365,5 @@ and open the template in the editor.
 .button-tile {
     text-decoration: none;
     color: #333333;
-/*    font-weight: bold;*/
+    /*    font-weight: bold;*/
 }

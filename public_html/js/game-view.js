@@ -10,6 +10,7 @@
  * @type type
  */
 var gameView = {
+    TRANSITION_LENGTH: 200,
     colors: null,
     /**
      * Initialize the view.
@@ -30,11 +31,11 @@ var gameView = {
      * Do a nice little effect upon loading and animate all the tiles.
      */
     animateAllTiles: function() {
-        $('.tile').addClass('spin');
+        $('.tile').addClass('flip');
 
         setTimeout(function() {
-            $('.tile').removeClass('spin');
-        }, 500);
+            $('.tile').removeClass('flip');
+        }, gameView.TRANSITION_LENGTH);
     },
     /**
      * Loads tiles into the view.
@@ -44,7 +45,7 @@ var gameView = {
     loadTiles: function(gridSize, tiles) {
         var html, i, j, width, tile, index, value;
 
-        $('#tile-container').fadeOut(300, function() {
+        $('#tile-container').fadeOut(gameView.TRANSITION_LENGTH / 2, function() {
             $('#tile-container .tile').remove();
 
             // - (gridSize * 5 * 2) - 10)
@@ -61,7 +62,7 @@ var gameView = {
                 }
             }
 
-            $('#tile-container').height(gridSize * (width + (5 * 2)) + 'px').fadeIn(300, function() {
+            $('#tile-container').height(gridSize * (width + (5 * 2)) + 'px').fadeIn(gameView.TRANSITION_LENGTH / 2, function() {
                 gameView.animateAllTiles();
                 // Re-register event hookups.
                 eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
@@ -105,8 +106,8 @@ var gameView = {
 
             setTimeout(function() {
                 $('.tile-' + index).addClass(gameView.colors[value - 1]).text(value);
-            }, 500);
-        }, 500);
+            }, gameView.TRANSITION_LENGTH);
+        }, gameView.TRANSITION_LENGTH);
 
         //$('.tile-' + index).text(value).addClass(gameView.colors[value]);
     },
