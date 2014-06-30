@@ -22,7 +22,7 @@ var sizes = {
 var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
-    MAX_TILE_SIZE: 5,
+    MAX_TILE_SIZE: 4,
     SAVE_STATE_TIME: 10000,
     ENTROPY_TIME: 30000,
     TAP_TIMEOUT: 1500,
