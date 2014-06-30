@@ -178,7 +178,7 @@ and open the template in the editor.
     transform-style: preserve-3d;
     overflow: hidden;
     text-shadow: none;
-    border-radius: 6px;
+    border-radius: 0px;
 /*    font-weight: bold;*/
 }
 
