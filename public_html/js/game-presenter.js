@@ -24,7 +24,6 @@ var gamePresenter = {
     MIN_TILE_SIZE: 1,
     MAX_TILE_SIZE: 4,
     SAVE_STATE_TIME: 5000,
-    ENTROPY_TIME: 30000,
     TAP_TIMEOUT: 600,
     // Class variables
     gridSize: 3,
@@ -33,7 +32,6 @@ var gamePresenter = {
     tiles: null,
     tapTimeout: null,
     saveStateInterval: null,
-    entropyInterval: null,
     victoryAchieved: null,
     /**
      * Entry point.
@@ -71,7 +69,6 @@ var gamePresenter = {
 
         // Auto save every ten seconds.
         gamePresenter.saveStateInterval = setInterval(gamePresenter.saveState, gamePresenter.SAVE_STATE_TIME);
-        //gamePresenter.entropyInterval = setInterval(gamePresenter.entropyIntervalFunction, gamePresenter.ENTROPY_TIME);
 
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
@@ -82,41 +79,7 @@ var gamePresenter = {
      */
     clearIntervals: function() {
         clearInterval(gamePresenter.saveStateInterval);
-        clearInterval(gamePresenter.entropyInterval);
         gamePresenter.saveStateInterval = null;
-        gamePresenter.entropyInterval = null;
-    },
-    /**
-     * Randomly flips and increments a tile.
-     */
-    entropyIntervalFunction: function() {
-        var index, updatedTiles;
-
-        // Before starting... wait for any existing tap timeout to clear.
-        setTimeout(function() {
-            index = Math.floor(Math.random() * gamePresenter.tiles.length);
-
-            updatedTiles = [];
-
-            gamePresenter.tiles[index].incrementValue();
-            updatedTiles.push(gamePresenter.tiles[index]);
-
-            // Update tiles on the view.
-            gameView.updateTiles(updatedTiles);
-
-            if (gamePresenter.tapTimeout !== null) {
-                clearTimeout(gamePresenter.tapTimeout);
-                gamePresenter.tapTimeout = null;
-            }
-
-            // Implement some throttling on tile tapping. This prevents glitches during animations.
-            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, gamePresenter.TAP_TIMEOUT);
-
-            setTimeout(function() {
-                // Evaluate Game Status.
-                gamePresenter.evaluateState();
-            }, gamePresenter.TAP_TIMEOUT + 100);
-        }, gamePresenter.TAP_TIMEOUT);
     },
     /**
      * Check if all tiles have the same value.

@@ -77,7 +77,7 @@ var startPresenter = {
 
         if (startPresenter.tapTimeout === null) {
             // Implement some throttling on tile tapping. This prevents glitches during animations.
-            startPresenter.tapTimeout = setTimeout(startPresenter.tapTimeoutFunction, 1000);
+            startPresenter.tapTimeout = setTimeout(startPresenter.tapTimeoutFunction, 600);
 
             startView.flipTile(e.currentTarget);
 
