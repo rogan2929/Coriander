@@ -108,8 +108,6 @@ var gameView = {
                 $('.tile-' + index).addClass(gameView.colors[value - 1]).text(value);
             }, gameView.TRANSITION_LENGTH);
         }, gameView.TRANSITION_LENGTH);
-
-        //$('.tile-' + index).text(value).addClass(gameView.colors[value]);
     },
     /**
      * Update displayed tiles.
