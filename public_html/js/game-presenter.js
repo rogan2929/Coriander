@@ -309,7 +309,7 @@ var gamePresenter = {
             // (index + 1) % (gamePresenter.gridSize) !== 0
             // index - gamePresenter.gridSize >= 0
             if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index - gamePresenter.gridSize >= 0) {
-                gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
+                gamePresenter.tiles[index - gamePresenter.gridSize + 1].incrementValue();
                 updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize + 1]);
             }
 
