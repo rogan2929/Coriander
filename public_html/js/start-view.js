@@ -9,7 +9,7 @@
  * @type type
  */
 var startView = {
-    TRANSITION_LENGTH: 300,
+    TRANSITION_LENGTH: 200,
     /**
      * Make them there button tiles all perdy.
      */

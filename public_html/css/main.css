@@ -183,6 +183,7 @@ and open the template in the editor.
     text-shadow: none;
     border-radius: 0px;
     /*    font-weight: bold;*/
+    color: #333333
 }
 
 .button-tile {
@@ -234,10 +235,10 @@ and open the template in the editor.
 }
 
 .fade {
-    transition: all 0.30s;
-    -moz-transition: all 0.30s;
-    -webkit-transition: all 0.30s;
-    -o-transition: all 0.30s;
+    transition: all 0.20s;
+    -moz-transition: all 0.20s;
+    -webkit-transition: all 0.20s;
+    -o-transition: all 0.20s;
 }
 
 .flipped {
@@ -371,6 +372,6 @@ and open the template in the editor.
 
 .button-tile {
     text-decoration: none;
-    color: #333333;
+/*    color: #333333;*/
     /*    font-weight: bold;*/
 }
