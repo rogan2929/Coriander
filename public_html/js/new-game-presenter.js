@@ -19,6 +19,7 @@ var newGamePresenter = {
     
     onChangeGridRadio: function(e) {
         gamePresenter.setGridSize(parseInt($(e.currentTarget).attr('value')));
+        newGameView.enableButtonStart();
     },
     onTapButtonStart: function(e) {
         startPresenter.setNewGame(true);

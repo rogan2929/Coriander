@@ -27,16 +27,6 @@ var gameView = {
         gameView.colors.push('color7');
         gameView.colors.push('color8');
     },
-//    /**
-//     * Do a nice little effect upon loading and animate all the tiles.
-//     */
-//    animateAllTiles: function() {
-//        $('.tile').addClass('flip');
-//
-//        setTimeout(function() {
-//            $('.tile').removeClass('flip');
-//        }, gameView.TRANSITION_LENGTH);
-//    },
     /**
      * Loads tiles into the view.
      * @param {type} gridSize
@@ -84,31 +74,6 @@ var gameView = {
     showMoveCount: function(count) {
         $('#score').text('Flips: ' + count);
     },
-//    /**
-//     * Switch a tile's color.
-//     * @param {Tile} tile
-//     */
-//    switchTileColor: function(tile) {
-//        var i, index, value, delta;
-//
-//        index = tile.getIndex();
-//        value = tile.getValue();
-//        delta = tile.getDelta();
-//
-//        for (i = 0; i < gameView.colors.length; i++) {
-//            $('.tile-' + index).removeClass(gameView.colors[i]);
-//        }
-//
-//        $('.tile-' + index).text('').addClass('flip');
-//
-//        setTimeout(function() {
-//            $('.tile-' + index).removeClass('flip');
-//
-//            setTimeout(function() {
-//                $('.tile-' + index).addClass(gameView.colors[value - 1]).text(value);
-//            }, gameView.TRANSITION_LENGTH);
-//        }, gameView.TRANSITION_LENGTH);
-//    },
     flipTiles: function(tiles) {
         var i, index, value, html, color, classList;
 
@@ -146,14 +111,7 @@ var gameView = {
      * @param {type} tiles
      */
     updateTiles: function(tiles) {
-        var i;
-
         gameView.playFlipEffect();
-
         gameView.flipTiles(tiles);
-
-//        for (i = 0; i < tiles.length; i++) {
-//            gameView.switchTileColor(tiles[i]);
-//        }
     }
 };

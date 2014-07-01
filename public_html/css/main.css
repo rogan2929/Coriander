@@ -315,42 +315,6 @@ and open the template in the editor.
     -moz-box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;
 }
 
-/*
-
-.color1 {
-    background-color: #F5888C;
-}
-
-.color2 {
-    background-color: #7acaed;
-}
-
-.color3 {
-    background-color: #c9e4a5;
-}
-
-.color4 {
-    background-color: #fabd77;
-}
-
-.color5 {
-    background-color: #e0c9af;
-}
-
-.color6 {
-    background-color: #ffe38f;
-}
-
-.color7 {
-    background-color: #fdf57c;
-}
-
-.color8 {
-    background-color: #EBEBEB;
-}
-
-*/
-
 .display-table {
     display: table;
 }

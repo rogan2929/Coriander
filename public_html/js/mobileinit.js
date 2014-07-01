@@ -9,11 +9,4 @@ $(document).bind('mobileinit', function() {
     $.event.special.tap.emitTapOnTaphold = false;
     $.event.special.tap.tapholdThreshold = 500;
     $.mobile.defaultPageTransition = 'flip';
-    
-    // Load phonegap scripts.
-    $.getScript('phonegap.js', function() {
-        $.getScript('childbrowser.js');
-        
-        // Additional phonegap scripts...
-    });
 });

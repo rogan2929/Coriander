@@ -9,5 +9,7 @@
  * @type type
  */
 var newGameView = {
-
+    enableButtonStart: function() {
+        $('#button-start').removeClass('ui-state-disabled');
+    }
 };

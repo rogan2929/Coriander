@@ -15,10 +15,22 @@ and open the template in the editor.
     <link rel='stylesheet' href='css/main.css'>
 
     <script src="js/vendor/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="phonegap.js"></script>
+
+    <!-- Do some init work after PhoneGap loads -->
+    <script type='text/javascript' charset="utf-8">
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+            // find all contacts with 'Jacob' in any name field
+            $.event.special.tap.emitTapOnTaphold = false;
+            $.event.special.tap.tapholdThreshold = 500;
+            $.mobile.defaultPageTransition = 'flip';
+        }
+    </script>
+
     <!--
-    <script src="phonegap.js"></script>
-    <script src="childbrowser.js"></script>-->
-    <script src="js/mobileinit.js"></script>
+    <script src="js/mobileinit.js"></script>-->
     <script src="js/vendor/jquery.mobile-1.4.2.min.js"></script>
     <script src='http://my.mobfox.com/ad.js'></script>
     <script src='http://my.mobfox.com/nativead.js'></script>
@@ -41,6 +53,7 @@ and open the template in the editor.
     <script src="js/main.js"></script>
 
     <body class="background">
+        <!--
         <script>
             window.fbAsyncInit = function() {
                 FB.init({
@@ -60,7 +73,7 @@ and open the template in the editor.
                 js.src = "//connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-        </script>
+        </script>-->
 
         <!-- Start Page -->
         <div id='start' data-role="page" class="background">
@@ -94,12 +107,6 @@ and open the template in the editor.
                         <p>Rate</p>
                     </div>
                 </div>
-                <!--
-                <div id='tile-ad-wall' class='button-tile shadow color3'>
-                    <div class='tile-text'>
-                        <p>More Apps!</p>
-                    </div>
-                </div>-->
             </div>
         </div>
 
@@ -111,7 +118,7 @@ and open the template in the editor.
                 <fieldset data-role="controlgroup">
                     <legend class='auto-margin light'>Choose a grid size:</legend>
 
-                    <input type="radio" name="radio-choice" id="size-small" class='grid-radio' value="3" checked="checked" />
+                    <input type="radio" name="radio-choice" id="size-small" class='grid-radio' value="3" />
                     <label for="size-small" class='shadow'>3 x 3 (Small)</label>
 
                     <input type="radio" name="radio-choice" id="size-regular" class='grid-radio' value="4"  />
@@ -125,7 +132,7 @@ and open the template in the editor.
                 </fieldset>
             </div>
 
-            <a href="#game" id='button-start'  class='ui-btn shadow half'>Let's Go!</a>
+            <a href="#game" id='button-start'  class='ui-btn shadow half ui-state-disabled'>Let's Go!</a>
             <a href="#start" class='ui-btn shadow half'>Menu</a>
         </div>
 
@@ -193,17 +200,17 @@ and open the template in the editor.
             <div id='tile-container' class='h-centered v-centered absolute'></div>
             <div class='ad-bar absolute stretch-bottom h-centered stretch-left stretch-right'>
                 <script>
-                    RequestAd_({
-                        // Ad Request Variables
-                        s: 'f2ffd94193a7f381bfbdf6dc81250ede',
-                        m: 'live',<!-- Change to 'test' to show a test ad -->
-                        adspace_width: '320',<!-- Maximum Width of your Banner -->
-                        adspace_height: '50',<!-- Maximum Height of your Banner -->
-                        adspace_strict: '0',<!-- If you change this parameter to 1, the ad size set above will be strict and no smaller ads will be shown. -->
-                        backfillhtml: '',<!-- Insert HTML Code here that should be shown when no ad is available -->
-                        prependclickcontent: '',<!-- Prepend something before Click URLs. It is recommended to leave this parameter empty.  -->
-                        trackingpixelurl: ''<!-- Ping a Tracking Pixel everytime an ad is shown. -->
-                    });
+                RequestAd_({
+                    // Ad Request Variables
+                    s: 'f2ffd94193a7f381bfbdf6dc81250ede',
+                    m: 'live',<!-- Change to 'test' to show a test ad -->
+                    adspace_width: '320',<!-- Maximum Width of your Banner -->
+                    adspace_height: '50',<!-- Maximum Height of your Banner -->
+                    adspace_strict: '0',<!-- If you change this parameter to 1, the ad size set above will be strict and no smaller ads will be shown. -->
+                    backfillhtml: '',<!-- Insert HTML Code here that should be shown when no ad is available -->
+                    prependclickcontent: '',<!-- Prepend something before Click URLs. It is recommended to leave this parameter empty.  -->
+                    trackingpixelurl: ''<!-- Ping a Tracking Pixel everytime an ad is shown. -->
+                });
                 </script>
             </div>
         </div>

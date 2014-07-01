@@ -61,7 +61,7 @@ var startPresenter = {
             // Determine the platform, so user can be directed to either Google Play or App Store.
             switch (window.device.platform) {
                 case 'Android':
-                    window.open('https://play.google.com/store/apps/details?id=com.coriander', '_system');
+                    window.plugins.ChildBrowser.showWebPage('https://play.google.com/store/apps/details?id=com.coriander', {showLocationBar: true});
                     break;
                 case 'iPhone':
                     alert('Not yet.');
