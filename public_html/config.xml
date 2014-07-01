@@ -3,9 +3,9 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.coriander"
-        version   = "0.6.0">
+        version   = "1.0.0">
     
-    <name>Flippee</name>
+    <name>Flippee!</name>
     
     <description>
         A simple to play, but hard to win puzzle game.
