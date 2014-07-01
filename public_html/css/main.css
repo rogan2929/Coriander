@@ -261,34 +261,58 @@ and open the template in the editor.
 
 .color5 {
     background-color: #e7d5c1;
+    box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;
+    -webkit-box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;
 }
 
 .color2 {
     background-color: #90d3f0;
+    box-shadow: 0 0 8px #90d3f0, inset 0 0 20px #246476;
+    -webkit-box-shadow: 0 0 8px #90d3f0, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #90d3f0, inset 0 0 20px #246476;
 }
 
 .color3 {
     background-color: #f6898c;
+    box-shadow: 0 0 8px #f6898c, inset 0 0 20px #246476;
+    -webkit-box-shadow: 0 0 8px #f6898c, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #f6898c, inset 0 0 20px #246476;
 }
 
 .color4 {
     background-color: #a1d162;
+    box-shadow: 0 0 8px #a1d162, inset 0 0 20px #246476;
+    -webkit-box-shadow: 0 0 8px #a1d162, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #a1d162, inset 0 0 20px #246476;
 }
 
 .color1 {
     background-color: #ffd761;
+    box-shadow: 0 0 8px #ffd761, inset 0 0 20px #246476;
+    -webkit-box-shadow: 0 0 8px #ffd761, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #ffd761, inset 0 0 20px #246476;
 }
 
 .color6 {
     background-color: #4FE7E7;
+    box-shadow: 0 0 8px #4FE7E7, inset 0 0 20px #246476;
+    -webkit-box-shadow: 0 0 8px #4FE7E7, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #4FE7E7, inset 0 0 20px #246476;
 }
 
 .color7 {
     background-color: #FFF12A;
+    box-shadow: 0 0 8px #FFF12A, inset 0 0 20px #246476;
+    -webkit-box-shadow: 0 0 8px #FFF12A, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #FFF12A, inset 0 0 20px #246476;
 }
 
 .color8 {
     background-color: #C299F7;
+    box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;
+    -webkit-box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;
 }
 
 /*
@@ -372,6 +396,6 @@ and open the template in the editor.
 
 .button-tile {
     text-decoration: none;
-/*    color: #333333;*/
+    /*    color: #333333;*/
     /*    font-weight: bold;*/
 }
