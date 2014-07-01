@@ -33,13 +33,15 @@ var gameView = {
      * @param {type} tiles
      */
     loadTiles: function(gridSize, tiles) {
-        var html, i, j, width, tile, index, value;
+        var html, i, j, width, tile, index, value, margin;
 
         $('#tile-container').fadeOut(gameView.TRANSITION_LENGTH / 2, function() {
             $('#tile-container .tile').remove();
 
             // - (gridSize * 5 * 2) - 10)
-            width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
+            //width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
+            width = ($(window).width() - ($(window).width() * 0.15)) / gridSize;
+            margin = (width / 20);
 
             html = $('#tile-template').html();
 
@@ -48,12 +50,11 @@ var gameView = {
                     value = tiles[i + j].getValue();
                     index = tiles[i + j].getIndex();
 
-                    tile = $(html).width(width).height(width).css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
+                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
                 }
             }
 
-            $('#tile-container').height(gridSize * (width + (5 * 2)) + 'px').fadeIn(gameView.TRANSITION_LENGTH / 2, function() {
-                //gameView.animateAllTiles();
+            $('#tile-container').height(gridSize * (width + (margin)) + 'px').fadeIn(gameView.TRANSITION_LENGTH / 2, function() {
                 // Re-register event hookups.
                 eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
                 eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
@@ -74,6 +75,10 @@ var gameView = {
     showMoveCount: function(count) {
         $('#score').text('Flips: ' + count);
     },
+    /**
+     * Flip tiles that have been udpated.
+     * @param {type} tiles
+     */
     flipTiles: function(tiles) {
         var i, index, value, html, color, classList;
 
