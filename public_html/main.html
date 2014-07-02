@@ -189,17 +189,12 @@ and open the template in the editor.
         </div>
 
         <div id='game' data-role='page' class='no-scroll background'>
-            <div id='score' class='game-title margin-top margin-left float-left ui-body-a shadow'></div>
-            <!--
-            <div data-role='controlgroup' data-type='horizontal' class='margin-right margin-top horizontal display-inline-block float-right'>-->
-            <div class='float-right'>
-                <!--
-                <a id='button-shuffle' class='ui-btn ui-btn-icon-notext ui-icon-recycle ui-btn-inline'></a>
-                If you get stuck, try hitting the shuffle button to reorder the tiles.<br/><br/>-->
+            <div class='ui-content ui-body-a shadow'>
+                <span id='score' class='page-title'></span>
+            </div>
+            <div class='absolute stretch-right stretch-top margin-top'>
                 <a href="#start" class='ui-btn ui-btn-icon-notext ui-icon-grid ui-btn-inline shadow'></a>
             </div>
-            <!--
-            </div>-->
             <div id='tile-container' class='h-centered v-centered absolute'></div>
             <div class='ad-bar absolute stretch-bottom h-centered stretch-left stretch-right'>
                 <script>
