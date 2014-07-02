@@ -23,13 +23,14 @@ var startView = {
         
         margin = size / 20;
         
-        textSize = size / 4;
+        //textSize = size / 4;
         
         size += 'px';
         margin += 'px';
 
         //$('.button-tile').width(size).height(size).css('line-height', size).css('font-size', textSize);
-        $('.button-tile').width(size).height(size).css('font-size', textSize).css('margin', margin);
+        //$('.button-tile').width(size).height(size).css('font-size', textSize).css('margin', margin);
+        $('.button-tile').width(size).height(size).css('margin', margin);
     },
     /**
      * Flip a button tile.

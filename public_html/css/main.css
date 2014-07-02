@@ -171,8 +171,6 @@ and open the template in the editor.
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    /*    color: #444;*/
-    font-size: 2em;
     margin: 5px;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
@@ -181,14 +179,17 @@ and open the template in the editor.
     transform-style: preserve-3d;
     overflow: hidden;
     text-shadow: none;
-    border-radius: 0px;
-    /*    font-weight: bold;*/
-    color: #333333
+    color: #333333;
+}
+
+.ui-corner-all {
+    border-radius: 5px;
 }
 
 .button-tile {
     position: relative;
     padding: 10px;
+    font-size: 1.5em;
 }
 
 .button-tile .tile-text {
@@ -203,20 +204,6 @@ and open the template in the editor.
     vertical-align: middle; 
     text-align: center; 
 }
-
-/*.button-tile {
-    position: relative;
-}
-
-.button-tile p {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-top: auto;
-    margin-bottom: auto;
-    left: 0;
-    right: 0;
-}*/
 
 .light {
     color: #f6f6f6;
@@ -261,58 +248,58 @@ and open the template in the editor.
 
 .color5 {
     background-color: #e7d5c1;
-    box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;
+/*    box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;
     -webkit-box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;
-    -moz-box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;*/
 }
 
 .color2 {
     background-color: #90d3f0;
-    box-shadow: 0 0 8px #90d3f0, inset 0 0 20px #246476;
+/*    box-shadow: 0 0 8px #90d3f0, inset 0 0 20px #246476;
     -webkit-box-shadow: 0 0 8px #90d3f0, inset 0 0 20px #246476;
-    -moz-box-shadow: 0 0 8px #90d3f0, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #90d3f0, inset 0 0 20px #246476;*/
 }
 
 .color3 {
     background-color: #f6898c;
-    box-shadow: 0 0 8px #f6898c, inset 0 0 20px #246476;
+/*    box-shadow: 0 0 8px #f6898c, inset 0 0 20px #246476;
     -webkit-box-shadow: 0 0 8px #f6898c, inset 0 0 20px #246476;
-    -moz-box-shadow: 0 0 8px #f6898c, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #f6898c, inset 0 0 20px #246476;*/
 }
 
 .color4 {
     background-color: #a1d162;
-    box-shadow: 0 0 8px #a1d162, inset 0 0 20px #246476;
+/*    box-shadow: 0 0 8px #a1d162, inset 0 0 20px #246476;
     -webkit-box-shadow: 0 0 8px #a1d162, inset 0 0 20px #246476;
-    -moz-box-shadow: 0 0 8px #a1d162, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #a1d162, inset 0 0 20px #246476;*/
 }
 
 .color1 {
     background-color: #ffd761;
-    box-shadow: 0 0 8px #ffd761, inset 0 0 20px #246476;
+/*    box-shadow: 0 0 8px #ffd761, inset 0 0 20px #246476;
     -webkit-box-shadow: 0 0 8px #ffd761, inset 0 0 20px #246476;
-    -moz-box-shadow: 0 0 8px #ffd761, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #ffd761, inset 0 0 20px #246476;*/
 }
 
 .color6 {
     background-color: #4FE7E7;
-    box-shadow: 0 0 8px #4FE7E7, inset 0 0 20px #246476;
+/*    box-shadow: 0 0 8px #4FE7E7, inset 0 0 20px #246476;
     -webkit-box-shadow: 0 0 8px #4FE7E7, inset 0 0 20px #246476;
-    -moz-box-shadow: 0 0 8px #4FE7E7, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #4FE7E7, inset 0 0 20px #246476;*/
 }
 
 .color7 {
     background-color: #FFF12A;
-    box-shadow: 0 0 8px #FFF12A, inset 0 0 20px #246476;
+/*    box-shadow: 0 0 8px #FFF12A, inset 0 0 20px #246476;
     -webkit-box-shadow: 0 0 8px #FFF12A, inset 0 0 20px #246476;
-    -moz-box-shadow: 0 0 8px #FFF12A, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #FFF12A, inset 0 0 20px #246476;*/
 }
 
 .color8 {
     background-color: #C299F7;
-    box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;
+/*    box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;
     -webkit-box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;
-    -moz-box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;
+    -moz-box-shadow: 0 0 8px #C299F7, inset 0 0 20px #246476;*/
 }
 
 .display-table {
