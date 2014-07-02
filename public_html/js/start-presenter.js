@@ -85,7 +85,7 @@ var startPresenter = {
 
             setTimeout(function() {
                 startView.navigateTo(page);
-            }, 600);
+            }, 1300);
         }
     }
 };
