@@ -14,11 +14,11 @@ var newGamePresenter = {
      */
     init: function() {
         eventBus.installHandler('newGamePresenter.onTapButtonStart', newGamePresenter.onTapButtonStart, '#button-start', 'tap');
-        eventBus.installHandler('newGamePresenter.onChangeGridRadio', newGamePresenter.onChangeGridRadio, '.grid-radio', 'change');
+        eventBus.installHandler('newGamePresenter.onTapButtonTile', newGamePresenter.onTapButtonTile, '#new-game .button-tile', 'tap');
     },
-    
-    onChangeGridRadio: function(e) {
-        gamePresenter.setGridSize(parseInt($(e.currentTarget).attr('value')));
+    onTapButtonTile: function(e) {
+        gamePresenter.setGridSize(parseInt($(e.currentTarget).attr('data-value')));
+        newGameView.selectTile(e.currentTarget);
         newGameView.enableButtonStart();
     },
     onTapButtonStart: function(e) {

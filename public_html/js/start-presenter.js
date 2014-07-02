@@ -30,7 +30,7 @@ var startPresenter = {
 
         startView.configureButtonTiles();
         startView.toggleButtonResume(!startPresenter.newGame);
-        eventBus.installHandler('startPresenter.onTapButtonTile', startPresenter.onTapButtonTile, '.button-tile', 'tap');
+        eventBus.installHandler('startPresenter.onTapButtonTile', startPresenter.onTapButtonTile, '#start .button-tile', 'tap');
         eventBus.installHandler('startPresenter.onTapTileRate', startPresenter.onTapTileRate, '#tile-rate', 'tap');
     },
     /**

@@ -10,7 +10,7 @@
  * @type type
  */
 var gameView = {
-    TRANSITION_LENGTH: 200,
+    TRANSITION_LENGTH: 400,
     colors: null,
     /**
      * Initialize the view.
@@ -81,7 +81,7 @@ var gameView = {
      * @param {type} tiles
      */
     flipTiles: function(tiles) {
-        var i, index, value, html, color, classList;
+        var i, index, value, color, classList;
 
         // "Tag" the tiles that are going to be flipped, and strip them of their color.
         for (i = 0; i < tiles.length; i++) {
