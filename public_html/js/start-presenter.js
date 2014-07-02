@@ -55,7 +55,7 @@ var startPresenter = {
         startPresenter.tapTimeout = null;
     },
     onTapTileRate: function(e) {
-        startView.flipTile(e.currentTarget);
+        //startView.flipTile(e.currentTarget);
 
         if (window.device) {
             // Determine the platform, so user can be directed to either Google Play or App Store.
