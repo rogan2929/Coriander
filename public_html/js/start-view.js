@@ -47,19 +47,29 @@ var startView = {
         
         $(tile).removeClass(color);
 
+        // Do the animation.
         $(tile).empty().addClass('fade').addClass('flip');
 
+        // Add color back and set content.
         setTimeout(function() {
             $(tile).removeClass('flip');
-
-            setTimeout(function() {
-                $(tile).html(html).addClass(color);
-            }, startView.TRANSITION_LENGTH);
+            $(tile).addClass(color);
+            startView.setTileText(tile, html);
         }, startView.TRANSITION_LENGTH);
     },
     
     navigateTo: function(page) {
         $('body').pagecontainer('change', '#' + page);
+    },
+        /**
+     * Sets the tile text.
+     * @param {type} tile
+     * @param {type} value
+     */
+    setTileText: function(tile, html) {
+        setTimeout(function() {
+            $(tile).html(html);
+        }, startView.TRANSITION_LENGTH);
     },
     /**
      * Enable/disable the resume button.

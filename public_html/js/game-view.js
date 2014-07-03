@@ -93,23 +93,34 @@ var gameView = {
 
             $('.tile-' + index).addClass('flipme').removeClass(color);
         }
-        
+
         // Flip all the tiles at once.
         $('.flipme').addClass('flip').text('');
-        
+
         setTimeout(function() {
             $('.flipme').removeClass('flip').removeClass('flipme');
-            
-            setTimeout(function() {
-                // Display new values and add new color classes.
-                for (i = 0; i < tiles.length; i++) {
-                    index = tiles[i].getIndex();
-                    value = tiles[i].getValue();
-                    
-                    $('.tile-' + index).text(value).addClass(gameView.colors[value - 1]);
-                }
-                
-            }, gameView.TRANSITION_LENGTH);
+
+            // Display new values and add new color classes.
+            for (i = 0; i < tiles.length; i++) {
+                index = tiles[i].getIndex();
+                value = tiles[i].getValue();
+
+                // Add the color back in.
+                $('.tile-' + index).addClass(gameView.colors[value - 1]);
+
+                // Set the tile text.
+                gameView.setTileText('.tile-' + index, value);
+            }
+        }, gameView.TRANSITION_LENGTH);
+    },
+    /**
+     * Sets the tile text.
+     * @param {type} tile
+     * @param {type} value
+     */
+    setTileText: function(tile, value) {
+        setTimeout(function() {
+            $(tile).text(value);
         }, gameView.TRANSITION_LENGTH);
     },
     /**
