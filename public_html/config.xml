@@ -20,7 +20,17 @@
     <preference name="orientation" value="portrait" />
     <preference name="stay-in-webview" value="false" />
     
+    <!-- Icons -->
     <icon src="icon.png" />
+    
+    <!-- Android Icons -->
+    <platform name="android">
+        <icon src="res/drawable-mdpi/ic_launcher.png" density="mdpi" />
+        <icon src="res/drawable-hdpi/ic_launcher.png" density="hdpi" />
+        <icon src="res/drawable-xhdpi/ic_launcher.png" density="xhdpi" />
+        <icon src="res/drawable-xxhdpi/ic_launcher.png" density="xxhdpi" />
+        <icon src="res/drawable-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
+     </platform>
     
     <gap:platform name="ios" />
     <gap:platform name="android" />
