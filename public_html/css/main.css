@@ -222,10 +222,10 @@ and open the template in the editor.
 }
 
 .fade {
-    transition: all 0.40s;
-    -moz-transition: all 0.40s;
-    -webkit-transition: all 0.40s;
-    -o-transition: all 0.40s;
+    transition: all 0.50s;
+    -moz-transition: all 0.50s;
+    -webkit-transition: all 0.50s;
+    -o-transition: all 0.50s;
 }
 
 .flipped {
