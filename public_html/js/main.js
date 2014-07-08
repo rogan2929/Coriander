@@ -70,25 +70,25 @@ $(document).on('pagebeforeshow', '#start', function(e) {
 });
 
 $(document).on('pagebeforeshow', '#new-game', function(e) {
-    navigator.register();
+    navigator.register('#new-game');
     newGamePresenter.init();
 });
 
 $(document).on('pagebeforeshow', '#more-options', function(e) {
-    navigator.register(moreOptionsPresenter.onSwipeLeftPage);
+    navigator.register('#more-options', moreOptionsPresenter.onSwipeLeftPage);   // Call custom swipeleft handler.
+    moreOptionsPresenter.init();
 });
 
 $(document).on('pagebeforeshow', '#high-scores', function(e) {
-    navigator.register();
+    navigator.register('#high-scores');
     highScoresPresenter.init();
 });
 
 $(document).on('pagebeforeshow', '#directions', function(e) {
-    navigator.register();
+    navigator.register('#directions');
 });
 
 $(document).on('pagebeforeshow', '#game', function(e) {
-    navigator.register();
     gamePresenter.init();
 });
 
@@ -98,6 +98,5 @@ $(document).on('pagehide', '#game', function(e) {
 });
 
 $(document).on('pagebeforeshow', '#victory', function(e) {
-    navigator.register();
     victoryPresenter.init();
 });

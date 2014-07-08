@@ -9,10 +9,10 @@
  * @type type
  */
 var sizes = {
-    small: 'small',
-    regular: 'regular',
-    medium: 'medium',
-    large: 'large'
+    small: '3 x 3',
+    regular: '4 x 4',
+    medium: '5 x 5',
+    large: '6 x 6'
 };
 
 /**
@@ -22,7 +22,6 @@ var sizes = {
 var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
-    MAX_TILE_SIZE: 4,
     SAVE_STATE_TIME: 5000,
     TAP_TIMEOUT: 1000,
     // Class variables
@@ -33,6 +32,8 @@ var gamePresenter = {
     tapTimeout: null,
     saveStateInterval: null,
     victoryAchieved: null,
+    gameMode: null,
+    maxTileSize: 4,
     /**
      * Entry point.
      */
@@ -158,10 +159,10 @@ var gamePresenter = {
         gridSquare = gamePresenter.gridSize * gamePresenter.gridSize;
 
         for (i = 0; i < gridSquare; i++) {
-            value = Math.ceil((Math.random() * gamePresenter.MAX_TILE_SIZE));
+            value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
 
             values.push(value);
-            gamePresenter.tiles.push(new Tile(value, i, gamePresenter.MIN_TILE_SIZE, gamePresenter.MAX_TILE_SIZE));
+            gamePresenter.tiles.push(new Tile(value, i, gamePresenter.MIN_TILE_SIZE, gamePresenter.maxTileSize));
         }
     },
     /**
@@ -177,27 +178,49 @@ var gamePresenter = {
         var gameState;
 
         if (!gamePresenter.victoryAchieved) {
-            gameState = new GameState(gamePresenter.tiles, gamePresenter.gridSize, new Score(gamePresenter.moveCount, gamePresenter.gridName));
+            gameState = new GameState(gamePresenter.tiles,
+                    gamePresenter.gridSize,
+                    new Score(gamePresenter.moveCount, gamePresenter.gridName),
+                    gamePresenter.gameMode,
+                    gamePresenter.maxTileSize
+                    );
 
             model.saveGameState(gameState);
         }
+    },
+    setGameMode: function(mode) {
+        gamePresenter.gameMode = mode;
     },
     /**
      * Setter for gameState.
      * @param {GameState} gameState
      */
     setGameState: function(gameState) {
-        var i;
+        var i, tiles;
 
         gamePresenter.tiles = [];
 
+        tiles = gameState.tiles;
+
         for (i = 0; i < gameState.tiles.length; i++) {
-            gamePresenter.tiles.push(new Tile(gameState.tiles[i].value, gameState.tiles[i].index, gameState.tiles[i].min, gameState.tiles[i].max));
+            gamePresenter.tiles.push(new Tile(tiles[i].value, tiles[i].index, tiles[i].min, tiles[i].max));
         }
 
         gamePresenter.gridSize = gameState.gridSize;
         gamePresenter.setMoveCount(gameState.score.moves);
         gamePresenter.gridName = gameState.score.size;
+        gamePresenter.gameMode = gameState.mode;
+        gamePresenter.maxTileSize = gameState.maxTileSize;
+
+        // Check for valid game mode.
+        if (!gamePresenter.gameMode) {
+            gamePresenter.gameMode = 0;
+        }
+
+        // Check for valid max tile size. (Needed for update.)
+        if (!gamePresenter.maxTileSize) {
+            gamePresenter.maxTileSize = 4;
+        }
     },
     /**
      * Setter for gridSize
@@ -205,6 +228,13 @@ var gamePresenter = {
      */
     setGridSize: function(gridSize) {
         gamePresenter.gridSize = gridSize;
+    },
+    /**
+     * Setter for maxTileSize
+     * @param {type} maxTileSize
+     */
+    setMaxTileSize: function(maxTileSize) {
+        gamePresenter.maxTileSize = maxTileSize;
     },
     /**
      * Setter for moveCount
@@ -254,7 +284,7 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        if (!alt) {
+        if (!alt && gamePresenter.gameMode === 0) {
             gamePresenter.tiles[index].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index]);
         }
@@ -383,6 +413,8 @@ var gamePresenter = {
         gamePresenter.flipTiles(e.currentTarget, false);
     },
     onTapHoldTile: function(e) {
-        gamePresenter.flipTiles(e.currentTarget, true);
+        if (gamePresenter.gameMode === 0) {
+            gamePresenter.flipTiles(e.currentTarget, true);
+        }
     }
 };

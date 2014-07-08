@@ -12,6 +12,7 @@
 var gameView = {
     TRANSITION_LENGTH: 500,
     colors: null,
+    
     /**
      * Initialize the view.
      */

@@ -11,24 +11,32 @@
 var navigator = {
     /**
      * Init the navigator object.
+     * @param {type} page
      * @param {type} customLeftSwipe
      * @param {type} customRightSwipe
      */
-    register: function(customLeftSwipe, customRightSwipe) {
-        // Check if caller is going to provide its own page swipe handlers.
+    register: function(page, customLeftSwipe, customRightSwipe) {
 
-        if (customLeftSwipe) {
-            eventBus.installHandler('navigator.onSwipeLeftPage', customLeftSwipe, '.ui-page .swiper', 'swipeleft');
-        }
-        else {
-            eventBus.installHandler('navigator.onSwipeLeftPage', navigator.onSwipeLeftPage, '.ui-page .swiper', 'swipeleft');
+        // Only bind a swipe event if data-swipeleft is in the page markup.
+        if ($(page).data('swipeleft')) {
+            // Check if caller is going to provide its own page swipe handlers.
+            if (customLeftSwipe) {
+                eventBus.installHandler('navigator.onSwipeLeftPage', customLeftSwipe, '.ui-page .swiper', 'swipeleft');
+            }
+            else {
+                eventBus.installHandler('navigator.onSwipeLeftPage', navigator.onSwipeLeftPage, '.ui-page .swiper', 'swipeleft');
+            }
         }
 
-        if (customRightSwipe) {
-            eventBus.installHandler('navigator.onSwipeRightPage', customRightSwipe, '.ui-page .swiper', 'swiperight');
-        }
-        else {
-            eventBus.installHandler('navigator.onSwipeRightPage', navigator.onSwipeRightPage, '.ui-page .swiper', 'swiperight');
+        // Only bind a swipe event if data-swiperight is in the page markup.
+        if ($(page).data('swiperight')) {
+            // Check if caller is going to provide its own page swipe handlers.
+            if (customRightSwipe) {
+                eventBus.installHandler('navigator.onSwipeRightPage', customRightSwipe, '.ui-page .swiper', 'swiperight');
+            }
+            else {
+                eventBus.installHandler('navigator.onSwipeRightPage', navigator.onSwipeRightPage, '.ui-page .swiper', 'swiperight');
+            }
         }
     },
     onSwipeLeftPage: function(e) {

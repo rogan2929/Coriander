@@ -5,16 +5,10 @@
  */
 
 /**
- * View for #start
+ * View for #new-game
  * @type type
  */
 var newGameView = {
-    /**
-     * Enables the start game button.
-     */
-    enableButtonStart: function() {
-        $('#button-start').removeClass('ui-state-disabled');
-    },
     /**
      * Draws a border around the 'selected' tile.
      * @param {type} tile

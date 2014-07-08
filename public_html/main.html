@@ -42,6 +42,7 @@ and open the template in the editor.
     <script src="js/start-view.js"></script>
     <script src="js/start-presenter.js"></script>
     <script src="js/more-options-presenter.js"></script>
+    <script src="js/more-options-view.js"></script>
     <script src="js/new-game-view.js"></script>
     <script src="js/new-game-presenter.js"></script>
     <script src="js/high-scores-view.js"></script>
@@ -124,8 +125,31 @@ and open the template in the editor.
                 <span class='page-title'>More Options</span>
             </div>
 
+            <div class='h-centered sub-heading margin-top'>Tap to choose a gameplay style:</div>
+            
             <div class="ui-content h-centered">
-                <form>
+                <div class='button-tile color2 ui-corner-all fade ui-shadow' data-value='0'>
+                    <div class='tile-text'>
+                        <p>Regular</p>
+                    </div>
+                </div>
+                <div class='button-tile color4 ui-corner-all fade ui-shadow' data-value='1'>
+                    <div class='tile-text'>
+                        <p>Advanced</p>
+                    </div>
+                </div>
+                
+                <!--
+                <div id='dir-0' class='ui-content ui-shadow margin-top h-centered dirtext'>
+                    In this game mode, tiles can be flipped by either tapping a tile, or tapping and holding a tile. Tapping on a tile flips adjacent tiles as well as the one that was tapped.
+                    Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.
+                </div>
+                
+                <div id='dir-1' class='ui-content ui-shadow margin-top h-centered dirtext'>
+                    In advanced game mode, tiles can only be flipped by tapping. The tile that is tapped remains unflipped, but all surrounding tiles will change.
+                </div>-->
+                
+                <form class="margin-top">
                     <label for="slider-color-count">Color Count</label>
                     <input type="range" name="slider-color-count" id="slider-color-count" data-highlight="true" min="2" max="8" value="4">
                 </form>
@@ -185,7 +209,7 @@ and open the template in the editor.
                     <div id='top-score-large'>You haven't solved this yet!</div>
                 </div>
             </div>
-            
+
             <div class='ui-bar ui-bar-a h-centered absolute stretch-bottom stretch-left stretch-right swiper'>&lt;&lt; Swipe to Return</div>
         </div>
 
@@ -194,21 +218,36 @@ and open the template in the editor.
                 <span class='page-title'>How to Play</span>
             </div>
 
-            <div role='main' class='ui-content  ui-corner-all'>
-                <p class='h-centered no-margin ui-content ui-body ui-body-a'>
-                    Your goal is to make all the numbered tiles the same color.<br/><br/>
-                    Tiles can be flipped by either tapping a tile, or tapping and holding a tile. Tapping on a tile flips adjacent tiles as well as the one that was tapped.
-                    Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.<br/><br/>
+            <div role='main' class='ui-content ui-corner-all ui-shadow'>
+                <p class='no-margin ui-content ui-body ui-body-a'>
+                    Your basic goal is to make all the numbered tiles the same color.
+                    <br/><br/>
+                    
                     <b>The fewer the moves the better!</b>
+                    <br/><br/>
+                    
+                    There are going to be two different modes of play: regular and advanced.
+                    <br/><br/>
+                    
+                    <b>Regular</b><br/>
+                    In this game mode, tiles can be flipped by either tapping a tile, or tapping and holding a tile. 
+                    Tapping on a tile flips adjacent tiles as well as the one that was tapped.
+                    Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.
+                    <br/><br/>
+                    
+                    <b>Advanced</b><br/>
+                    In advanced game mode, tiles can only be flipped by tapping. The tile that was tapped remains unflipped, but all surrounding tiles will change.                    
                 </p>
 
                 <!--
                 Tiles can be flipped by either tapping a tile, or tapping and holding a tile. Tapping on a tile flips adjacent tiles as well as the one that was tapped.
                 Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.<br/><br/>
+                Tiles can be flipped by either tapping a tile, or tapping and holding a tile. Tapping on a tile flips adjacent tiles as well as the one that was tapped.
+                Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.<br/><br/>
                 And lastly, to make things just a bit more interesting, every 30 seconds a random tile has its value change and is flipped. Try to keep up!<br/><br/>-->
             </div>
-            
-            <div class='ui-bar ui-bar-a h-centered absolute stretch-bottom stretch-left stretch-right swiper'>&lt;&lt; Swipe to Return</div>
+
+            <div class='ui-bar ui-bar-a h-centered swiper'>&lt;&lt; Swipe to Return</div>
         </div>
 
         <div id='victory' data-role='page' class="background">

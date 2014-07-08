@@ -9,12 +9,16 @@
  * @param {Tile} tiles
  * @param {type} gridSize
  * @param {Score} score
+ * @param {type} mode
+ * @param {type} colorCount
  * @returns {GameState}
  */
-function GameState(tiles, gridSize, score) {
+function GameState(tiles, gridSize, score, mode, colorCount) {
     this.tiles = tiles;
     this.gridSize = gridSize;
     this.score = score;
+    this.mode = mode;
+    this.colorCount = colorCount;
 };
 
 /**
@@ -39,4 +43,20 @@ GameState.prototype.getGridSize = function() {
  */
 GameState.prototype.getScore = function() {
     return this.score;
+};
+
+/**
+ * Getter for mode.
+ * @returns {type}
+ */
+GameState.prototype.getMode = function() {
+    return this.mode;
+};
+
+/**
+ * Getter for colorCount
+ * @returns {type}
+ */
+GameState.prototype.getColorCount = function() {
+    return this.colorCount;
 };
