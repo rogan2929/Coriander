@@ -13,15 +13,15 @@ var newGamePresenter = {
      * Entry point.
      */
     init: function() {
-        eventBus.installHandler('newGamePresenter.onTapButtonStart', newGamePresenter.onTapButtonStart, '#button-start', 'tap');
+        //eventBus.installHandler('newGamePresenter.onTapButtonStart', newGamePresenter.onTapButtonStart, '#button-start', 'tap');
         eventBus.installHandler('newGamePresenter.onTapButtonTile', newGamePresenter.onTapButtonTile, '#new-game .button-tile', 'tap');
     },
     onTapButtonTile: function(e) {
         gamePresenter.setGridSize(parseInt($(e.currentTarget).attr('data-value')));
         newGameView.selectTile(e.currentTarget);
         newGameView.enableButtonStart();
-    },
-    onTapButtonStart: function(e) {
-        startPresenter.setNewGame(true);
     }
+//    onTapButtonStart: function(e) {
+//        startPresenter.setNewGame(true);
+//    }
 };

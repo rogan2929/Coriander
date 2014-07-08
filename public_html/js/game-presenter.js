@@ -62,6 +62,7 @@ var gamePresenter = {
 
         gamePresenter.victoryAchieved = false;
 
+        gameView.clearTiles();
         gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
 
         // Immediate save the game state and then start the interval.

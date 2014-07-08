@@ -70,14 +70,25 @@ $(document).on('pagebeforeshow', '#start', function(e) {
 });
 
 $(document).on('pagebeforeshow', '#new-game', function(e) {
+    navigator.register();
     newGamePresenter.init();
 });
 
+$(document).on('pagebeforeshow', '#more-options', function(e) {
+    navigator.register(moreOptionsPresenter.onSwipeLeftPage);
+});
+
 $(document).on('pagebeforeshow', '#high-scores', function(e) {
+    navigator.register();
     highScoresPresenter.init();
 });
 
+$(document).on('pagebeforeshow', '#directions', function(e) {
+    navigator.register();
+});
+
 $(document).on('pagebeforeshow', '#game', function(e) {
+    navigator.register();
     gamePresenter.init();
 });
 
@@ -87,15 +98,6 @@ $(document).on('pagehide', '#game', function(e) {
 });
 
 $(document).on('pagebeforeshow', '#victory', function(e) {
+    navigator.register();
     victoryPresenter.init();
 });
-
-//$(document).on('pageshow', '#ad-wall', function(e) {
-//    // All the iframe to load, and then replace all _blank targets with _system ones.
-//    // This will force links to open in the device's native browser.
-//    setTimeout(function() {
-//        $('iframe').contents().find('a').click(function() {
-//            alert('test');
-//        });
-//    }, 5000);
-//});

@@ -27,6 +27,9 @@ var gameView = {
         gameView.colors.push('color7');
         gameView.colors.push('color8');
     },
+    clearTiles: function() {
+        $('#tile-container .tile').remove();
+    },
     /**
      * Loads tiles into the view.
      * @param {type} gridSize
@@ -36,8 +39,6 @@ var gameView = {
         var html, i, j, width, tile, index, value, margin, textSize;
 
         $('#tile-container').fadeOut(gameView.TRANSITION_LENGTH / 2, function() {
-            $('#tile-container .tile').remove();
-
             // - (gridSize * 5 * 2) - 10)
             //width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
             width = ($(window).width() - ($(window).width() * 0.15)) / gridSize;

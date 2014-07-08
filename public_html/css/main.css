@@ -354,3 +354,8 @@ and open the template in the editor.
     -webkit-box-shadow: 0 0 35px #FFF12A, inset 0 0 35px #FFF12A;
     -moz-box-shadow: 0 0 35px #FFF12A, inset 0 0 35px #FFF12A;
 }
+
+.swiper {
+    padding: 14px;
+    font-size: 1.2em;
+}
