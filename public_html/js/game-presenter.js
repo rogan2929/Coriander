@@ -228,6 +228,7 @@ var gamePresenter = {
         }
 
         // Load the tiles in the new order.
+        gameView.clearTiles();
         gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
     },
     /**
