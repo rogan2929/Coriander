@@ -60,14 +60,14 @@ var victoryPresenter = {
                     regular_puzzle: 'http://coriander.azurewebsites.net/og_regular.html'
                 };
                 break;
-            case sizes.regular:
-                actionProperties = {
-                    medium_puzzle: 'http://coriander.azurewebsites.net/og_medium.html'
-                };
-                break;
             case sizes.large:
                 actionProperties = {
                     large_puzzle: 'http://coriander.azurewebsites.net/og_large.html'
+                };
+                break;
+            case sizes.huge:
+                actionProperties = {
+                    puzzle_puzzle: 'http://coriander.azurewebsites.net/og_huge.html'
                 };
                 break;
         }

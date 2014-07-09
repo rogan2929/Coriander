@@ -95,7 +95,7 @@ and open the template in the editor.
             <div class='h-centered sub-heading margin-top'>Tap to choose a grid size:</div>
 
             <div class="ui-content h-centered">
-                <div class='button-tile color1 ui-corner-all fade ui-shadow' data-value='3'>
+                <div class='button-tile color8 ui-corner-all fade ui-shadow' data-value='3'>
                     <div class='tile-text'>
                         <p>3 x 3</p>
                     </div>
@@ -151,7 +151,7 @@ and open the template in the editor.
         </div>
 
         <div id='game' data-role='page' class='no-scroll background'>
-            <div class='ui-content ui-body-a'>
+            <div class='ui-content ui-body-a ui-shadow'>
                 <span id='score' class='page-title'></span>
             </div>
             <div class='absolute stretch-right stretch-top margin-top'>
@@ -192,11 +192,11 @@ and open the template in the editor.
                 </div>
                 <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
                     <span class='sub-heading'>5 x 5 Puzzle</span>
-                    <div id='top-score-medium'>You haven't solved this yet!</div>
+                    <div id='top-score-large'>You haven't solved this yet!</div>
                 </div>
                 <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
                     <span class='sub-heading'>6 x 6 Puzzle</span>
-                    <div id='top-score-large'>You haven't solved this yet!</div>
+                    <div id='top-score-huge'>You haven't solved this yet!</div>
                 </div>
             </div>
 
@@ -208,8 +208,8 @@ and open the template in the editor.
                 <span class='page-title'>How to Play</span>
             </div>
 
-            <div role='main' class='ui-content ui-corner-all ui-shadow'>
-                <p class='no-margin ui-content ui-body ui-body-a'>
+            <div role='main' class='ui-content'>
+                <p class='no-margin ui-content ui-body ui-body-a ui-shadow'>
                     Your basic goal is to make all the numbered tiles the same color.
                     <br/><br/>
                     
@@ -257,7 +257,7 @@ and open the template in the editor.
 
         <!-- Templates -->
         <div id='tile-template' class='hidden'>
-            <div class='tile fade ui-corner-all ui-shadow'></div>
+            <div class='tile fade'></div>
         </div>
     </body>
 </html>

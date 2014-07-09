@@ -44,7 +44,7 @@ var gameView = {
             //width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
             width = ($(window).width() - ($(window).width() * 0.15)) / gridSize;
             margin = (width / 20);
-            textSize = (width / 3);
+            textSize = (width / 4);
 
             html = $('#tile-template').html();
 
@@ -53,7 +53,7 @@ var gameView = {
                     value = tiles[i + j].getValue();
                     index = tiles[i + j].getIndex();
 
-                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
+                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('margin-right', margin / 1.75 + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
                 }
             }
 

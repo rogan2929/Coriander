@@ -180,6 +180,7 @@ and open the template in the editor.
     overflow: hidden;
     text-shadow: none;
     color: #333333;
+    box-shadow: 0 0 8px #e7d5c1, inset 0 0 20px #246476;
 }
 
 .ui-corner-all {
@@ -189,7 +190,7 @@ and open the template in the editor.
 .button-tile {
     position: relative;
     padding: 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .button-tile .tile-text {
@@ -350,12 +351,16 @@ and open the template in the editor.
 }
 
 .button-tile.selected {
-    box-shadow: 0 0 35px #FFF12A, inset 0 0 35px #FFF12A;
-    -webkit-box-shadow: 0 0 35px #FFF12A, inset 0 0 35px #FFF12A;
-    -moz-box-shadow: 0 0 35px #FFF12A, inset 0 0 35px #FFF12A;
+    box-shadow: 0 0 35px #FFF12A, inset 0 0 70px #FFF12A;
+    -webkit-box-shadow: 0 0 35px #FFF12A, inset 0 0 70px #FFF12A;
+    -moz-box-shadow: 0 0 35px #FFF12A, inset 0 0 70px #FFF12A;
 }
 
 .swiper {
     padding: 14px;
     font-size: 1.2em;
+}
+
+.ui-shadow {
+    border-radius: 0 !important;
 }

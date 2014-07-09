@@ -9,10 +9,10 @@
  * @type type
  */
 var sizes = {
-    small: '3 x 3',
-    regular: '4 x 4',
-    medium: '5 x 5',
-    large: '6 x 6'
+    small: 'small',
+    regular: 'regular',
+    large: 'large',
+    huge: 'huge'
 };
 
 /**
@@ -53,10 +53,10 @@ var gamePresenter = {
                     gamePresenter.gridName = sizes.regular;
                     break;
                 case 5:
-                    gamePresenter.gridName = sizes.medium;
+                    gamePresenter.gridName = sizes.large;
                     break;
                 case 6:
-                    gamePresenter.gridName = sizes.large;
+                    gamePresenter.gridName = sizes.huge;
                     break;
             }
         }

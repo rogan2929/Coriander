@@ -29,16 +29,16 @@ var highScoresPresenter = {
             scores.push(new Score(score, sizes.regular));
         }
 
-        score = model.getTopScore(sizes.medium);
+        score = model.getTopScore(sizes.large);
 
         if (score) {
-            scores.push(new Score(score, sizes.medium));
+            scores.push(new Score(score, sizes.large));
         }
         
-        score = model.getTopScore(sizes.large);
+        score = model.getTopScore(sizes.huge);
         
         if (score) {
-            scores.push(new Score(score, sizes.large));
+            scores.push(new Score(score, sizes.huge));
         }
         
         highScoresView.displayTopScores(scores);
