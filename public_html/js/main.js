@@ -50,6 +50,7 @@ String.prototype.toHHMMSS = function() {
 $(document).on('pagebeforeshow', '#start', function(e) {
     startPresenter.init();
 
+    // Put any delayed tasks here.
     setTimeout(function() {
         // Force ads to open in the system browser.
         $('a').not('.ui-btn').tap(function(e) {
@@ -66,6 +67,9 @@ $(document).on('pagebeforeshow', '#start', function(e) {
                 window.open(url, '_blank');
             }
         });
+        
+        // Show the "Rate / Give Feedback" button.
+        $('#tile-rate').fadeIn();
     }, 2000);
 });
 
