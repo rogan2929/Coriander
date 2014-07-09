@@ -19,9 +19,10 @@ var moreOptionsPresenter = {
         gameMode = 0;
         maxTileSize = 4;
         
-        eventBus.installHandler('moreOptionsPresenter.onTapButtonTile', moreOptionsPresenter.onTapButtonTile, '#more-options .button-tile', 'tap');
         eventBus.installHandler('moreOptionsPresenter.onChangeSliderColorCount', moreOptionsPresenter.onChangeSliderColorCount, '#slider-color-count', 'change');
-        
+        eventBus.installHandler('moreOptionsPresenter.onTapButtonStart', moreOptionsPresenter.onTapButtonStart, '#button-start', 'tap');
+        eventBus.installHandler('moreOptionsPresenter.onTapButtonTile', moreOptionsPresenter.onTapButtonTile, '#more-options .button-tile', 'tap');
+      
         // Set default game mode to regular and 4 colors.
         moreOptionsView.selectTile($('#more-options .button-tile').first());
         gamePresenter.setGameMode(gameMode);
@@ -31,10 +32,8 @@ var moreOptionsPresenter = {
     onChangeSliderColorCount: function(e) {
         gamePresenter.setMaxTileSize(parseInt($(e.currentTarget).val()));;
     },
-    onSwipeLeftPage: function(e) {
-        // Custom swipeleft handler. Needs to tell gamePresenter that a new game is starting.
+    onTapButtonStart: function(e) {
         startPresenter.setNewGame(true);
-        navigator.onSwipeLeftPage(e);
     },
     onTapButtonTile: function(e) {
         var gameMode;

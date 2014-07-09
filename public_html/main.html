@@ -26,11 +26,13 @@ and open the template in the editor.
             $.event.special.tap.emitTapOnTaphold = false;
             $.event.special.tap.tapholdThreshold = 500;
             $.mobile.defaultPageTransition = 'flip';
+            $.event.special.swipe.horizontalDistanceThreshold = window.devicePixelRatio >= 2 ? 15 : 30;
+            $.event.special.swipe.verticalDistanceThreshold = window.devicePixelRatio >= 2 ? 15 : 30;
         }
     </script>
 
     <script src="js/mobileinit.js"></script>
-    <script src="js/vendor/jquery.mobile-1.4.2.min.js"></script>
+    <script src="js/vendor/jquery.mobile-1.4.3.min.js"></script>
     <script src='http://my.mobfox.com/ad.js'></script>
     <script src='http://my.mobfox.com/nativead.js'></script>
 
@@ -117,7 +119,10 @@ and open the template in the editor.
                 </div>
             </div>
 
-            <div class='ui-bar ui-bar-a h-centered absolute stretch-bottom stretch-left stretch-right swiper'>&lt;&lt; Swipe left or right &gt;&gt;</div>
+            <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
+                <a href='#more-options' class='ui-btn half ui-corner-all ui-shadow'>Next</a>
+                <a href='#start' class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
+            </div>
         </div>
 
         <div id='more-options' data-role='page' data-swipeleft="#game" data-swiperight="#new-game" class="background">
@@ -126,7 +131,7 @@ and open the template in the editor.
             </div>
 
             <div class='h-centered sub-heading margin-top'>Tap to choose a gameplay style:</div>
-            
+
             <div class="ui-content h-centered">
                 <div class='button-tile color2 ui-corner-all fade ui-shadow' data-value='0'>
                     <div class='tile-text'>
@@ -145,9 +150,10 @@ and open the template in the editor.
                 </form>
             </div>
 
-            <!--
-            <a href="#game" id='button-start'  class='ui-btn half ui-state-disabled ui-corner-all absolute stretch-bottom'>Let's Go!</a>-->
-            <div class='ui-bar ui-bar-a h-centered absolute stretch-bottom stretch-left stretch-right swiper'>&lt;&lt; Swipe left or right &gt;&gt;</div>
+            <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
+                <a href='#game' id='button-start' class='ui-btn half ui-corner-all ui-shadow'>Let's Go!</a>
+                <a href='#more-options' class='ui-btn half ui-corner-all ui-shadow'>Back</a>
+            </div>
         </div>
 
         <div id='game' data-role='page' class='no-scroll background'>
@@ -200,7 +206,9 @@ and open the template in the editor.
                 </div>
             </div>
 
-            <div class='ui-bar ui-bar-a h-centered absolute stretch-bottom stretch-left stretch-right swiper'>&lt;&lt; Swipe to Return</div>
+            <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
+                <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
+            </div>
         </div>
 
         <div id='directions' data-role='page' data-swiperight="#start" class="background">
@@ -212,32 +220,25 @@ and open the template in the editor.
                 <p class='no-margin ui-content ui-body ui-body-a ui-shadow'>
                     Your basic goal is to make all the numbered tiles the same color.
                     <br/><br/>
-                    
+
                     <b>The fewer the moves the better!</b>
                     <br/><br/>
-                    
+
                     There are going to be two different modes of play: regular and advanced.
                     <br/><br/>
-                    
+
                     <b>Regular</b><br/>
                     In this game mode, tiles can be flipped by either tapping a tile, or tapping and holding a tile. 
                     Tapping on a tile flips adjacent tiles as well as the one that was tapped.
                     Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.
                     <br/><br/>
-                    
+
                     <b>Advanced</b><br/>
                     In advanced game mode, tiles can only be flipped by tapping. The tile that was tapped remains unflipped, but all surrounding tiles will change.                    
                 </p>
-
-                <!--
-                Tiles can be flipped by either tapping a tile, or tapping and holding a tile. Tapping on a tile flips adjacent tiles as well as the one that was tapped.
-                Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.<br/><br/>
-                Tiles can be flipped by either tapping a tile, or tapping and holding a tile. Tapping on a tile flips adjacent tiles as well as the one that was tapped.
-                Tapping and holding, however, flips all of the adjacent tiles but leaves the one that was tapped alone.<br/><br/>
-                And lastly, to make things just a bit more interesting, every 30 seconds a random tile has its value change and is flipped. Try to keep up!<br/><br/>-->
             </div>
 
-            <div class='ui-bar ui-bar-a h-centered swiper'>&lt;&lt; Swipe to Return</div>
+            <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
         </div>
 
         <div id='victory' data-role='page' class="background">
@@ -252,7 +253,9 @@ and open the template in the editor.
 
             <!--
             <a id='button-facebook' class='ui-btn half'>Share on Facebook</a>-->
-            <a href="#start"  class='ui-btn half absolute stretch-bottom no-margin ui-corner-all ui-shadow'>Menu</a>
+            <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
+                <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
+            </div>
         </div>
 
         <!-- Templates -->
