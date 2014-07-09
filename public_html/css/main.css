@@ -53,11 +53,14 @@ and open the template in the editor.
 }
 
 .h-centered .ui-btn, .ui-btn.half {
-    width: 50%;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
+}
+
+.half {
+    width: 50%;
 }
 
 .stretch-left {
@@ -363,4 +366,8 @@ and open the template in the editor.
 
 .ui-shadow {
     border-radius: 0 !important;
+}
+
+.quarter {
+    width: 25%;
 }
