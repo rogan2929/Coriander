@@ -160,11 +160,11 @@ and open the template in the editor.
     text-align: center;
     vertical-align: middle;
     margin: 5px;
-    -webkit-transition-property: -webkit-transform;
+/*    -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
     -o-transition-property: -o-transform;
     transition-property: transform;
-    transform-style: preserve-3d;
+    transform-style: preserve-3d;*/
     overflow: hidden;
     text-shadow: none;
     color: #333333;
