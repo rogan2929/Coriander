@@ -9,6 +9,4 @@ $(document).bind('mobileinit', function() {
     $.event.special.tap.emitTapOnTaphold = false;
     $.event.special.tap.tapholdThreshold = 500;
     $.mobile.defaultPageTransition = 'flip';
-    $.event.special.swipe.horizontalDistanceThreshold = window.devicePixelRatio >= 2 ? 15 : 30;
-    $.event.special.swipe.verticalDistanceThreshold = window.devicePixelRatio >= 2 ? 15 : 30;
 });
