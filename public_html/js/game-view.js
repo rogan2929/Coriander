@@ -10,9 +10,7 @@
  * @type type
  */
 var gameView = {
-    TRANSITION_LENGTH: 500,
     colors: null,
-    
     /**
      * Initialize the view.
      */
@@ -39,12 +37,10 @@ var gameView = {
     loadTiles: function(gridSize, tiles) {
         var html, i, j, width, tile, index, value, margin, textSize;
 
-        $('#tile-container').fadeOut(gameView.TRANSITION_LENGTH / 2, function() {
-            // - (gridSize * 5 * 2) - 10)
-            //width = ($(window).width() - (gridSize * 5 * 2) - 10) / gridSize;
+        $('#tile-container').fadeOut(constants.ANIMATION_LENGTH / 2, function() {
             width = ($(window).width() - ($(window).width() * 0.15)) / gridSize;
-            margin = (width / 20);
-            textSize = (width / 4);
+            margin = (width / 12);
+            textSize = (width / 3);
 
             html = $('#tile-template').html();
 
@@ -57,7 +53,7 @@ var gameView = {
                 }
             }
 
-            $('#tile-container').height(gridSize * (width + (margin)) + 'px').fadeIn(gameView.TRANSITION_LENGTH / 2, function() {
+            $('#tile-container').height(gridSize * (width + (margin)) + 'px').fadeIn(constants.ANIMATION_LENGTH / 2, function() {
                 // Re-register event hookups.
                 eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
                 eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
@@ -83,21 +79,26 @@ var gameView = {
      * @param {type} tiles
      */
     flipTiles: function(tiles) {
-        var i, index, value, color, classList;
+        var i, index, value, classList, color;
 
         // "Tag" the tiles that are going to be flipped, and strip them of their color.
         for (i = 0; i < tiles.length; i++) {
+            $('.tile-' + tiles[i].getIndex()).addClass('flipme');
+        }
+
+        $('.flipme').addClass('flip').empty();
+
+        // Add the color back in.
+        for (i = 0; i < tiles.length; i++) {
             index = tiles[i].getIndex();
+            value = tiles[i].getValue();
 
             classList = $('.tile-' + index).attr('class');
 
             color = classList.substring(classList.indexOf('color'), classList.indexOf('color') + 6);
 
-            $('.tile-' + index).addClass('flipme').removeClass(color);
+            $('.tile-' + index).removeClass(color).addClass(gameView.colors[value - 1]);
         }
-
-        // Flip all the tiles at once.
-        $('.flipme').addClass('flip').text('');
 
         setTimeout(function() {
             $('.flipme').removeClass('flip').removeClass('flipme');
@@ -107,13 +108,12 @@ var gameView = {
                 index = tiles[i].getIndex();
                 value = tiles[i].getValue();
 
-                // Add the color back in.
-                $('.tile-' + index).addClass(gameView.colors[value - 1]);
-
                 // Set the tile text.
-                gameView.setTileText('.tile-' + index, value);
+                //gameView.setTileText('.tile-' + index, value);
+                $('.tile-' + index).text(value);
             }
-        }, gameView.TRANSITION_LENGTH);
+
+        }, constants.ANIMATION_LENGTH);
     },
     /**
      * Sets the tile text.
@@ -123,7 +123,7 @@ var gameView = {
     setTileText: function(tile, value) {
         setTimeout(function() {
             $(tile).text(value);
-        }, gameView.TRANSITION_LENGTH);
+        }, constants.ANIMATION_LENGTH);
     },
     /**
      * Update displayed tiles.

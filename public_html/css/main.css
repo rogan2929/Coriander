@@ -183,9 +183,9 @@ and open the template in the editor.
     overflow: hidden;
     text-shadow: none;
     color: #333333;
-    -webkit-box-shadow: 2px 2px 12px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    2px 2px 12px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         2px 2px 12px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
     border-radius: 12px;
 }
 
@@ -217,10 +217,41 @@ and open the template in the editor.
 }
 
 .flip {
+    -webkit-animation: flip-keyframes 0.70s;
+    animation: flip-keyframes 0.70s;
+}
+
+@-webkit-keyframes flip-keyframes {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+    }
+    100% {
+        -webkit-transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
+        -o-transform: rotateY(360deg);
+    }
+}
+
+@keyframes flip-keyframes {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        -moz-transform: rotateY(0deg);
+        -o-transform: rotateY(0deg);
+    }
+    100% {
+        -webkit-transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
+        -o-transform: rotateY(360deg);
+    }
+}
+
+/*.flip {
     -webkit-transform: rotateY(360deg);
     -moz-transform: rotateY(360deg);
     -o-transform: rotateY(360deg);
-}
+}*/
 
 .spin {
     -webkit-transform: rotate(360deg);
@@ -357,9 +388,9 @@ and open the template in the editor.
 }
 
 .button-tile.selected {
-    box-shadow: 2px 2px 12px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
-    -webkit-box-shadow: 2px 2px 12px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
-    -moz-box-shadow: 2px 2px 12px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
+    box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
+    -moz-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
 }
 
 .swiper {
@@ -368,9 +399,9 @@ and open the template in the editor.
 }
 
 .ui-shadow {
-    -webkit-box-shadow: 2px 2px 12px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    2px 2px 12px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         2px 2px 12px 0px rgba(50, 50, 50, 0.75);
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    4px 4px 8px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         4px 4px 8px 0px rgba(50, 50, 50, 0.75);
 }
 
 /*.ui-shadow {

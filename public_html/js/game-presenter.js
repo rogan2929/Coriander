@@ -23,7 +23,6 @@ var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
     SAVE_STATE_TIME: 5000,
-    TAP_TIMEOUT: 1000,
     // Class variables
     gridSize: 3,
     moveCount: 0,
@@ -137,7 +136,7 @@ var gamePresenter = {
 
         if (gamePresenter.tapTimeout === null) {
             // Implement some throttling on tile tapping. This prevents glitches during animations.
-            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, gamePresenter.TAP_TIMEOUT);
+            gamePresenter.tapTimeout = setTimeout(gamePresenter.tapTimeoutFunction, constants.TAP_TIMEOUT);
 
             value = parseInt($(target).text());
             classList = $(target).attr('class');
@@ -397,7 +396,7 @@ var gamePresenter = {
         setTimeout(function() {
             // Evaluate Game Status.
             gamePresenter.evaluateState();
-        }, gamePresenter.TAP_TIMEOUT + 100);
+        }, constants.TAP_TIMEOUT + 100);
     },
     onTapButtonShuffle: function(e) {
         if (gamePresenter.tapTimeout === null) {

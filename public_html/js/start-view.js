@@ -9,7 +9,7 @@
  * @type type
  */
 var startView = {
-    TRANSITION_LENGTH: 500,
+    TRANSITION_LENGTH: 750,
     
     /**
      * Make them there button tiles all perdy.
@@ -21,7 +21,7 @@ var startView = {
         
         size = ((windowWidth - (windowWidth * 0.40)) / 2);
         
-        margin = size / 20;
+        margin = size / 12;
         
         //textSize = size / 4;
 
@@ -34,39 +34,20 @@ var startView = {
      * @param {type} tile
      */
     flipTile: function(tile) {
-        var html, color, classList;
+        var html;
         
         html = $(tile).html();
+
+        $(tile).addClass('flip').empty();
         
-        classList = $(tile).attr('class');
-
-        color = classList.substring(classList.indexOf('color'), classList.indexOf('color') + 6);
-        
-        $(tile).removeClass(color);
-
-        // Do the animation.
-        $(tile).empty().addClass('fade').addClass('flip');
-
-        // Add color back and set content.
         setTimeout(function() {
             $(tile).removeClass('flip');
-            $(tile).addClass(color);
-            startView.setTileText(tile, html);
-        }, startView.TRANSITION_LENGTH);
+            $(tile).html(html);
+        }, constants.ANIMATION_LENGTH);
     },
     
     navigateTo: function(page) {
         $('body').pagecontainer('change', '#' + page);
-    },
-        /**
-     * Sets the tile text.
-     * @param {type} tile
-     * @param {type} value
-     */
-    setTileText: function(tile, html) {
-        setTimeout(function() {
-            $(tile).html(html);
-        }, startView.TRANSITION_LENGTH);
     },
     /**
      * Enable/disable the resume button.
