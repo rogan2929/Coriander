@@ -40,7 +40,7 @@ var gameView = {
         $('#tile-container').fadeOut(constants.ANIMATION_LENGTH / 2, function() {
             width = ($(window).width() - ($(window).width() * 0.15)) / gridSize;
             margin = (width / 12);
-            textSize = (width / 3);
+            textSize = (width / 3.5);
 
             html = $('#tile-template').html();
 

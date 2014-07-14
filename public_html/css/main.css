@@ -20,7 +20,8 @@ and open the template in the editor.
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+/*    font-family: "Trebuchet MS", Helvetica, sans-serif;*/
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .background {
