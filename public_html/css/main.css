@@ -216,25 +216,24 @@ and open the template in the editor.
 }
 
 .flip {
-    -webkit-transform: rotate3d(0, 1, 0, 180deg);
-    -moz-transform: rotate3d(0, 1, 0, 180deg);
-    -o-transform: rotate3d(0, 1, 0, 180deg);
-    transform: rotate3d(0, 1, 0, 180deg);
+    -webkit-backface-visibility: visible;
+    -webkit-animation: flip-animation 0.7s ease-in-out;
 }
 
-.enable-transitions {
-    -webkit-transition: all 0.50s;
-    -webkit-transition-property: -webkit-transform;
-    -webkit-backface-visibility: visible;
-    -moz-transition: all 0.50s;
-    -moz-transition-property: -webkit-transform;
-    -moz-backface-visibility: visible;
-    -o-transition: all 0.50s;
-    -o-transition-property: -webkit-transform;
-    -o-backface-visibility: visible;
-    transition: all 0.50s;
-    transition-property: -webkit-transform;
-    backface-visibility: visible;
+@-webkit-keyframes flip-animation {
+    0% {
+        opacity: 1.0;
+    }
+    50% {
+        -webkit-transform: rotate3d(0, 1, 0, 180deg);
+        -moz-transform: rotate3d(0, 1, 0, 180deg);
+        -o-transform: rotate3d(0, 1, 0, 180deg);
+        transform: rotate3d(0, 1, 0, 180deg);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1.0;
+    }
 }
 
 .v-centered {

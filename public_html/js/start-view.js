@@ -9,8 +9,6 @@
  * @type type
  */
 var startView = {
-    TRANSITION_LENGTH: 750,
-    
     /**
      * Make them there button tiles all perdy.
      */
@@ -25,8 +23,6 @@ var startView = {
         
         //textSize = size / 4;
 
-        //$('.button-tile').width(size).height(size).css('line-height', size).css('font-size', textSize);
-        //$('.button-tile').width(size).height(size).css('font-size', textSize).css('margin', margin);
         $('.button-tile').width(size).height(size + 'px').css('margin', margin + 'px').css('margin-right', margin / 3 + 'px');
     },
     /**
@@ -38,10 +34,10 @@ var startView = {
         
         html = $(tile).html();
 
-        $(tile).addClass('enable-transitions').removeClass('ui-shadow').addClass('flip').children('.tileface').fadeOut(300);
+        $(tile).addClass('flip');
         
         setTimeout(function() {
-            $(tile).addClass('ui-shadow').removeClass('enable-transitions').removeClass('flip').children('.tileface').fadeIn(300);
+            $(tile).removeClass('flip');
         }, constants.ANIMATION_LENGTH);
     },
     

@@ -98,11 +98,13 @@ var gameView = {
             $('.tile-' + index).children('.tileface:nth-child(' + value + ')').addClass('fadein');
         }
 
-        $('.flipme').removeClass('ui-shadow').addClass('enable-transitions').addClass('flip').children('.tileface').fadeOut(300);
+        $('.flipme').addClass('flip');
 
         setTimeout(function() {
+            //$('.flipme').children('.tileface').hide();
+            
             // Fade in the tile that was tagged earlier.
-            $('.flipme').removeClass('enable-transitions').removeClass('flip').addClass('ui-shadow').children('.tileface.fadein').fadeIn(300).removeClass('fadein');
+            $('.flipme').removeClass('flip').children('.tileface.fadein').fadeIn(300).removeClass('fadein');
             $('.flipme').removeClass('flipme');
 
         }, constants.ANIMATION_LENGTH);
