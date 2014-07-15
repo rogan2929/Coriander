@@ -85,7 +85,7 @@ var gameView = {
      * @param {type} tiles
      */
     flipTiles: function(tiles) {
-        var i, index, value, classList, color;
+        var i, index, value;
 
         // "Tag" the tiles that are going to be flipped.
         for (i = 0; i < tiles.length; i++) {
@@ -98,38 +98,11 @@ var gameView = {
             $('.tile-' + index).children('.tileface:nth-child(' + value + ')').addClass('fadein');
         }
 
-        //$('.flipme').addClass('fade').removeClass('bevel-shadow').addClass('flip').empty();
-        $('.flipme').addClass('enable-transitions').addClass('flip').removeClass('ui-shadow').children('.tileface').fadeOut(300);
-
-//        // Add the color back in.
-//        for (i = 0; i < tiles.length; i++) {
-//            index = tiles[i].getIndex();
-//            value = tiles[i].getValue();
-//
-//            classList = $('.tile-' + index).attr('class');
-//
-//            color = classList.substring(classList.indexOf('color'), classList.indexOf('color') + 6);
-//
-//            $('.tile-' + index).removeClass(color).addClass(gameView.colors[value - 1]);
-//        }
+        $('.flipme').removeClass('ui-shadow').addClass('enable-transitions').addClass('flip').children('.tileface').fadeOut(300);
 
         setTimeout(function() {
-            //$('.flipme').removeClass('flip').removeClass('flipme').addClass('ui-shadow').removeClass('fade');
-            $('.flipme').addClass('ui-shadow').removeClass('enable-transitions').removeClass('flip')
-
-//            // Display new values and add new color classes.
-//            for (i = 0; i < tiles.length; i++) {
-//                index = tiles[i].getIndex();
-//                value = tiles[i].getValue();
-//
-//                // Set the tile text.
-//                //gameView.setTileText('.tile-' + index, value);
-//                $('.tile-' + index).text(value);
-//            }
-
-            // Fade in the tile face that was tagged earlier.
-            $('.flipme').children('.tileface.fadein').fadeIn(300).removeClass('fadein');
-
+            // Fade in the tile that was tagged earlier.
+            $('.flipme').removeClass('enable-transitions').removeClass('flip').addClass('ui-shadow').children('.tileface.fadein').fadeIn(300).removeClass('fadein');
             $('.flipme').removeClass('flipme');
 
         }, constants.ANIMATION_LENGTH);
