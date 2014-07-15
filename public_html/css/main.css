@@ -163,10 +163,19 @@ and open the template in the editor.
     overflow: hidden;
     text-shadow: none;
     color: #333333;
-    -webkit-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
     border-radius: 12px;
+}
+
+.bevel-shadow {
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    2px 2px 3px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         2px 2px 3px 0px rgba(50, 50, 50, 0.75), inset 0 0 15px 0px rgba(50, 50, 50, 0.75);
+}
+
+.scale {
+    -webkit-transform: scale3d(0.40, 0.40, 0.40);
+    -moz-transform: scale3d(0.40, 0.40, 0.40);
+    transform: scale3d(0.40, 0.40, 0.40);
 }
 
 .ui-corner-all {
@@ -197,28 +206,29 @@ and open the template in the editor.
 }
 
 .flip {
-/*    -webkit-animation: flip-keyframes 0.3s;
-    -webkit-backface-visibility: visible;*/
     -webkit-transition: all 0.50s;
     -webkit-transition-property: -webkit-transform;
     -webkit-backface-visibility: visible;
-    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+    -webkit-transform: rotate3d(0, 1, 0, 180deg);
+    -moz-transition: all 0.50s;
+    -moz-transition-property: -webkit-transform;
+    -moz-backface-visibility: visible;
+    -moz-transform: rotate3d(0, 1, 0, 180deg);
+    -o-transition: all 0.50s;
+    -o-transition-property: -webkit-transform;
+    -o-backface-visibility: visible;
+    -o-transform: rotate3d(0, 1, 0, 180deg);
+    transition: all 0.50s;
+    transition-property: -webkit-transform;
+    backface-visibility: visible;
+    transform: rotate3d(0, 1, 0, 180deg);
 }
-
-/*@-webkit-keyframes flip-keyframes {
-    0% {
-        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
-        -webkit-animation-timing-function: ease-out;
-    }
-
-    100% {
-        -webkit-transform: perspective(400px);
-        -webkit-animation-timing-function: ease-in;
-    }
-}*/
 
 .fade {
     -webkit-transition: all 0.50s;
+    -moz-transition: all 0.50s;
+    -o-transition: all 0.50s;
+    transition: all 0.50s;
 }
 
 .v-centered {
@@ -315,9 +325,9 @@ and open the template in the editor.
 }
 
 .button-tile.selected {
-    box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
-    -webkit-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
-    -moz-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
+    box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
+    -moz-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
 }
 
 .swiper {
@@ -326,9 +336,9 @@ and open the template in the editor.
 }
 
 .ui-shadow {
-    -webkit-box-shadow: 4px 4px 8px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    4px 4px 8px 0px rgba(50, 50, 50, 0.75);
-    box-shadow:         4px 4px 8px 0px rgba(50, 50, 50, 0.75);
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    2px 2px 3px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         2px 2px 3px 0px rgba(50, 50, 50, 0.75);
 }
 
 .quarter {

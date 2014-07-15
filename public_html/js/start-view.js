@@ -38,11 +38,10 @@ var startView = {
         
         html = $(tile).html();
 
-        $(tile).addClass('flip').empty();
+        $(tile).removeClass('bevel-shadow').addClass('bevel-shadow-light').addClass('flip').addClass('scale').addClass('fade').empty();
         
         setTimeout(function() {
-            $(tile).removeClass('flip');
-            $(tile).html(html);
+            $(tile).removeClass('scale').removeClass('flip').html(html).removeClass('bevel-shadow-light').addClass('bevel-shadow').removeClass('fade');
         }, constants.ANIMATION_LENGTH);
     },
     

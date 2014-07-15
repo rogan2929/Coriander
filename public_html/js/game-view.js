@@ -87,7 +87,7 @@ var gameView = {
             $('.tile-' + tiles[i].getIndex()).addClass('flipme');
         }
 
-        $('.flipme').addClass('flip').empty();
+        $('.flipme').addClass('fade').removeClass('bevel-shadow').addClass('flip').empty();
 
         // Add the color back in.
         for (i = 0; i < tiles.length; i++) {
@@ -102,7 +102,7 @@ var gameView = {
         }
 
         setTimeout(function() {
-            $('.flipme').removeClass('flip').removeClass('flipme');
+            $('.flipme').removeClass('flip').removeClass('flipme').addClass('bevel-shadow').removeClass('fade');
 
             // Display new values and add new color classes.
             for (i = 0; i < tiles.length; i++) {
