@@ -63,24 +63,32 @@ and open the template in the editor.
             </div>
 
             <div class='ui-content ui-body h-centered'>
-                <div id='tile-new-game' class='button-tile color4 bevel-shadow'>
-                    <div class='tile-text'>
-                        <p>New</p>
+                <div id='tile-new-game' class='button-tile ui-shadow'>
+                    <div class='tileface color4 bevel'>
+                        <div class='tile-text'>
+                            <p>New</p>
+                        </div>
                     </div>
                 </div>
-                <div id='tile-game' class='button-tile color1 ui-state-disabled bevel-shadow'>
-                    <div class='tile-text'>
-                        <p>Resume</p>
+                <div id='tile-game' class='button-tile ui-state-disabled ui-shadow'>
+                    <div class='tileface color1 bevel'>
+                        <div class='tile-text'>
+                            <p>Resume</p>
+                        </div>
                     </div>
                 </div>
-                <div id='tile-high-scores' class='button-tile color3 bevel-shadow'>
-                    <div class='tile-text'>
-                        <p>Best Scores</p>
+                <div id='tile-high-scores' class='button-tile ui-shadow'>
+                    <div class='tileface color3 bevel'>
+                        <div class='tile-text'>
+                            <p>Best Scores</p>
+                        </div>
                     </div>
                 </div>
-                <div id='tile-directions' class='button-tile color2 bevel-shadow'>
-                    <div class='tile-text'>
-                        <p>How to Play</p>
+                <div id='tile-directions' class='button-tile ui-shadow'>
+                    <div class='tileface color2 bevel'>
+                        <div class='tile-text'>
+                            <p>How to Play</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -258,8 +266,21 @@ and open the template in the editor.
         </div>
 
         <!-- Templates -->
-        <div id='tile-template' class='hidden'>
+        <div class='hidden'>
             <div class='tile bevel-shadow'></div>
+        </div>
+
+        <div id='tile-template' class='hidden'>
+            <div class='tile ui-shadow'>
+                <div class='tileface bevel color1'>1</div>
+                <div class='tileface bevel color2'>2</div>
+                <div class='tileface bevel color3'>3</div>
+                <div class='tileface bevel color4'>4</div>
+                <div class='tileface bevel color5'>5</div>
+                <div class='tileface bevel color6'>6</div>
+                <div class='tileface bevel color7'>7</div>
+                <div class='tileface bevel color8'>8</div>
+            </div>
         </div>
     </body>
 </html>

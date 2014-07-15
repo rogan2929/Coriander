@@ -5,7 +5,7 @@
  */
 
 var constants = {
-    ANIMATION_LENGTH: 300,
+    ANIMATION_LENGTH: 500,
     TAP_TIMEOUT: 1000,
     PAGE_CHANGE_TIMEOUT: 800
 };

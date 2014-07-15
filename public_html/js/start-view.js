@@ -38,10 +38,10 @@ var startView = {
         
         html = $(tile).html();
 
-        $(tile).removeClass('bevel-shadow').addClass('bevel-shadow-light').addClass('flip').addClass('scale').addClass('fade').empty();
+        $(tile).addClass('enable-transitions').removeClass('ui-shadow').addClass('flip').children('.tileface').fadeOut(300);
         
         setTimeout(function() {
-            $(tile).removeClass('scale').removeClass('flip').html(html).removeClass('bevel-shadow-light').addClass('bevel-shadow').removeClass('fade');
+            $(tile).addClass('ui-shadow').removeClass('enable-transitions').removeClass('flip').children('.tileface').fadeIn(300);
         }, constants.ANIMATION_LENGTH);
     },
     

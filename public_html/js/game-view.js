@@ -49,8 +49,13 @@ var gameView = {
                     value = tiles[i + j].getValue();
                     index = tiles[i + j].getIndex();
 
-                    //tile = $(html).width(width).height(width).css('margin', margin + 'px').css('margin-right', margin / 1.75 + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
-                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
+                    //tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
+                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index);
+                    
+                    $(tile).children('.tileface').hide();
+                    $(tile).children('.tileface:nth-child(' + value + ')').show();
+                    
+                    $(tile).appendTo('#tile-container');
                 }
             }
 
@@ -82,37 +87,50 @@ var gameView = {
     flipTiles: function(tiles) {
         var i, index, value, classList, color;
 
-        // "Tag" the tiles that are going to be flipped, and strip them of their color.
-        for (i = 0; i < tiles.length; i++) {
-            $('.tile-' + tiles[i].getIndex()).addClass('flipme');
-        }
-
-        $('.flipme').addClass('fade').removeClass('bevel-shadow').addClass('flip').empty();
-
-        // Add the color back in.
+        // "Tag" the tiles that are going to be flipped.
         for (i = 0; i < tiles.length; i++) {
             index = tiles[i].getIndex();
             value = tiles[i].getValue();
-
-            classList = $('.tile-' + index).attr('class');
-
-            color = classList.substring(classList.indexOf('color'), classList.indexOf('color') + 6);
-
-            $('.tile-' + index).removeClass(color).addClass(gameView.colors[value - 1]);
+            
+            $('.tile-' + index).addClass('flipme');
+            
+            // Mark the tileface that is to be shown next.
+            $('.tile-' + index).children('.tileface:nth-child(' + value + ')').addClass('fadein');
         }
 
+        //$('.flipme').addClass('fade').removeClass('bevel-shadow').addClass('flip').empty();
+        $('.flipme').addClass('enable-transitions').addClass('flip').removeClass('ui-shadow').children('.tileface').fadeOut(300);
+
+//        // Add the color back in.
+//        for (i = 0; i < tiles.length; i++) {
+//            index = tiles[i].getIndex();
+//            value = tiles[i].getValue();
+//
+//            classList = $('.tile-' + index).attr('class');
+//
+//            color = classList.substring(classList.indexOf('color'), classList.indexOf('color') + 6);
+//
+//            $('.tile-' + index).removeClass(color).addClass(gameView.colors[value - 1]);
+//        }
+
         setTimeout(function() {
-            $('.flipme').removeClass('flip').removeClass('flipme').addClass('bevel-shadow').removeClass('fade');
+            //$('.flipme').removeClass('flip').removeClass('flipme').addClass('ui-shadow').removeClass('fade');
+            $('.flipme').addClass('ui-shadow').removeClass('enable-transitions').removeClass('flip')
 
-            // Display new values and add new color classes.
-            for (i = 0; i < tiles.length; i++) {
-                index = tiles[i].getIndex();
-                value = tiles[i].getValue();
+//            // Display new values and add new color classes.
+//            for (i = 0; i < tiles.length; i++) {
+//                index = tiles[i].getIndex();
+//                value = tiles[i].getValue();
+//
+//                // Set the tile text.
+//                //gameView.setTileText('.tile-' + index, value);
+//                $('.tile-' + index).text(value);
+//            }
 
-                // Set the tile text.
-                //gameView.setTileText('.tile-' + index, value);
-                $('.tile-' + index).text(value);
-            }
+            // Fade in the tile face that was tagged earlier.
+            $('.flipme').children('.tileface.fadein').fadeIn(300).removeClass('fadein');
+
+            $('.flipme').removeClass('flipme');
 
         }, constants.ANIMATION_LENGTH);
     },
