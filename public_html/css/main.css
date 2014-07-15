@@ -160,11 +160,6 @@ and open the template in the editor.
     text-align: center;
     vertical-align: middle;
     margin: 5px;
-    /*    -webkit-transition-property: -webkit-transform;
-        -moz-transition-property: -moz-transform;
-        -o-transition-property: -o-transform;
-        transition-property: transform;
-        transform-style: preserve-3d;*/
     overflow: hidden;
     text-shadow: none;
     color: #333333;
@@ -202,11 +197,15 @@ and open the template in the editor.
 }
 
 .flip {
-    -webkit-animation: flip-keyframes 0.3s;
+/*    -webkit-animation: flip-keyframes 0.3s;
+    -webkit-backface-visibility: visible;*/
+    -webkit-transition: all 0.50s;
+    -webkit-transition-property: -webkit-transform;
     -webkit-backface-visibility: visible;
+    -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
 }
 
-@-webkit-keyframes flip-keyframes {
+/*@-webkit-keyframes flip-keyframes {
     0% {
         -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
         -webkit-animation-timing-function: ease-out;
@@ -216,7 +215,7 @@ and open the template in the editor.
         -webkit-transform: perspective(400px);
         -webkit-animation-timing-function: ease-in;
     }
-}
+}*/
 
 .fade {
     -webkit-transition: all 0.50s;
