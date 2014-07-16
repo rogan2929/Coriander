@@ -99,14 +99,15 @@ var gameView = {
         }
 
         $('.flipme').addClass('flip');
+        $('.flipme .fadein');
 
+        // During flip animation...
+        // .fadein needs to fade in.
+        // everything else needs to be hidden.
+
+        // Clean up after the animation is run.
         setTimeout(function() {
-            //$('.flipme').children('.tileface').hide();
-            
-            // Fade in the tile that was tagged earlier.
-            $('.flipme').removeClass('flip').children('.tileface.fadein').fadeIn(300).removeClass('fadein');
-            $('.flipme').removeClass('flipme');
-
+            $('.flipme').removeClass('flipme').removeClass('flip').children('.tileface.fadein').removeClass('fadein');
         }, constants.ANIMATION_LENGTH);
     },
     /**

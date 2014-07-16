@@ -236,6 +236,20 @@ and open the template in the editor.
     }
 }
 
+/*
+.fade {
+    -webkit-animation: fade-animation 0.7s ease-in-out;
+}
+
+@-webkit-keyframes fade-animation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        
+    }
+}*/
+
 .v-centered {
     top: 0;
     bottom: 0;
