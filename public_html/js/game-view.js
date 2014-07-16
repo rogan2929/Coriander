@@ -52,8 +52,9 @@ var gameView = {
                     //tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
                     tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index);
                     
-                    $(tile).children('.tileface').hide();
-                    $(tile).children('.tileface:nth-child(' + value + ')').show();
+                    //$(tile).children('.tileface').hide();
+                    //$(tile).children('.tileface:nth-child(' + value + ')').show();
+                    $(tile).children('.tileface:nth-child(' + value + ')').addClass('top');
                     
                     $(tile).appendTo('#tile-container');
                 }
@@ -98,8 +99,8 @@ var gameView = {
             $('.tile-' + index).children('.tileface:nth-child(' + value + ')').addClass('fadein');
         }
 
-        $('.flipme').addClass('flip');
-        $('.flipme .fadein');
+        $('.flipme').addClass('flip').children('.flipme .tileface');
+        $('.flipme .fadein').addClass('top');
 
         // During flip animation...
         // .fadein needs to fade in.

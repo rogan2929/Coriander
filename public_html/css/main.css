@@ -236,6 +236,20 @@ and open the template in the editor.
     }
 }
 
+.top {
+    -webkit-backface-visibility: visible;
+    -webkit-animation: top-animation 0.2s linear;
+}
+
+@-webkit-keyframes top-animation {
+    from {
+        z-index: 0;
+    }
+    to {
+        z-index: 10;
+    }
+}
+
 /*
 .fade {
     -webkit-animation: fade-animation 0.7s ease-in-out;
