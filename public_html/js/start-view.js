@@ -14,16 +14,17 @@ var startView = {
      */
     configureButtonTiles: function() {
         var size, windowWidth, textSize, margin;
-        
+
         windowWidth = $(window).width();
-        
+
         size = ((windowWidth - (windowWidth * 0.40)) / 2);
-        
+
         margin = size / 12;
-        
+
         //textSize = size / 4;
 
-        $('.button-tile').width(size).height(size + 'px').css('margin', margin + 'px').css('margin-right', margin / 3 + 'px');
+        //$('.button-tile').width(size).height(size + 'px').css('margin', margin + 'px').css('margin-right', margin / 3 + 'px');
+        $('.button-tile').width(size).height(size + 'px').css('margin', margin + 'px');
     },
     /**
      * Flip a button tile.
@@ -31,16 +32,17 @@ var startView = {
      */
     flipTile: function(tile) {
         var html;
-        
+
         html = $(tile).html();
 
+        // Add the animation class.
         $(tile).addClass('flip-tile');
-        
-        setTimeout(function() {
-            //$(tile).removeClass('flip');
-        }, constants.ANIMATION_LENGTH);
+
+        // Listen for the animation end event and then remove the class.
+        $(tile).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+            $(tile).removeClass('flip-tile');
+        });
     },
-    
     navigateTo: function(page) {
         $('body').pagecontainer('change', '#' + page);
     },

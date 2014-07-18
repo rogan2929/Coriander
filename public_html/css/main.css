@@ -163,8 +163,6 @@ and open the template in the editor.
     text-shadow: none;
     color: #333333;
     position: relative;
-    -webkit-transition-duration: 0.7s;
-    -webkit-transform-style: preserve-3d;
 }
 
 .enable-transitions {
@@ -174,11 +172,23 @@ and open the template in the editor.
 }
 
 .flip-tile {
-    -webkit-transform: rotateY(180deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-animation: flip-animation 0.7s;
 }
 
-.flip-tile-alt {
-    
+@-webkit-keyframes flip-animation {
+    0% {
+        -webkit-transform: rotateY(0deg);
+        opacity: 1.0;
+    }
+    50% {
+        -webkit-transform: rotateY(180deg);
+        opacity: 0.0;
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+        opacity: 1.0;
+    }
 }
 
 .tile, .button-tile, .tileface {

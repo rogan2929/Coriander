@@ -51,11 +51,11 @@ var gameView = {
 
                     //tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
                     tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index);
-                    
+
                     //$(tile).children('.tileface').hide();
                     //$(tile).children('.tileface:nth-child(' + value + ')').show();
-                    $(tile).children('.tileface:nth-child(' + value + ')').addClass('top');
-                    
+                    $(tile).children('.tileface:nth-child(' + value + ')').addClass('front');
+
                     $(tile).appendTo('#tile-container');
                 }
             }
@@ -92,24 +92,24 @@ var gameView = {
         for (i = 0; i < tiles.length; i++) {
             index = tiles[i].getIndex();
             value = tiles[i].getValue();
-            
+
             $('.tile-' + index).addClass('flipme');
-            
+
             // Mark the tileface that is to be shown next.
             $('.tile-' + index).children('.tileface:nth-child(' + value + ')').addClass('fadein');
         }
 
-        $('.flipme').addClass('flip').children('.flipme .tileface');
-        $('.flipme .fadein').addClass('top');
+        $('.flipme').addClass('flip-tile').children('.flipme .tileface');
+        //$('.flipme .fadein').addClass('top');
 
         // During flip animation...
         // .fadein needs to fade in.
         // everything else needs to be hidden.
 
         // Clean up after the animation is run.
-        setTimeout(function() {
-            $('.flipme').removeClass('flipme').removeClass('flip').children('.tileface.fadein').removeClass('fadein');
-        }, constants.ANIMATION_LENGTH);
+        $('.flipme').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
+            $('.flipme').removeClass('flipme').removeClass('flip-tile').children('.tileface.fadein').removeClass('fadein');
+        });
     },
     /**
      * Sets the tile text.
