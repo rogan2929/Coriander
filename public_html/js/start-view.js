@@ -34,10 +34,10 @@ var startView = {
         
         html = $(tile).html();
 
-        $(tile).addClass('flip');
+        $(tile).addClass('flip-tile');
         
         setTimeout(function() {
-            $(tile).removeClass('flip');
+            //$(tile).removeClass('flip');
         }, constants.ANIMATION_LENGTH);
     },
     

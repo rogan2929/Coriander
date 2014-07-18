@@ -160,22 +160,56 @@ and open the template in the editor.
     text-align: center;
     vertical-align: middle;
     margin: 5px;
-    overflow: hidden;
     text-shadow: none;
     color: #333333;
     position: relative;
+    -webkit-transition-duration: 0.7s;
+    -webkit-transform-style: preserve-3d;
+}
+
+.enable-transitions {
+    -webkit-transition-duration: 0.7s;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transform-style: preserve-3d;
+}
+
+.flip-tile {
+    -webkit-transform: rotateY(180deg);
+}
+
+.flip-tile-alt {
+    
 }
 
 .tile, .button-tile, .tileface {
     border-radius: 5px;
 }
 
-.tile .tileface, .button-tile .tileface {
+.flip-container {
+    perspective: 800;
+}
+
+.tileface.front {
+    z-index: 10;
+    display: block;
+}
+
+.tileface.back {
+    -webkit-transform: rotateY(180deg);
+    display: block;
+    z-index: -10;
+}
+
+.tileface {
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-property: -webkit-transform;
+    display: none;
 }
 
 .bevel-shadow {
@@ -215,7 +249,7 @@ and open the template in the editor.
     color: #f6f6f6;
 }
 
-.flip {
+/*.flip {
     -webkit-backface-visibility: visible;
     -webkit-animation: flip-animation 0.7s ease-in-out;
 }
@@ -234,21 +268,7 @@ and open the template in the editor.
     100% {
         opacity: 1.0;
     }
-}
-
-.top {
-    -webkit-backface-visibility: visible;
-    -webkit-animation: top-animation 0.2s linear;
-}
-
-@-webkit-keyframes top-animation {
-    from {
-        z-index: 0;
-    }
-    to {
-        z-index: 10;
-    }
-}
+}*/
 
 /*
 .fade {
