@@ -49,7 +49,11 @@ var gameView = {
                     value = tiles[i + j].getValue();
                     index = tiles[i + j].getIndex();
 
-                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
+                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).addClass(gameView.colors[value - 1]);
+                    
+                    $(tile).children('.tileface').text(value);
+                    
+                    $(tile).appendTo('#tile-container');
                 }
             }
 
@@ -84,23 +88,29 @@ var gameView = {
         // "Tag" the tiles that are going to be flipped.
         for (i = 0; i < tiles.length; i++) {
             index = tiles[i].getIndex();
-            value = tiles[i].getValue();
 
-            $('.tile-' + index).addClass('flipme');
-
-            // Mark the tileface that is to be shown next.
-            //$('.tile-' + index).children('.tileface:nth-child(' + value + ')').addClass('fadein');
+            $('.tile-' + index).addClass('flipme').removeClass(function(index, css) {
+                return (css.match(/\bcolor\S+/g) || []).join(' ');
+            });
         }
-        
-        $('.flipme').addClass('enable-transitions').addClass('flip-tile');
 
-        //$('.flipme').addClass('flip-tile').children('.flipme .tileface');
-        //$('.flipme .fadein').addClass('top');
-
+        // Flip the tile.
+        $('.flipme').addClass('enable-transitions').addClass('flip-tile fadeout');
 
         // Clean up after the animation is run.
         $('.flipme').one('webkitTransitionEnd otransitionend msTransitionEnd transitionend', function(e) {
-            //$('.flipme').removeClass('flipme').removeClass('flip-tile').children('.tileface.fadein').removeClass('fadein');
+            for (i = 0; i < tiles.length; i++) {
+                index = tiles[i].getIndex();
+                value = tiles[i].getValue();
+
+                $('.tile-' + index).addClass(gameView.colors[value - 1]).children('.tileface').text(value);
+            }
+
+            $('.flipme').removeClass('flip-tile fadeout');
+
+            $('.flipme').one('webkitTransitionEnd otransitionend msTransitionEnd transitionend', function(e) {
+                $('.flipme').removeClass('enable-transitions').removeClass('flipme');
+            });
         });
     },
     /**

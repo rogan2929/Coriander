@@ -176,6 +176,14 @@ and open the template in the editor.
     -webkit-transform-style: preserve-3d;
 }
 
+.fadein {
+    opacity: 1.0;
+}
+
+.fadeout {
+    opacity: 0.0;
+}
+
 /*@-webkit-keyframes flip-animation {
     0% {
         -webkit-transform: rotateY(0deg);
