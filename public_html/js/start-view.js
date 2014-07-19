@@ -36,11 +36,11 @@ var startView = {
         html = $(tile).html();
 
         // Add the animation class.
-        $(tile).addClass('flip-tile');
+        $(tile).addClass('enable-transitions').addClass('flip-tile');
 
         // Listen for the animation end event and then remove the class.
-        $(tile).one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
-            $(tile).removeClass('flip-tile');
+        $(tile).one('webkitTransitionEnd otransitionend msTransitionEnd transitionend', function(e) {
+            $(tile).removeClass('enable-transitions').removeClass('flip-tile');
         });
     },
     navigateTo: function(page) {

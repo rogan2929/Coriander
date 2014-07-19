@@ -49,14 +49,7 @@ var gameView = {
                     value = tiles[i + j].getValue();
                     index = tiles[i + j].getIndex();
 
-                    //tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
-                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index);
-
-                    //$(tile).children('.tileface').hide();
-                    //$(tile).children('.tileface:nth-child(' + value + ')').show();
-                    $(tile).children('.tileface:nth-child(' + value + ')').addClass('front');
-
-                    $(tile).appendTo('#tile-container');
+                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).text(value).addClass(gameView.colors[value - 1]).appendTo('#tile-container');
                 }
             }
 
@@ -96,19 +89,18 @@ var gameView = {
             $('.tile-' + index).addClass('flipme');
 
             // Mark the tileface that is to be shown next.
-            $('.tile-' + index).children('.tileface:nth-child(' + value + ')').addClass('fadein');
+            //$('.tile-' + index).children('.tileface:nth-child(' + value + ')').addClass('fadein');
         }
+        
+        $('.flipme').addClass('enable-transitions').addClass('flip-tile');
 
-        $('.flipme').addClass('flip-tile').children('.flipme .tileface');
+        //$('.flipme').addClass('flip-tile').children('.flipme .tileface');
         //$('.flipme .fadein').addClass('top');
 
-        // During flip animation...
-        // .fadein needs to fade in.
-        // everything else needs to be hidden.
 
         // Clean up after the animation is run.
-        $('.flipme').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function(e) {
-            $('.flipme').removeClass('flipme').removeClass('flip-tile').children('.tileface.fadein').removeClass('fadein');
+        $('.flipme').one('webkitTransitionEnd otransitionend msTransitionEnd transitionend', function(e) {
+            //$('.flipme').removeClass('flipme').removeClass('flip-tile').children('.tileface.fadein').removeClass('fadein');
         });
     },
     /**
