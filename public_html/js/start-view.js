@@ -47,9 +47,6 @@ var startView = {
             });
         });
     },
-    navigateTo: function(page) {
-        $('body').pagecontainer('change', '#' + page);
-    },
     /**
      * Enable/disable the resume button.
      * @param {type} enable
