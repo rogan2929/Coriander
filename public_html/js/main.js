@@ -47,27 +47,6 @@ String.prototype.toHHMMSS = function() {
     return time;
 };
 
-function showAdBanner(element) {
-    var script = "<script>" +
-            "RequestAd_({" +
-                "s: 'f2ffd94193a7f381bfbdf6dc81250ede'," + 
-                "m: 'test'," +
-                "adspace_width: '320'," +
-                "adspace_height: '50'," +
-                "adspace_strict: '0'," +
-                "backfillhtml: ''," +
-                "prependclickcontent: ''," +
-                "trackingpixelurl: ''" +
-            "});" +
-        "</script>";
-
-    //alert(script);
-
-    //var script = "<script>alert('test');</script>";
-
-    //$(element).append(script);
-}
-
 $(document).on('pagebeforeshow', '#start', function(e) {
     startPresenter.init();
 
@@ -107,7 +86,6 @@ $(document).on('pagebeforeshow', '#high-scores', function(e) {
 });
 
 $(document).on('pagebeforeshow', '#game', function(e) {
-    showAdBanner('#game .ad-bar');
     gamePresenter.init();
 });
 

@@ -114,16 +114,6 @@ var gameView = {
         });
     },
     /**
-     * Sets the tile text.
-     * @param {type} tile
-     * @param {type} value
-     */
-    setTileText: function(tile, value) {
-        setTimeout(function() {
-            $(tile).text(value);
-        }, constants.ANIMATION_LENGTH);
-    },
-    /**
      * Update displayed tiles.
      * @param {type} tiles
      */

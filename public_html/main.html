@@ -30,9 +30,8 @@ and open the template in the editor.
     </script>
 
     <script src="js/mobileinit.js"></script>
-    <script src="js/vendor/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/vendor/jquery.mobile-1.4.3.min.js"></script>    
     <script src='http://my.mobfox.com/ad.js'></script>
-    <script src='http://my.mobfox.com/nativead.js'></script>
 
     <script src="js/constants.js"></script>
     <script src="js/event-bus.js"></script>
@@ -93,7 +92,7 @@ and open the template in the editor.
                 </div>
             </div>
 
-            <a href='#' id='tile-rate' class='ui-btn half absolute stretch-bottom no-margin ui-corner-all hidden ui-shadow'>Rate / Give Feedback</a>
+            <a href='#' id='tile-rate' class='ui-btn half absolute stretch-bottom no-margin ui-corner-all hidden ui-shadow'>Feedback</a>
         </div>
 
         <div id='new-game' data-role='page' data-swipeleft="#more-options" data-swiperight="#start" class="background">
@@ -169,10 +168,12 @@ and open the template in the editor.
             </div>
             <div class='absolute stretch-right stretch-top margin-top'>
                 <a id="button-shuffle" class='ui-btn ui-btn-icon-notext ui-icon-recycle ui-btn-inline ui-corner-all ui-shadow'></a>
-                <a href="#start" class='ui-btn ui-btn-icon-notext ui-icon-grid ui-btn-inline ui-corner-all ui-shadow'></a>
+                <a id="button-main" class='ui-btn ui-btn-icon-notext ui-icon-grid ui-btn-inline ui-corner-all ui-shadow'></a>
             </div>
             <div id='tile-container' class='h-centered v-centered absolute'></div>
-            <div class='ad-bar absolute stretch-bottom h-centered stretch-left stretch-right'></div>
+            <div class='ad-bar absolute stretch-bottom h-centered stretch-left stretch-right'>
+                <script src="js/vendor/mobfox.js" type="text/javascript"></script>
+            </div>
         </div>
 
         <div id='high-scores' data-role='page' data-swiperight="#start" class="background">

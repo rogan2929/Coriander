@@ -74,6 +74,7 @@ var gamePresenter = {
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
         eventBus.installHandler('gamePresenter.onTapButtonShuffle', gamePresenter.onTapButtonShuffle, '#button-shuffle', 'tap');
+        eventBus.installHandler('gamePresenter.onTapButtonMain', gamePresenter.onTapButtonMain, '#button-main', 'tap');
     },
     /**
      * Clears the save state interval.
@@ -312,81 +313,6 @@ var gamePresenter = {
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
         }
 
-//        gamePresenter.tiles[index].incrementValue();
-//        updatedTiles.push(gamePresenter.tiles[index]);
-//
-//        if (alt) {
-//            // Indicates the user held.
-//
-//            // Upper Left
-//            // index - gridSize - 1
-//            // index % gamePresenter.gridSize !== 0
-//            // index - gamePresenter.gridSize >= 0
-//            if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index - gamePresenter.gridSize >= 0) {
-//                gamePresenter.tiles[index - gamePresenter.gridSize - 1].incrementValue();
-//                updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize - 1]);
-//            }
-//
-//            // Upper Right
-//            // index - gridSize + 1
-//            // (index + 1) % (gamePresenter.gridSize) !== 0
-//            // index - gamePresenter.gridSize >= 0
-//            if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index - gamePresenter.gridSize >= 0) {
-//                gamePresenter.tiles[index - gamePresenter.gridSize + 1].incrementValue();
-//                updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize + 1]);
-//            }
-//
-//            // Below Left
-//            // index + gridSize - 1
-//            // index % gamePresenter.gridSize !== 0
-//            // index + gamePresenter.gridSize < gamePresenter.tiles.length
-//            if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-//                gamePresenter.tiles[index + gamePresenter.gridSize - 1].incrementValue();
-//                updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize - 1]);
-//            }
-//
-//            // Below Right
-//            // index + gridSize + 1
-//            // (index + 1) % (gamePresenter.gridSize) !== 0
-//            // index + gamePresenter.gridSize < gamePresenter.tiles.length
-//            if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0 && index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-//                gamePresenter.tiles[index + gamePresenter.gridSize + 1].incrementValue();
-//                updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize + 1]);
-//            }
-//        }
-//        else {
-//            // Left tile.
-//            if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0) {
-//                gamePresenter.tiles[index - 1].incrementValue();
-//                updatedTiles.push(gamePresenter.tiles[index - 1]);
-//            }
-//
-//            // Right tile
-//            if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0) {
-//                gamePresenter.tiles[index + 1].incrementValue();
-//                updatedTiles.push(gamePresenter.tiles[index + 1]);
-//            }
-//
-//            // Above tile
-//            if (index - gamePresenter.gridSize >= 0) {
-//                gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
-//                updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize]);
-//            }
-//
-//            // Below tile
-//            if (index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-//                gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
-//                updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
-//            }
-//        }
-
-        // Edge detection:
-        // Left edge: index % gamePresenter.gridSize !== 0
-        // Right edge: (index + 1) % (gamePresenter.gridSize) !== 0
-        // Top edge: index - gamePresenter.gridSize >= 0
-        // Bottom edge: index + gamePresenter.gridSize < gamePresenter.tiles.length
-
-
         // Update tiles on the view.
         gameView.updateTiles(updatedTiles);
 
@@ -397,6 +323,9 @@ var gamePresenter = {
             // Evaluate Game Status.
             gamePresenter.evaluateState();
         }, constants.TAP_TIMEOUT + 100);
+    },
+    onTapButtonMain: function(e) {
+        $(location).attr('href',"main.html");
     },
     onTapButtonShuffle: function(e) {
         if (gamePresenter.tapTimeout === null) {
