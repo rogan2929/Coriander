@@ -74,7 +74,7 @@ var gamePresenter = {
         eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
         eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
         eventBus.installHandler('gamePresenter.onTapButtonShuffle', gamePresenter.onTapButtonShuffle, '#button-shuffle', 'tap');
-        eventBus.installHandler('gamePresenter.onTapButtonMain', gamePresenter.onTapButtonMain, '#button-main', 'tap');
+        eventBus.installHandler('gamePresenter.onTapButtonMain', gamePresenter.onTapButtonMain, '#game .button-main', 'tap');
     },
     /**
      * Clears the save state interval.

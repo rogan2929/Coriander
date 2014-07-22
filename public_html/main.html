@@ -66,14 +66,14 @@ and open the template in the editor.
                 <div id='tile-new-game' class='button-tile bevel-shadow color4'>
                     <div class='tileface'>
                         <div class='tile-text'>
-                            <p>New</p>
+                            <p>New Game</p>
                         </div>
                     </div>
                 </div>
                 <div id='tile-game' class='button-tile ui-state-disabled bevel-shadow color1'>
                     <div class='tileface'>
                         <div class='tile-text'>
-                            <p>Resume</p>
+                            <p>Resume Game</p>
                         </div>
                     </div>
                 </div>
@@ -106,22 +106,34 @@ and open the template in the editor.
             <div class="ui-content h-centered">
                 <div class='button-tile color8 bevel-shadow' data-value='3'>
                     <div class='tile-text'>
-                        <p>3 x 3</p>
+                        <p>
+                            3 x 3<br/>
+                            (Small)
+                        </p>
                     </div>
                 </div>
                 <div class='button-tile color2 bevel-shadow' data-value='4'>
                     <div class='tile-text'>
-                        <p>4 x 4</p>
+                        <p>
+                            4 x 4<br/>
+                            (Regular)
+                        </p>
                     </div>
                 </div>
                 <div class='button-tile color3 bevel-shadow' data-value='5'>
                     <div class='tile-text'>
-                        <p>5 x 5</p>
+                        <p>
+                            5 x 5<br/>
+                            (Large)
+                        </p>
                     </div>
                 </div>
                 <div class='button-tile color4 bevel-shadow' data-value='6'>
                     <div class='tile-text'>
-                        <p>6 x 6</p>
+                        <p>
+                            6 x 6<br/>
+                            (Huge)
+                        </p>
                     </div>
                 </div>
             </div>
@@ -169,7 +181,7 @@ and open the template in the editor.
             </div>
             <div class='absolute stretch-right stretch-top margin-top'>
                 <a id="button-shuffle" class='ui-btn ui-btn-icon-notext ui-icon-recycle ui-btn-inline ui-corner-all ui-shadow'></a>
-                <a id="button-main" class='ui-btn ui-btn-icon-notext ui-icon-grid ui-btn-inline ui-corner-all ui-shadow'></a>
+                <a class='button-main ui-btn ui-btn-icon-notext ui-icon-grid ui-btn-inline ui-corner-all ui-shadow'></a>
             </div>
             <div id='tile-container' class='h-centered v-centered absolute'></div>
             <div class='ad-bar absolute stretch-bottom h-centered stretch-left stretch-right'>
@@ -184,19 +196,19 @@ and open the template in the editor.
 
             <div role='main' class='ui-content h-centered'>
                 <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>3 x 3 Puzzle</span>
+                    <span class='sub-heading'>3 x 3 Puzzle (Small)</span>
                     <div id='top-score-small'>You haven't solved this yet!</div>
                 </div>
                 <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>4 x 4 Puzzle</span>
+                    <span class='sub-heading'>4 x 4 Puzzle (Regular)</span>
                     <div id='top-score-regular'>You haven't solved this yet!</div>
                 </div>
                 <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>5 x 5 Puzzle</span>
+                    <span class='sub-heading'>5 x 5 Puzzle (Large)</span>
                     <div id='top-score-large'>You haven't solved this yet!</div>
                 </div>
                 <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>6 x 6 Puzzle</span>
+                    <span class='sub-heading'>6 x 6 Puzzle (Huge)</span>
                     <div id='top-score-huge'>You haven't solved this yet!</div>
                 </div>
             </div>
@@ -249,7 +261,7 @@ and open the template in the editor.
             <!--
             <a id='button-facebook' class='ui-btn half'>Share on Facebook</a>-->
             <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
-                <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
+                <a href="#start" class='button-main ui-btn half ui-corner-all ui-shadow'>Menu</a>
             </div>
         </div>
 
