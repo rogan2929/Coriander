@@ -38,7 +38,8 @@ var moreOptionsPresenter = {
     onTapButtonTile: function(e) {
         var gameMode;
         
-        gameMode = parseInt($(e.currentTarget).attr('data-value'));
+        //gameMode = parseInt($(e.currentTarget).attr('data-value'));
+        gameMode = $(e.currentTarget).attr('data-value');
         
         gamePresenter.setGameMode(gameMode);
         moreOptionsView.selectTile(e.currentTarget);

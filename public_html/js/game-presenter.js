@@ -4,16 +4,7 @@
  * and open the template in the editor.
  */
 
-/**
- * An enum for difficulty levels.
- * @type type
- */
-var sizes = {
-    small: 'small',
-    regular: 'regular',
-    large: 'large',
-    huge: 'huge'
-};
+
 
 /**
  * Presenter for #game
@@ -103,7 +94,7 @@ var gamePresenter = {
         if (allMatch) {
             // Do a victory dance, or something.
             //alert('You won!');
-            score = new Score(gamePresenter.moveCount, gamePresenter.gridName);
+            score = new Score(gamePresenter.moveCount, gamePresenter.gridName, gamePresenter.gameMode);
             topScore = model.getTopScore(gamePresenter.gridName);
 
             // If a new top score has been reached.
@@ -189,7 +180,7 @@ var gamePresenter = {
         }
     },
     setGameMode: function(mode) {
-        gamePresenter.gameMode = mode;
+        gamePresenter.gameMode = modes[mode];
     },
     /**
      * Setter for gameState.
@@ -209,12 +200,12 @@ var gamePresenter = {
         gamePresenter.gridSize = gameState.gridSize;
         gamePresenter.setMoveCount(gameState.score.moves);
         gamePresenter.gridName = gameState.score.size;
-        gamePresenter.gameMode = gameState.mode;
+        gamePresenter.gameMode = modes[gameState.mode];
         gamePresenter.maxTileSize = gameState.maxTileSize;
 
         // Check for valid game mode.
         if (!gamePresenter.gameMode) {
-            gamePresenter.gameMode = 0;
+            gamePresenter.gameMode = modes.regular;
         }
 
         // Check for valid max tile size. (Needed for update.)
@@ -284,7 +275,7 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        if (!alt && gamePresenter.gameMode === 0) {
+        if (!alt && gamePresenter.gameMode === modes.regular) {
             gamePresenter.tiles[index].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index]);
         }
@@ -341,7 +332,7 @@ var gamePresenter = {
         gamePresenter.flipTiles(e.currentTarget, false);
     },
     onTapHoldTile: function(e) {
-        if (gamePresenter.gameMode === 0) {
+        if (gamePresenter.gameMode === modes.regular) {
             gamePresenter.flipTiles(e.currentTarget, true);
         }
     }
