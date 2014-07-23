@@ -16,7 +16,7 @@ var moreOptionsPresenter = {
     init: function() {
         var gameMode, maxTileSize;
         
-        gameMode = 0;
+        gameMode = modes.regular;
         maxTileSize = 4;
         
         eventBus.installHandler('moreOptionsPresenter.onChangeSliderColorCount', moreOptionsPresenter.onChangeSliderColorCount, '#slider-color-count', 'change');
