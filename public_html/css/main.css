@@ -172,11 +172,16 @@ and open the template in the editor.
     -webkit-transition-duration: 0.7s;
     -webkit-transition-property: all;
     -webkit-transform-style: preserve-3d;
+    transition-duration: 0.7s;
+    transition-property: all;
+    transform-style: preserve-3d;
 }
 
 .flip-tile {
     -webkit-transform: rotateY(360deg);
     -webkit-transform-style: preserve-3d;
+    transform: rotateY(360deg);
+    transform-style: preserve-3d;
 }
 
 .fadein {
@@ -216,6 +221,7 @@ and open the template in the editor.
     width: 100%;
     height: 100%;
     -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .bevel-shadow {
@@ -254,41 +260,6 @@ and open the template in the editor.
 .light {
     color: #f6f6f6;
 }
-
-/*.flip {
-    -webkit-backface-visibility: visible;
-    -webkit-animation: flip-animation 0.7s ease-in-out;
-}
-
-@-webkit-keyframes flip-animation {
-    0% {
-        opacity: 1.0;
-    }
-    50% {
-        -webkit-transform: rotate3d(0, 1, 0, 180deg);
-        -moz-transform: rotate3d(0, 1, 0, 180deg);
-        -o-transform: rotate3d(0, 1, 0, 180deg);
-        transform: rotate3d(0, 1, 0, 180deg);
-        opacity: 0;
-    }
-    100% {
-        opacity: 1.0;
-    }
-}*/
-
-/*
-.fade {
-    -webkit-animation: fade-animation 0.7s ease-in-out;
-}
-
-@-webkit-keyframes fade-animation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        
-    }
-}*/
 
 .v-centered {
     top: 0;
