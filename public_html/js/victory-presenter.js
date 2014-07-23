@@ -82,6 +82,6 @@ var victoryPresenter = {
         });
     },
     onTapButtonMain: function(e) {
-        navigator.navigateTo('main.html', true);
+        navigation.navigateTo('main.html', true);
     }
 };

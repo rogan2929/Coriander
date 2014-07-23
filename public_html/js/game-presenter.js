@@ -316,7 +316,7 @@ var gamePresenter = {
         }, constants.TAP_TIMEOUT + 100);
     },
     onTapButtonMain: function(e) {
-        navigator.navigateTo('main.html', true);
+        navigation.navigateTo('main.html', true);
     },
     onTapButtonShuffle: function(e) {
         if (gamePresenter.tapTimeout === null) {

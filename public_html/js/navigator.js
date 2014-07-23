@@ -5,7 +5,7 @@
  */
 
 
-var navigator = {
+var navigation = {
     navigateTo: function(page, refresh) {
         if (!refresh) {
             $('body').pagecontainer('change', '#' + page);
