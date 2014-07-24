@@ -14,6 +14,7 @@ var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
     SAVE_STATE_TIME: 5000,
+    INV_AUTO_MATCH_CHANCE: 0.95,
     // Class variables
     gridSize: 3,
     moveCount: 0,
@@ -124,7 +125,7 @@ var gamePresenter = {
      * @param {type} hold
      */
     flipTiles: function(target, hold) {
-        var value, index, classList;
+        var value, index, classList, autoMatch;
 
         if (gamePresenter.tapTimeout === null) {
             // Implement some throttling on tile tapping. This prevents glitches during animations.
@@ -134,8 +135,15 @@ var gamePresenter = {
             classList = $(target).attr('class');
 
             index = parseInt(classList.substring(classList.indexOf('tile-') + 5, classList.indexOf('tile-') + 7));
-
-            gamePresenter.updateTileValues(index, hold);
+            
+            // See if the player is getting lucky. If they are, then flipped tiles will all be made to match.
+            autoMatch = (Math.random() >= gamePresenter.INV_AUTO_MATCH_CHANCE);        // 1 in 20 chance of this.
+            
+            if (autoMatch) {
+                gameView.showPopupText('Auto Match!');
+            }
+            
+            gamePresenter.updateTileValues(index, hold, autoMatch);
         }
     },
     /**
@@ -263,45 +271,64 @@ var gamePresenter = {
      * Update tile values.
      * @param {type} index
      * @param {type} alt
+     * @param {type} autoMatch
      */
-    updateTileValues: function(index, alt) {
+    updateTileValues: function(index, alt, autoMatch) {
         // Update tiles that are to the left, right, above, and below.
         // Left: -1
         // Right: +1
         // Above: -gridSize
         // Below: +gridSize
 
-        var updatedTiles;
+        var updatedTiles, matchValue, i;
 
         updatedTiles = [];
 
-        if (!alt && gamePresenter.gameMode === modes.regular) {
-            gamePresenter.tiles[index].incrementValue();
+        if (!alt && gamePresenter.gameMode === modes.regular || autoMatch) {
+            //gamePresenter.tiles[index].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index]);
         }
 
         // Left tile.
         if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0) {
-            gamePresenter.tiles[index - 1].incrementValue();
+            //gamePresenter.tiles[index - 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - 1]);
         }
 
         // Right tile
         if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0) {
-            gamePresenter.tiles[index + 1].incrementValue();
+            //gamePresenter.tiles[index + 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + 1]);
         }
 
         // Above tile
         if (index - gamePresenter.gridSize >= 0) {
-            gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
+            //gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize]);
         }
 
         // Below tile
         if (index + gamePresenter.gridSize < gamePresenter.tiles.length) {
-            gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
+            //gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
+        }
+        
+        // Set the new values...
+        if (autoMatch) {
+            // Increment the middle tile and then grab its value.
+            updatedTiles[0].incrementValue();
+            matchValue = updatedTiles[0].getValue();
+            
+            // We are matching...
+            for (i = 1; i < updatedTiles.length; i++) {
+                updatedTiles[i].setValue(matchValue);
+            }
+        }
+        else {
+            // Just incrementing...
+            for (i = 0; i < updatedTiles.length; i++) {
+                updatedTiles[i].incrementValue();
+            }
         }
 
         // Update tiles on the view.

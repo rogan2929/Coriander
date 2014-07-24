@@ -194,27 +194,48 @@ and open the template in the editor.
             </div>
 
             <div role='main' class='ui-content h-centered'>
+                <span class='sub-heading'>Regular Mode</span>
+
                 <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>3 x 3 Puzzle (Small)</span>
+                    <span class='sub-heading'>Small (3 x 3)</span>
                     <div id='top-score-small'>You haven't solved this yet!</div>
                 </div>
                 <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>4 x 4 Puzzle (Regular)</span>
+                    <span class='sub-heading'>Regular (4 x 4)</span>
                     <div id='top-score-regular'>You haven't solved this yet!</div>
                 </div>
                 <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>5 x 5 Puzzle (Large)</span>
+                    <span class='sub-heading'>Large (5 x 5)</span>
                     <div id='top-score-large'>You haven't solved this yet!</div>
                 </div>
                 <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>6 x 6 Puzzle (Huge)</span>
+                    <span class='sub-heading'>Huge (6 x 6)</span>
                     <div id='top-score-huge'>You haven't solved this yet!</div>
                 </div>
             </div>
 
-            <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
-                <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
+            <div role='main' class='ui-content h-centered'>
+                <span class='sub-heading'>Advanced Mode</span>
+
+                <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
+                    <span class='sub-heading'>Small (3 x 3)</span>
+                    <div id='top-score-small-a'>You haven't solved this yet!</div>
+                </div>
+                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <span class='sub-heading'>Regular (4 x 4)</span>
+                    <div id='top-score-regular-a'>You haven't solved this yet!</div>
+                </div>
+                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <span class='sub-heading'>Large (5 x 5)</span>
+                    <div id='top-score-large-a'>You haven't solved this yet!</div>
+                </div>
+                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <span class='sub-heading'>Huge (6 x 6)</span>
+                    <div id='top-score-huge-a'>You haven't solved this yet!</div>
+                </div>
             </div>
+            
+            <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
         </div>
 
         <div id='directions' data-role='page' data-swiperight="#start" class="background">
@@ -224,13 +245,10 @@ and open the template in the editor.
 
             <div role='main' class='ui-content'>
                 <p class='no-margin ui-content ui-body ui-body-a ui-shadow'>
-                    Your basic goal is to make all the numbered tiles the same color.
+                    Your underlying goal is to make all of tiles the same color, and the fewer the moves you can do that in the better.
                     <br/><br/>
 
-                    <b>The fewer the moves the better!</b>
-                    <br/><br/>
-
-                    There are going to be two different modes of play: regular and advanced.
+                    There are two different modes of play: regular and advanced.
                     <br/><br/>
 
                     <b>Regular</b><br/>
@@ -263,6 +281,9 @@ and open the template in the editor.
                 <a href="#start" class='button-main ui-btn half ui-corner-all ui-shadow'>Menu</a>
             </div>
         </div>
+
+        <!-- Popups and the like -->
+        <div id='popup-message' class='absolute popup-message hidden ui-shadow stretch-left stretch-right stretch-bottom stretch-top auto-margin ui-corner-all'></div>
 
         <!-- Templates -->
         <div id='tile-template' class='hidden'>

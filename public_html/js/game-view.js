@@ -113,6 +113,13 @@ var gameView = {
             });
         });
     },
+    showPopupText: function(text) {
+        $('#popup-message').text(text).fadeIn(200, function() {
+            setTimeout(function() {
+                $('#popup-message').fadeOut(200);
+            }, constants.TAP_TIMEOUT);
+        });
+    },
     /**
      * Update displayed tiles.
      * @param {type} tiles
