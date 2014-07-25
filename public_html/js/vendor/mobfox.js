@@ -8,7 +8,7 @@
 RequestAd_({
     // Ad Request Variables
     s: 'f2ffd94193a7f381bfbdf6dc81250ede',
-    m: 'test',
+    m: 'live',
     adspace_width: '320',
     adspace_height: '50',
     adspace_strict: '0',
