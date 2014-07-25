@@ -14,7 +14,7 @@ var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
     SAVE_STATE_TIME: 5000,
-    INV_AUTO_MATCH_CHANCE: 0.90,
+    INV_AUTO_MATCH_CHANCE: 0.95,
     // Class variables
     gridLength: 3,
     moveCount: 0,
