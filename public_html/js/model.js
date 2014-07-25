@@ -9,8 +9,17 @@
  * @type type
  */
 var model = {
+    /**
+     * Clears the game state.
+     */
     clearGameState: function() {
         localStorage.removeItem('gamestate');
+    },
+    /**
+     * Clears all top scores.
+     */
+    clearTopScores: function() {
+        // NYI...
     },
     /**
      * Loads the game state from LocalStorage.
