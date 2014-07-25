@@ -14,7 +14,7 @@ var gamePresenter = {
     // Constants
     MIN_TILE_SIZE: 1,
     SAVE_STATE_TIME: 5000,
-    INV_AUTO_MATCH_CHANCE: 0.95,
+    INV_AUTO_MATCH_CHANCE: 0.90,
     // Class variables
     gridLength: 3,
     moveCount: 0,
@@ -134,14 +134,14 @@ var gamePresenter = {
             classList = $(target).attr('class');
 
             index = parseInt(classList.substring(classList.indexOf('tile-') + 5, classList.indexOf('tile-') + 7));
-            
+
             // See if the player is getting lucky. If they are, then flipped tiles will all be made to match.
             autoMatch = (Math.random() >= gamePresenter.INV_AUTO_MATCH_CHANCE);        // 1 in 20 chance of this.
-            
+
             if (autoMatch) {
                 gameView.showPopupText('Auto Match!');
             }
-            
+
             gamePresenter.updateTileValues(index, hold, autoMatch);
         }
     },
@@ -283,43 +283,45 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        if (!alt && gamePresenter.mode === modes.regular || autoMatch) {
-            //gamePresenter.tiles[index].incrementValue();
+        if (!alt && gamePresenter.mode === modes.regular) {
             updatedTiles.push(gamePresenter.tiles[index]);
         }
 
         // Left tile.
         if (index - 1 >= 0 && index % gamePresenter.gridLength !== 0) {
-            //gamePresenter.tiles[index - 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - 1]);
         }
 
         // Right tile
         if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridLength) !== 0) {
-            //gamePresenter.tiles[index + 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + 1]);
         }
 
         // Above tile
         if (index - gamePresenter.gridLength >= 0) {
-            //gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridLength]);
         }
 
         // Below tile
         if (index + gamePresenter.gridLength < gamePresenter.tiles.length) {
-            //gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridLength]);
         }
-        
+
         // Set the new values...
         if (autoMatch) {
-            // Increment the middle tile and then grab its value.
-            updatedTiles[0].incrementValue();
-            matchValue = updatedTiles[0].getValue();
-            
+            // Determine the middle tile's value.
+            if (!alt && gamePresenter.mode === modes.regular) {
+                updatedTiles[0].incrementValue();
+                matchValue = updatedTiles[0].getValue();
+                i = 1;
+            }
+            else {
+                matchValue = gamePresenter.tiles[index].getValue();
+                i = 0;
+            }
+
             // We are matching...
-            for (i = 1; i < updatedTiles.length; i++) {
+            for (; i < updatedTiles.length; i++) {
                 updatedTiles[i].setValue(matchValue);
             }
         }
