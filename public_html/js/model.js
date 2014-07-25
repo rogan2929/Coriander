@@ -30,11 +30,13 @@ var model = {
     },
     /**
      * Gets the current top score.
+     * @param {type} mode
      * @param {type} size
      * @returns {unresolved}
      */
-    getTopScore: function(size) {
-        return localStorage.getItem(size);
+    getTopScore: function(mode, size) {
+        //return localStorage.getItem('topscores');
+        return localStorage.getItem(mode + '.' + size);
     },
     /**
      * Saves the game state to LocalStorage.
@@ -48,7 +50,7 @@ var model = {
      * @param {Score} score
      */
     saveTopScore: function(score) {
-        console.log(score);
-        localStorage.setItem(score.size, score.moves);
+        // Store in format: (<mode>.<size>, <moves>)
+        localStorage.setItem(score.mode + '.' + score.size, score.moves);
     }
 };

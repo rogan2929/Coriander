@@ -17,28 +17,54 @@ var highScoresPresenter = {
 
         scores = [];
 
-        score = model.getTopScore(sizes.small);
+        score = model.getTopScore(modes.regular, sizes.small);
 
         if (score) {
-            scores.push(new Score(score, sizes.small));
+            scores.push(new Score(score, sizes.small, modes.regular));
         }
 
-        score = model.getTopScore(sizes.regular);
+        score = model.getTopScore(modes.regular, sizes.regular);
 
         if (score) {
-            scores.push(new Score(score, sizes.regular));
+            scores.push(new Score(score, sizes.regular, modes.regular));
         }
 
-        score = model.getTopScore(sizes.large);
+        score = model.getTopScore(modes.regular, sizes.large);
 
         if (score) {
-            scores.push(new Score(score, sizes.large));
+            scores.push(new Score(score, sizes.large, modes.regular));
         }
         
-        score = model.getTopScore(sizes.huge);
+        score = model.getTopScore(modes.regular, sizes.huge);
         
         if (score) {
-            scores.push(new Score(score, sizes.huge));
+            scores.push(new Score(score, sizes.huge, modes.regular));
+        }
+        
+        // Advanced Game Mode
+        
+        score = model.getTopScore(modes.advanced, sizes.small);
+
+        if (score) {
+            scores.push(new Score(score, sizes.small, modes.advanced));
+        }
+
+        score = model.getTopScore(modes.advanced, sizes.regular);
+
+        if (score) {
+            scores.push(new Score(score, sizes.regular, modes.advanced));
+        }
+
+        score = model.getTopScore(modes.advanced, sizes.large);
+
+        if (score) {
+            scores.push(new Score(score, sizes.large, modes.advanced));
+        }
+        
+        score = model.getTopScore(modes.advanced, sizes.huge);
+        
+        if (score) {
+            scores.push(new Score(score, sizes.huge, modes.advanced));
         }
         
         highScoresView.displayTopScores(scores);

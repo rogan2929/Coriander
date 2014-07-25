@@ -16,14 +16,14 @@ var gamePresenter = {
     SAVE_STATE_TIME: 5000,
     INV_AUTO_MATCH_CHANCE: 0.95,
     // Class variables
-    gridSize: 3,
+    gridLength: 3,
     moveCount: 0,
-    gridName: null,
+    size: null,
     tiles: null,
     tapTimeout: null,
     saveStateInterval: null,
     victoryAchieved: null,
-    gameMode: null,
+    mode: null,
     maxTileSize: 4,
     /**
      * Entry point.
@@ -36,18 +36,18 @@ var gamePresenter = {
             startPresenter.setNewGame(false);
             gamePresenter.generateTiles();
 
-            switch (gamePresenter.gridSize) {
+            switch (gamePresenter.gridLength) {
                 case 3:
-                    gamePresenter.gridName = sizes.small;
+                    gamePresenter.size = sizes.small;
                     break;
                 case 4:
-                    gamePresenter.gridName = sizes.regular;
+                    gamePresenter.size = sizes.regular;
                     break;
                 case 5:
-                    gamePresenter.gridName = sizes.large;
+                    gamePresenter.size = sizes.large;
                     break;
                 case 6:
-                    gamePresenter.gridName = sizes.huge;
+                    gamePresenter.size = sizes.huge;
                     break;
             }
         }
@@ -55,7 +55,7 @@ var gamePresenter = {
         gamePresenter.victoryAchieved = false;
 
         gameView.clearTiles();
-        gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
+        gameView.loadTiles(gamePresenter.gridLength, gamePresenter.tiles);
 
         // Immediate save the game state and then start the interval.
         gamePresenter.saveState();
@@ -94,9 +94,8 @@ var gamePresenter = {
 
         if (allMatch) {
             // Do a victory dance, or something.
-            //alert('You won!');
-            score = new Score(gamePresenter.moveCount, gamePresenter.gridName, gamePresenter.gameMode);
-            topScore = model.getTopScore(gamePresenter.gridName);
+            score = new Score(gamePresenter.moveCount, gamePresenter.size, gamePresenter.mode);
+            topScore = model.getTopScore(gamePresenter.mode, gamePresenter.size);
 
             // If a new top score has been reached.
             if (score.moves < topScore || topScore === null) {
@@ -155,7 +154,7 @@ var gamePresenter = {
         values = [];
         gamePresenter.tiles = [];
 
-        gridSquare = gamePresenter.gridSize * gamePresenter.gridSize;
+        gridSquare = gamePresenter.gridLength * gamePresenter.gridLength;
 
         for (i = 0; i < gridSquare; i++) {
             value = Math.ceil((Math.random() * gamePresenter.maxTileSize));
@@ -178,9 +177,9 @@ var gamePresenter = {
 
         if (!gamePresenter.victoryAchieved) {
             gameState = new GameState(gamePresenter.tiles,
-                    gamePresenter.gridSize,
-                    new Score(gamePresenter.moveCount, gamePresenter.gridName),
-                    gamePresenter.gameMode,
+                    gamePresenter.gridLength,
+                    new Score(gamePresenter.moveCount, gamePresenter.size),
+                    gamePresenter.mode,
                     gamePresenter.maxTileSize
                     );
 
@@ -188,7 +187,7 @@ var gamePresenter = {
         }
     },
     setGameMode: function(mode) {
-        gamePresenter.gameMode = modes[mode];
+        gamePresenter.mode = modes[mode];
     },
     /**
      * Setter for gameState.
@@ -205,15 +204,15 @@ var gamePresenter = {
             gamePresenter.tiles.push(new Tile(tiles[i].value, tiles[i].index, tiles[i].min, tiles[i].max));
         }
 
-        gamePresenter.gridSize = gameState.gridSize;
+        gamePresenter.gridLength = gameState.gridSize;
         gamePresenter.setMoveCount(gameState.score.moves);
-        gamePresenter.gridName = gameState.score.size;
-        gamePresenter.gameMode = modes[gameState.mode];
+        gamePresenter.size = gameState.score.size;
+        gamePresenter.mode = modes[gameState.mode];
         gamePresenter.maxTileSize = gameState.maxTileSize;
 
         // Check for valid game mode.
-        if (!gamePresenter.gameMode) {
-            gamePresenter.gameMode = modes.regular;
+        if (!gamePresenter.mode) {
+            gamePresenter.mode = modes.regular;
         }
 
         // Check for valid max tile size. (Needed for update.)
@@ -226,7 +225,7 @@ var gamePresenter = {
      * @param {type} gridSize
      */
     setGridSize: function(gridSize) {
-        gamePresenter.gridSize = gridSize;
+        gamePresenter.gridLength = gridSize;
     },
     /**
      * Setter for maxTileSize
@@ -258,7 +257,7 @@ var gamePresenter = {
 
         // Load the tiles in the new order.
         gameView.clearTiles();
-        gameView.loadTiles(gamePresenter.gridSize, gamePresenter.tiles);
+        gameView.loadTiles(gamePresenter.gridLength, gamePresenter.tiles);
     },
     /**
      * Timeout function.
@@ -284,33 +283,33 @@ var gamePresenter = {
 
         updatedTiles = [];
 
-        if (!alt && gamePresenter.gameMode === modes.regular || autoMatch) {
+        if (!alt && gamePresenter.mode === modes.regular || autoMatch) {
             //gamePresenter.tiles[index].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index]);
         }
 
         // Left tile.
-        if (index - 1 >= 0 && index % gamePresenter.gridSize !== 0) {
+        if (index - 1 >= 0 && index % gamePresenter.gridLength !== 0) {
             //gamePresenter.tiles[index - 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index - 1]);
         }
 
         // Right tile
-        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridSize) !== 0) {
+        if (index + 1 < gamePresenter.tiles.length && (index + 1) % (gamePresenter.gridLength) !== 0) {
             //gamePresenter.tiles[index + 1].incrementValue();
             updatedTiles.push(gamePresenter.tiles[index + 1]);
         }
 
         // Above tile
-        if (index - gamePresenter.gridSize >= 0) {
+        if (index - gamePresenter.gridLength >= 0) {
             //gamePresenter.tiles[index - gamePresenter.gridSize].incrementValue();
-            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridSize]);
+            updatedTiles.push(gamePresenter.tiles[index - gamePresenter.gridLength]);
         }
 
         // Below tile
-        if (index + gamePresenter.gridSize < gamePresenter.tiles.length) {
+        if (index + gamePresenter.gridLength < gamePresenter.tiles.length) {
             //gamePresenter.tiles[index + gamePresenter.gridSize].incrementValue();
-            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridSize]);
+            updatedTiles.push(gamePresenter.tiles[index + gamePresenter.gridLength]);
         }
         
         // Set the new values...
@@ -359,7 +358,7 @@ var gamePresenter = {
         gamePresenter.flipTiles(e.currentTarget, false);
     },
     onTapHoldTile: function(e) {
-        if (gamePresenter.gameMode === modes.regular) {
+        if (gamePresenter.mode === modes.regular) {
             gamePresenter.flipTiles(e.currentTarget, true);
         }
     }
