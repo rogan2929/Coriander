@@ -53,7 +53,7 @@ $(document).on('pagebeforeshow', '#start', function(e) {
     // Put any delayed tasks here.
     setTimeout(function() {
         // Force ads to open in the system browser.
-        $('a').not('.ui-btn').tap(function(e) {
+        $('a').not('.ui-btn,.tab').tap(function(e) {
             var url;
 
             e.preventDefault();

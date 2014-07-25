@@ -193,49 +193,56 @@ and open the template in the editor.
                 <span class='page-title'>Best Scores</span>
             </div>
 
-            <div role='main' class='ui-content h-centered'>
-                <span class='sub-heading'>Regular Mode</span>
+            <div data-role='tabs'>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#regular" data-ajax="false" class='tab ui-btn-active'>Regular</a></li>
+                        <li><a href="#advanced" data-ajax="false" class='tab'>Advanced</a></li>
+                    </ul>
+                </div>
 
-                <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>Small (3 x 3)</span>
-                    <div id='top-score-regular-small'>You haven't solved this yet!</div>
+                <div id='regular' role='main' class='ui-content h-centered'>
+                    <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
+                        <span class='sub-heading'>Small (3 x 3)</span>
+                        <div id='top-score-regular-small'>You haven't solved this yet!</div>
+                    </div>
+                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                        <span class='sub-heading'>Regular (4 x 4)</span>
+                        <div id='top-score-regular-regular'>You haven't solved this yet!</div>
+                    </div>
+                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                        <span class='sub-heading'>Large (5 x 5)</span>
+                        <div id='top-score-regular-large'>You haven't solved this yet!</div>
+                    </div>
+                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                        <span class='sub-heading'>Huge (6 x 6)</span>
+                        <div id='top-score-regular-huge'>You haven't solved this yet!</div>
+                    </div>
                 </div>
-                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>Regular (4 x 4)</span>
-                    <div id='top-score-regular-regular'>You haven't solved this yet!</div>
-                </div>
-                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>Large (5 x 5)</span>
-                    <div id='top-score-regular-large'>You haven't solved this yet!</div>
-                </div>
-                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>Huge (6 x 6)</span>
-                    <div id='top-score-regular-huge'>You haven't solved this yet!</div>
+
+                <div id='advanced' role='main' class='ui-content h-centered'>
+                    <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
+                        <span class='sub-heading'>Small (3 x 3)</span>
+                        <div id='top-score-advanced-small'>You haven't solved this yet!</div>
+                    </div>
+                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                        <span class='sub-heading'>Regular (4 x 4)</span>
+                        <div id='top-score-advanced-regular'>You haven't solved this yet!</div>
+                    </div>
+                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                        <span class='sub-heading'>Large (5 x 5)</span>
+                        <div id='top-score-advanced-large'>You haven't solved this yet!</div>
+                    </div>
+                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                        <span class='sub-heading'>Huge (6 x 6)</span>
+                        <div id='top-score-advanced-huge'>You haven't solved this yet!</div>
+                    </div>
                 </div>
             </div>
 
-            <div role='main' class='ui-content h-centered'>
-                <span class='sub-heading'>Advanced Mode</span>
-
-                <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>Small (3 x 3)</span>
-                    <div id='top-score-advanced-small'>You haven't solved this yet!</div>
-                </div>
-                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>Regular (4 x 4)</span>
-                    <div id='top-score-advanced-regular'>You haven't solved this yet!</div>
-                </div>
-                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>Large (5 x 5)</span>
-                    <div id='top-score-advanced-large'>You haven't solved this yet!</div>
-                </div>
-                <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
-                    <span class='sub-heading'>Huge (6 x 6)</span>
-                    <div id='top-score-advanced-huge'>You haven't solved this yet!</div>
-                </div>
+            <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
+                <a href='#start' class='ui-btn half ui-corner-all ui-shadow display-inline-block'>Menu</a>
             </div>
-            
-            <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
         </div>
 
         <div id='directions' data-role='page' data-swiperight="#start" class="background">
@@ -244,7 +251,7 @@ and open the template in the editor.
             </div>
 
             <div role='main' class='ui-content'>
-                <p class='no-margin ui-content ui-body ui-body-a ui-shadow'>
+                <p class='no-margin ui-content ui-body ui-body-a ui-shadow ui-corner-all'>
                     Your underlying goal is to make all of tiles the same color, and the fewer the moves you can do that in the better.
                     <br/><br/>
 
