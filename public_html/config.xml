@@ -20,6 +20,8 @@
     <preference name="orientation" value="portrait" />
     <preference name="stay-in-webview" value="false" />
     
+    <preference name="android-minSdkVersion" value="16" />
+    
     <!-- Icons -->
     <icon src="icon.png" />
     
