@@ -67,9 +67,9 @@ $(document).on('pagebeforeshow', '#start', function(e) {
                 window.open(url, '_blank');
             }
         });
-        
+
         // Show the "Rate / Give Feedback" button.
-        $('#tile-rate').fadeIn();
+        $('.delayed-content').fadeIn();
     }, 2000);
 });
 
@@ -87,6 +87,16 @@ $(document).on('pagebeforeshow', '#high-scores', function(e) {
 
 $(document).on('pagebeforeshow', '#game', function(e) {
     gamePresenter.init();
+    var options = {
+        size: '320x50',
+        position:
+                {
+                    left: '50%',
+                    bottom: 25,
+                    reference: 'center'
+                }
+    };
+    window.advertisement = new Clay.Advertisement(options);
 });
 
 $(document).on('pagebeforehide', '#game', function(e) {
