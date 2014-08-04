@@ -26,7 +26,7 @@ var startView = {
         //$('.button-tile').width(size).height(size + 'px').css('margin', margin + 'px').css('margin-right', margin / 3 + 'px');
         $('.button-tile').width(size + 'px').height(size + 'px').css('margin-right', '-6px');
         
-        $('#start-tile-container').height(containerWidth);
+        $('.tile-container').height(containerWidth);
     },
     /**
      * Flip a button tile.

@@ -164,7 +164,7 @@ and open the template in the editor.
     text-align: center;
     vertical-align: middle;
     text-shadow: none;
-    color: #333;
+    color: white;
     position: relative;
     border: 1px solid #ccc;
 }
@@ -199,6 +199,10 @@ and open the template in the editor.
 
 .flip-container {
     perspective: 800;
+}
+
+.tile-container.offset {
+    margin-left: -6px;
 }
 
 .tileface {

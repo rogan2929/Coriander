@@ -58,7 +58,7 @@ var gameView = {
                 }
             }
 
-            $('#tile-container').height(containerWidth + 'px').fadeIn(constants.ANIMATION_LENGTH / 2, function() {
+            $('#tile-container').fadeIn(constants.ANIMATION_LENGTH / 2, function() {
                 // Re-register event hookups.
                 eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
                 eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');
