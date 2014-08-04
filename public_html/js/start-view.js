@@ -13,18 +13,20 @@ var startView = {
      * Make them there button tiles all perdy.
      */
     configureButtonTiles: function() {
-        var size, windowWidth, textSize, margin;
+        var size, containerWidth;
 
-        windowWidth = $(window).width();
+        containerWidth = $(window).width();
 
-        size = ((windowWidth - (windowWidth * 0.40)) / 2);
+        size = containerWidth / 2 - 2;
 
-        margin = size / 12;
+        //margin = size / 12;
 
         //textSize = size / 4;
 
         //$('.button-tile').width(size).height(size + 'px').css('margin', margin + 'px').css('margin-right', margin / 3 + 'px');
-        $('.button-tile').width(size).height(size + 'px').css('margin', margin + 'px');
+        $('.button-tile').width(size + 'px').height(size + 'px').css('margin-right', '-6px');
+        
+        $('#start-tile-container').height(containerWidth);
     },
     /**
      * Flip a button tile.

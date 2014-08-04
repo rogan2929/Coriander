@@ -57,33 +57,33 @@ and open the template in the editor.
     <body class="background">
         <!-- Start Page -->
         <div id='start' data-role="page" class="background">
-            <div class='ui-content ui-body-a h-centered ui-shadow'>
+            <div class='ui-content ui-body-a h-centered'>
                 <span class='page-title'>Flippee!</span>
             </div>
 
-            <div class='ui-content ui-body h-centered flip-container'>
-                <div id='tile-new-game' class='button-tile bevel-shadow color4'>
+            <div id="start-tile-container" class='h-centered v-centered absolute' style="margin-left: -6px;">
+                <div id='tile-new-game' class='button-tile color4'>
                     <div class='tileface'>
                         <div class='tile-text'>
                             <p>New Game</p>
                         </div>
                     </div>
                 </div>
-                <div id='tile-game' class='button-tile ui-state-disabled bevel-shadow color1'>
+                <div id='tile-game' class='button-tile ui-state-disabled color1'>
                     <div class='tileface'>
                         <div class='tile-text'>
                             <p>Resume Game</p>
                         </div>
                     </div>
                 </div>
-                <div id='tile-high-scores' class='button-tile bevel-shadow color3'>
+                <div id='tile-high-scores' class='button-tile color3'>
                     <div class='tileface'>
                         <div class='tile-text'>
                             <p>Best Scores</p>
                         </div>
                     </div>
                 </div>
-                <div id='tile-directions' class='button-tile bevel-shadow color2'>
+                <div id='tile-directions' class='button-tile color2'>
                     <div class='tileface'>
                         <div class='tile-text'>
                             <p>How to Play</p>
@@ -92,18 +92,18 @@ and open the template in the editor.
                 </div>
             </div>
 
-            <a href='#' id='tile-rate' class='ui-btn half absolute stretch-bottom no-margin ui-corner-all hidden ui-shadow'>Feedback</a>
+            <a href='#' id='tile-rate' class='ui-btn half absolute stretch-bottom no-margin hidden'>Feedback</a>
         </div>
 
         <div id='new-game' data-role='page' data-swipeleft="#more-options" data-swiperight="#start" class="background">
-            <div class='ui-content ui-body-a h-centered ui-shadow'>
+            <div class='ui-content ui-body-a h-centered'>
                 <span class='page-title'>New Game</span>
             </div>
 
             <div class='h-centered sub-heading margin-top'>Tap to choose a grid size:</div>
 
             <div class="ui-content h-centered">
-                <div class='button-tile color8 bevel-shadow' data-value='3'>
+                <div class='button-tile color8' data-value='3'>
                     <div class='tile-text'>
                         <p>
                             Small<br/>
@@ -111,7 +111,7 @@ and open the template in the editor.
                         </p>
                     </div>
                 </div>
-                <div class='button-tile color2 bevel-shadow' data-value='4'>
+                <div class='button-tile color2' data-value='4'>
                     <div class='tile-text'>
                         <p>
                             Regular<br/>
@@ -119,7 +119,7 @@ and open the template in the editor.
                         </p>
                     </div>
                 </div>
-                <div class='button-tile color3 bevel-shadow' data-value='5'>
+                <div class='button-tile color3' data-value='5'>
                     <div class='tile-text'>
                         <p>
                             Large<br/>
@@ -127,7 +127,7 @@ and open the template in the editor.
                         </p>
                     </div>
                 </div>
-                <div class='button-tile color4 bevel-shadow' data-value='6'>
+                <div class='button-tile color4' data-value='6'>
                     <div class='tile-text'>
                         <p>
                             Huge<br/>
@@ -138,25 +138,25 @@ and open the template in the editor.
             </div>
 
             <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
-                <a href='#start' class='ui-btn quarter ui-corner-all ui-shadow display-inline-block'>Menu</a>
-                <a href='#more-options' class='ui-btn quarter ui-corner-all ui-shadow display-inline-block'>Next</a>
+                <a href='#start' class='ui-btn quarter display-inline-block'>Menu</a>
+                <a href='#more-options' class='ui-btn quarter display-inline-block'>Next</a>
             </div>
         </div>
 
         <div id='more-options' data-role='page' data-swipeleft="#game" data-swiperight="#new-game" class="background">
-            <div class='ui-content ui-body-a h-centered ui-shadow'>
+            <div class='ui-content ui-body-a h-centered'>
                 <span class='page-title'>More Options</span>
             </div>
 
             <div class='h-centered sub-heading margin-top'>Tap to choose a gameplay style:</div>
 
             <div class="ui-content h-centered">
-                <div class='button-tile color2 bevel-shadow' data-value='regular'>
+                <div class='button-tile color2' data-value='regular'>
                     <div class='tile-text'>
                         <p>Regular</p>
                     </div>
                 </div>
-                <div class='button-tile color4 bevel-shadow' data-value='advanced'>
+                <div class='button-tile color4' data-value='advanced'>
                     <div class='tile-text'>
                         <p>Advanced</p>
                     </div>
@@ -169,18 +169,18 @@ and open the template in the editor.
             </div>
 
             <div class='absolute stretch-bottom stretch-left h-centered stretch-right'>
-                <a href='#new-game' class='ui-btn quarter ui-corner-all ui-shadow display-inline-block'>Back</a>
-                <a href='#game' id='button-start' class='ui-btn quarter ui-corner-all ui-shadow display-inline-block'>Let's Go!</a>
+                <a href='#new-game' class='ui-btn quarter display-inline-block'>Back</a>
+                <a href='#game' id='button-start' class='ui-btn quarter display-inline-block'>Let's Go!</a>
             </div>
         </div>
 
         <div id='game' data-role='page' class='no-scroll background'>
-            <div class='ui-content ui-body-a ui-shadow'>
+            <div class='ui-content ui-body-a'>
                 <span id='score' class='page-title'></span>
             </div>
             <div class='absolute stretch-right stretch-top margin-top'>
-                <a id="button-shuffle" class='ui-btn ui-btn-icon-notext ui-icon-recycle ui-btn-inline ui-corner-all ui-shadow'></a>
-                <a class='button-main ui-btn ui-btn-icon-notext ui-icon-grid ui-btn-inline ui-corner-all ui-shadow'></a>
+                <a id="button-shuffle" class='ui-btn ui-btn-icon-notext ui-icon-recycle ui-btn-inline'></a>
+                <a class='button-main ui-btn ui-btn-icon-notext ui-icon-grid ui-btn-inline'></a>
             </div>
             <div id='tile-container' class='h-centered v-centered absolute'></div>
             <div class='ad-bar absolute stretch-bottom h-centered stretch-left stretch-right'>
@@ -189,7 +189,7 @@ and open the template in the editor.
         </div>
 
         <div id='high-scores' data-role='page' data-swiperight="#start" class="background">
-            <div class='ui-content ui-body-a h-centered ui-shadow'>
+            <div class='ui-content ui-body-a h-centered'>
                 <span class='page-title'>Best Scores</span>
             </div>
 
@@ -202,54 +202,54 @@ and open the template in the editor.
                 </div>
 
                 <div id='regular' role='main' class='ui-content h-centered'>
-                    <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
+                    <div class='ui-body-a ui-body'>
                         <span class='sub-heading'>Small (3 x 3)</span>
                         <div id='top-score-regular-small'>You haven't solved this yet!</div>
                     </div>
-                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <div class='ui-body-a ui-body top-space'>
                         <span class='sub-heading'>Regular (4 x 4)</span>
                         <div id='top-score-regular-regular'>You haven't solved this yet!</div>
                     </div>
-                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <div class='ui-body-a ui-body top-space'>
                         <span class='sub-heading'>Large (5 x 5)</span>
                         <div id='top-score-regular-large'>You haven't solved this yet!</div>
                     </div>
-                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <div class='ui-body-a ui-body top-space'>
                         <span class='sub-heading'>Huge (6 x 6)</span>
                         <div id='top-score-regular-huge'>You haven't solved this yet!</div>
                     </div>
                 </div>
 
                 <div id='advanced' role='main' class='ui-content h-centered'>
-                    <div class='ui-body-a ui-body ui-corner-all ui-shadow'>
+                    <div class='ui-body-a ui-body'>
                         <span class='sub-heading'>Small (3 x 3)</span>
                         <div id='top-score-advanced-small'>You haven't solved this yet!</div>
                     </div>
-                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <div class='ui-body-a ui-body top-space'>
                         <span class='sub-heading'>Regular (4 x 4)</span>
                         <div id='top-score-advanced-regular'>You haven't solved this yet!</div>
                     </div>
-                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <div class='ui-body-a ui-body top-space'>
                         <span class='sub-heading'>Large (5 x 5)</span>
                         <div id='top-score-advanced-large'>You haven't solved this yet!</div>
                     </div>
-                    <div class='ui-body-a ui-body top-space ui-corner-all ui-shadow'>
+                    <div class='ui-body-a ui-body top-space'>
                         <span class='sub-heading'>Huge (6 x 6)</span>
                         <div id='top-score-advanced-huge'>You haven't solved this yet!</div>
                     </div>
                 </div>
             </div>
 
-            <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
+            <a href="#start"  class='ui-btn half'>Menu</a>
         </div>
 
         <div id='directions' data-role='page' data-swiperight="#start" class="background">
-            <div class='ui-content ui-body-a h-centered ui-shadow'>
+            <div class='ui-content ui-body-a h-centered'>
                 <span class='page-title'>How to Play</span>
             </div>
 
             <div role='main' class='ui-content'>
-                <p class='no-margin ui-content ui-body ui-body-a ui-shadow ui-corner-all'>
+                <p class='no-margin ui-content ui-body ui-body-a'>
                     Your underlying goal is to make all of tiles the same color, and the fewer the moves you can do that in the better.
                     <br/><br/>
 
@@ -267,7 +267,7 @@ and open the template in the editor.
                 </p>
             </div>
 
-            <a href="#start"  class='ui-btn half ui-corner-all ui-shadow'>Menu</a>
+            <a href="#start"  class='ui-btn half'>Menu</a>
         </div>
 
         <div id='victory' data-role='page' class="background">
@@ -283,22 +283,22 @@ and open the template in the editor.
             <!--
             <a id='button-facebook' class='ui-btn half'>Share on Facebook</a>-->
             <div class='absolute stretch-bottom h-centered stretch-left stretch-right'>
-                <a href="#start" class='button-main ui-btn half ui-corner-all ui-shadow'>Menu</a>
+                <a href="#start" class='button-main ui-btn half'>Menu</a>
             </div>
         </div>
 
         <!-- Popups and the like -->
-        <div id='popup-message' class='absolute popup-message hidden ui-shadow stretch-left stretch-right stretch-bottom stretch-top auto-margin ui-corner-all'></div>
+        <div id='popup-message' class='absolute popup-message hidden stretch-left stretch-right stretch-bottom stretch-top auto-margin'></div>
 
         <!-- Templates -->
         <div id='tile-template' class='hidden'>
-            <div class='tile bevel-shadow'>
+            <div class='tile'>
                 <div class='tileface'></div>
             </div>
         </div>
 
         <div class='hidden'>
-            <div class='tile ui-shadow'>
+            <div class='tile'>
                 <div class='tileface bevel color1'>1</div>
                 <div class='tileface bevel color2'>2</div>
                 <div class='tileface bevel color3'>3</div>

@@ -35,12 +35,13 @@ var gameView = {
      * @param {type} tiles
      */
     loadTiles: function(gridSize, tiles) {
-        var html, i, j, width, tile, index, value, margin, textSize;
+        var html, i, j, width, tile, index, value, textSize, containerWidth;
+        
+        containerWidth = $(window).width();
 
         $('#tile-container').fadeOut(constants.ANIMATION_LENGTH / 2, function() {
-            width = ($(window).width() - ($(window).width() * 0.20)) / gridSize;
-            margin = (width / 12);
-            textSize = (width / 3.5);
+            width = containerWidth / gridSize - 2;
+            textSize = (width / 1.5);
 
             html = $('#tile-template').html();
 
@@ -49,7 +50,7 @@ var gameView = {
                     value = tiles[i + j].getValue();
                     index = tiles[i + j].getIndex();
 
-                    tile = $(html).width(width).height(width).css('margin', margin + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).addClass(gameView.colors[value - 1]);
+                    tile = $(html).width(width + 'px').height(width + 'px').css('font-size', textSize + 'px').css('line-height', width + 'px').addClass('tile-' + index).addClass(gameView.colors[value - 1]);
                     
                     $(tile).children('.tileface').text(value);
                     
@@ -57,7 +58,7 @@ var gameView = {
                 }
             }
 
-            $('#tile-container').height(gridSize * (width + (margin)) + 'px').fadeIn(constants.ANIMATION_LENGTH / 2, function() {
+            $('#tile-container').height(containerWidth + 'px').fadeIn(constants.ANIMATION_LENGTH / 2, function() {
                 // Re-register event hookups.
                 eventBus.installHandler('gamePresenter.onTapTile', gamePresenter.onTapTile, '.tile', 'tap');
                 eventBus.installHandler('gamePresenter.onTapHoldTile', gamePresenter.onTapHoldTile, '.tile', 'taphold');

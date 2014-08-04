@@ -24,8 +24,9 @@ and open the template in the editor.
 }
 
 .background {
-    background-image: url(img/background.png) !important;
-    background-color: transparent !important;
+/*    background-image: url(img/background.png) !important;
+    background-color: transparent !important;*/
+    background-color: white;
 }
 
 .h-centered {
@@ -162,10 +163,10 @@ and open the template in the editor.
     display: inline-block;
     text-align: center;
     vertical-align: middle;
-    margin: 5px;
     text-shadow: none;
-    color: #333333;
+    color: #333;
     position: relative;
+    border: 1px solid #ccc;
 }
 
 .enable-transitions {
@@ -192,9 +193,9 @@ and open the template in the editor.
     opacity: 0.0;
 }
 
-.tile, .button-tile, .tileface {
+/*.tile, .button-tile, .tileface {
     border-radius: 5px;
-}
+}*/
 
 .flip-container {
     perspective: 800;
@@ -224,7 +225,6 @@ and open the template in the editor.
 }
 
 .button-tile {
-    padding: 10px;
     font-size: 1.2em;
 }
 
@@ -349,9 +349,12 @@ and open the template in the editor.
 }
 
 .button-tile.selected {
-    box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
+/*    box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
     -webkit-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
-    -moz-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;
+    -moz-box-shadow: 3px 3px 5px 0px rgba(50, 50, 50, 0.75), inset 0 0 70px 0px #FFF12A;*/
+    box-shadow: inset 0 0 70px 0px #FFF12A;
+    -webkit-box-shadow: inset 0 0 70px 0px #FFF12A;
+    -moz-box-shadow: inset 0 0 70px 0px #FFF12A;
 }
 
 .swiper {
