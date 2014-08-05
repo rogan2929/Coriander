@@ -102,6 +102,7 @@ $(document).on('pagebeforeshow', '#game', function(e) {
 $(document).on('pagebeforehide', '#game', function(e) {
     gamePresenter.clearIntervals();
     gamePresenter.saveState();
+    window.advertisement.hide();
 });
 
 $(document).on('pagebeforeshow', '#victory', function(e) {
