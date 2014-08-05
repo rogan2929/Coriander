@@ -39,11 +39,8 @@
     
     <!-- Plugins -->
     <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="com.phonegap.plugins.childbrowser" version="5.0.0" />
-    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.4.0">
-        <param name="APP_ID" value="714454361933938" />
-        <param name="APP_NAME" value="Flippee" />
-    </gap:plugin>
+    <!--
+    <gap:plugin name="com.phonegap.plugins.childbrowser" version="5.0.0" />-->
 
     <!-- Access -->
     <access origin="*" />

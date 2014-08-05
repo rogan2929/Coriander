@@ -52,21 +52,21 @@ $(document).on('pagebeforeshow', '#start', function(e) {
 
     // Put any delayed tasks here.
     setTimeout(function() {
-        // Force ads to open in the system browser.
-        $('a').not('.ui-btn,.tab').tap(function(e) {
-            var url;
-
-            e.preventDefault();
-
-            url = $(e.currentTarget).attr('href');
-
-            if (window.plugins) {
-                window.plugins.ChildBrowser.showWebPage(url, {showLocationBar: true});
-            }
-            else {
-                window.open(url, '_blank');
-            }
-        });
+//        // Force ads to open in the system browser.
+//        $('a').not('.ui-btn,.tab').tap(function(e) {
+//            var url;
+//
+//            e.preventDefault();
+//
+//            url = $(e.currentTarget).attr('href');
+//
+//            if (window.plugins) {
+//                window.plugins.ChildBrowser.showWebPage(url, {showLocationBar: true});
+//            }
+//            else {
+//                window.open(url, '_blank');
+//            }
+//        });
 
         // Show the "Rate / Give Feedback" button.
         $('.delayed-content').fadeIn();
